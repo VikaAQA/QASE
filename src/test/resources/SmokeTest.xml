@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="smokeTest" parallel="tests">
+    <listeners>
+        <listener class-name="tests.RetryListener"/>
+        <listener class-name="tests.TestListener"/>
+    </listeners>
+    <test name="Thread1">
+            <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.LocatorsTest"/>
+            <class name="tests.LoginTest"/>
+            </classes>
+
+    </test> <!-- Test -->
+    <test name="Thread2">
+        <classes> <class name="tests.CartTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite>
+

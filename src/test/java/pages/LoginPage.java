@@ -1,19 +1,34 @@
 package pages;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 
-public class LoginPages {
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
+
+public class LoginPage {
     private final String USER_FIELD = "[name=email]";
-    private final String PASSWORD_FIELD = "[name=password]";
+    private final String ERROR_MESSAGE = "//small";
+    private final String PASSWORD_FIELD = "[name='password']";
 
-    public void openPage() {
+    @Step("Открытие страницы авторизации")
+    public LoginPage openPage() {
         open("/login");
+        return this;
     }
 
-    public void login(String user, String password) {
-        $(USER_FIELD).setValue(user);
+    @Step("Авторизация под валидными данными")
+    public ProductsPage login(String user, String password) {
+        $(USER_FIELD).shouldBe(visible).setValue(user);
         $(PASSWORD_FIELD).setValue(password).submit();
-  
+        return new ProductsPage();
+    }
+
+    public void checkErrorMessage(String error) {
+        $x(ERROR_MESSAGE).shouldHave(Condition.text(error));
+    }
+
+    public String getErrorMessage() {//страница открылась и виден текст , затем в тете ассерт
+        return $x(ERROR_MESSAGE).text();
     }
 }

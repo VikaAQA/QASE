@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="smokeTest" parallel="tests">
+    <listeners>
+        <listener class-name="tests.RetryListener"/>
+        <listener class-name="tests.TestListener"/>
+    </listeners>
+    <test name="chrome">
+
+        <classes>
+            <class name="tests.LocatorsTest"/>
+            <class name="tests.LoginTest"/>
+            <parameter name="browser" value="chrome"></parameter>
+            </classes>
+
+    </test> <!-- Test -->
+    <test name="Firefox">
+        <classes> <class name="tests.CartTest"/>
+            <parameter name="browser" value="Firefox"></parameter>
+        </classes>
+    </test> <!-- Test -->
+</suite>
