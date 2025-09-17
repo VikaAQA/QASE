@@ -22,8 +22,10 @@ target/
 .springBeans
 .sts4-cache
 
-# Конфигурационные файлы с чувствительными данными
+### Конфигурационные файлы с чувствительными данными ###
+config.properties
 resources/config.properties
+allure.properties
 *.env
 .env.local
 .env.*.local
