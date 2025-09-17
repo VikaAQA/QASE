@@ -15,6 +15,7 @@ public class ProductsPage {
     private String PROJECTS_URL = "/projects";
     private String REMOVE_BTN  = "[data.data-testid=remove]";
     private String DELETE_PROJECTS_BTN  = "//span[text()='Delete project']";
+    private String OPEN_ACTION_MENU_BTN  = "button[aria-label='Open action menu']";
 
     @Step("Открытие страницы проектов")
     public ProductsPage openPage() {
@@ -31,9 +32,9 @@ public class ProductsPage {
     public ProductsPage deleteProject(String project) {
         $(byText(project))
                 .ancestor("tr")
-                .find("button[aria-label='Open action menu']")
+                .find(OPEN_ACTION_MENU_BTN)
                 .click();
-        $( REMOVE_BTN ).click();
+        $(REMOVE_BTN).click();
         $x(DELETE_PROJECTS_BTN).click();
         return this;
     }
