@@ -4,6 +4,7 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
+.idea/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
@@ -20,6 +21,12 @@ target/
 .settings
 .springBeans
 .sts4-cache
+
+# Конфигурационные файлы с чувствительными данными
+resources/config.properties
+*.env
+.env.local
+.env.*.local
 
 ### NetBeans ###
 /nbproject/private/
