@@ -9,14 +9,25 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <!-- Версии зависимостей -->
         <aspectj.version>1.9.20.1</aspectj.version>
         <allure.version>2.24.0</allure.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <selenide.version>7.10.0</selenide.version>
         <testng.version>7.10.2</testng.version>
         <assertj.version>3.27.4</assertj.version>
         <javafaker.version>1.0.2</javafaker.version>
         <lombok.version>1.18.38</lombok.version>
+        <slf4j.version>2.0.9</slf4j.version>
+        <log4j.version>2.24.2</log4j.version>
+        <gson.version>2.13.2</gson.version>
+        <restassured.version>5.5.6</restassured.version>
+        <jackson.yaml.version>2.12.3</jackson.yaml.version>
+        <surefire.version>3.2.5</surefire.version>
+        <allure.maven.plugin.version>2.12.0</allure.maven.plugin.version>
+
+        <!-- Общие настройки -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <suiteXmlFile>src/test/resources/CrossBrowserTest.xml</suiteXmlFile>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <retry.count>5</retry.count>
@@ -35,11 +46,11 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.codeborne/selenide -->
+        <!-- Selenide -->
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>7.10.0</version>
+            <version>${selenide.version}</version>
         </dependency>
 
         <!-- TestNG -->
@@ -58,27 +69,27 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <!-- Rest Assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.5.6</version>
+            <version>${restassured.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!-- Allure -->
+        <!-- Allure TestNG -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.24.0</version>
+            <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!-- Allure Selenide (именно тут лежит AllureSelenide) -->
+        <!-- Allure Selenide -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-selenide</artifactId>
-            <version>2.24.0</version>
+            <version>${allure.version}</version>
         </dependency>
 
         <!-- Aspect-J -->
@@ -88,57 +99,50 @@
             <version>${aspectj.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <!-- Faker -->
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>${javafaker.version}</version>
         </dependency>
 
+        <!-- SLF4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>2.0.9</version>
+            <version>${slf4j.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <!-- Log4j -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.24.2</version>
+            <version>${log4j.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <!-- Gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.13.2</version>
+            <version>${gson.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+        <!-- JSON Schema Validator -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
-            <version>5.5.6</version>
+            <version>${restassured.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>5.5.6</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!--Вычитывание информации в файле логов yaml  https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml -->
+        <!-- Jackson YAML -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>2.12.3</version>
+            <version>${jackson.yaml.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -151,7 +155,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>${surefire.version}</version>
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED
@@ -169,13 +173,12 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.12.0</version>
+                <version>${allure.maven.plugin.version}</version>
             </plugin>
-            <!-- Плагины (если нужны) -->
         </plugins>
     </build>
 
-    <!-- Добавляем профили для разных конфигураций Retry -->
+    <!-- Профили -->
     <profiles>
         <profile>
             <id>retry-3</id>
@@ -196,5 +199,4 @@
             </properties>
         </profile>
     </profiles>
-
 </project>
