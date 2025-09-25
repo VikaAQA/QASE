@@ -1,7 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,13 +16,13 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 
 public class BaseTest {
-   LoginPage loginPage;
+    LoginPage loginPage;
     ProductsPage productsPage;
     ProjectPage projectPage;
     ModalCreateProjectPage modalCreateProjectPage;
 
-    String user = System.getProperty("user",PropertyReader.getProperty("user"));//скрытие кредов указаны в config.properties
-    String password = System.getProperty("password",PropertyReader.getProperty("password"));//скрытие кредов
+    String user = System.getProperty("user", PropertyReader.getProperty("user"));//скрытие кредов указаны в config.properties
+    String password = System.getProperty("password", PropertyReader.getProperty("password"));//скрытие кредов
 
     @BeforeMethod
     public void setUp() {
@@ -52,9 +51,10 @@ public class BaseTest {
         projectPage = new ProjectPage();
         modalCreateProjectPage = new ModalCreateProjectPage();
     }
+
     @AfterMethod
     public void tearDown(ITestResult result) {
-              // Закрытие драйвера
+        // Закрытие драйвера
         if (getWebDriver() != null) {
             getWebDriver().quit();
         }
