@@ -11,7 +11,7 @@ import static data.Elements.CREATE_NEW_PROJECT_BTN;
 import static data.Elements.CREATE_PROJECT_BTN;
 
 @Data
-public class ModalCreateProjectPage {
+public class ModalCreateProjectPage extends BasePage{
 
     private String PUBLIC_RADIO_BTN = "input[value='public']";
     public static final String PROJECT_NAME_FIELD_CSS = "#project-name";

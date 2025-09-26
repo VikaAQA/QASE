@@ -6,10 +6,10 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginPage {
-    private final String USER_FIELD = "[name=email]";
-    private final String ERROR_MESSAGE = "//small";
-    private final String PASSWORD_FIELD = "[name='password']";
+public class LoginPage extends BasePage{
+    private final String USER_FIELD = "[name=email]",
+            ERROR_MESSAGE = "//small",
+            PASSWORD_FIELD = "[name='password']";
 
     @Step("Открытие страницы авторизации")
     public LoginPage openPage() {

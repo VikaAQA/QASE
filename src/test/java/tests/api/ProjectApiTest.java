@@ -1,4 +1,4 @@
-package tests;
+package tests.api;
 
 import io.qameta.allure.Step;
 import io.restassured.path.json.JsonPath;

@@ -100,7 +100,7 @@ public class GetProjectRs {
 
         @SerializedName("name")
         @Expose
-        public Object name;
+        public String name;
 
         @SerializedName("role_title")
         @Expose

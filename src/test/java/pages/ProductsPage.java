@@ -10,12 +10,12 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static data.Elements.CREATE_NEW_PROJECT_BTN;
 
-public class ProductsPage {
+public class ProductsPage extends BasePage{
 
-    private String PROJECTS_URL = "/projects";
-    private String REMOVE_BTN  = "[data.data-testid=remove]";
-    private String DELETE_PROJECTS_BTN  = "//span[text()='Delete project']";
-    private String OPEN_ACTION_MENU_BTN  = "button[aria-label='Open action menu']";
+    private String PROJECTS_URL = "/projects",
+     REMOVE_BTN  = "[data.data-testid=remove]",
+   DELETE_PROJECTS_BTN  = "//span[text()='Delete project']",
+    OPEN_ACTION_MENU_BTN  = "button[aria-label='Open action menu']";
 
     @Step("Открытие страницы проектов")
     public ProductsPage openPage() {

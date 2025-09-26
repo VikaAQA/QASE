@@ -16,7 +16,7 @@ public class ProjectRequestFactory {
 
     public static CreateProjectRq projectWithEmptyTitle(String code) {
         return CreateProjectRq.builder()
-                .title("") // ❌ пустой title
+                .title("") //
                 .code(code)
                 .description("Project created via API with empty title")
                 .group("all")
@@ -27,7 +27,7 @@ public class ProjectRequestFactory {
     public static CreateProjectRq projectWithEmptyCode(String title) {
         return CreateProjectRq.builder()
                 .title(title)
-                .code("") // ❌ пустой код
+                .code("") //
                 .description("Project created via API with empty code")
                 .group("all")
                 .access("all")

@@ -1,4 +1,4 @@
 package adapters;
 
-public class CaseAPI {
+public class CaseAPI extends BaseAPI{
 }

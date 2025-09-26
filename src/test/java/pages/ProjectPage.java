@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static data.Elements.NEW_TEST_BTN;
 
 
-public class ProjectPage {
+public class ProjectPage extends BasePage {
 
     @Step("Проверка отображения созданного проекта")
     public ProjectPage checkCreatingProject(String project) {//проверка что после создания провекта отображена кнопка new test
