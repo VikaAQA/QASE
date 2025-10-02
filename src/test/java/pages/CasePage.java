@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import dtos.TestCase;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 
 import java.time.Duration;
 import java.util.List;
@@ -17,7 +18,7 @@ import static data.Elements.TITLE_CASE_TXT;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static wrappers.DropDawn.selectFromCustomDropdown;
-
+@Log4j2
 public class CasePage extends BasePage {
     private final String TITLE_CASE_FIELD = "input[name='title']";
     private final String DESCRIPTION_CASE_FIELD = ".toastui-editor-ww-container .ProseMirror-trailingBreak:first-child";
@@ -36,6 +37,7 @@ public class CasePage extends BasePage {
     }
 
     public void fillCreateCaseForm(TestCase testCase){
+
         $(TITLE_CASE_FIELD).append(testCase.getTitle());
         $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
 
@@ -43,13 +45,14 @@ public class CasePage extends BasePage {
         selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
         selectFromCustomDropdown(DROPDAWN_XPATH, "Priority", FIELD_IN_DROPDAWN, testCase.getPriority());
-    }
+        log.info("Форма заполнена данными тест-кейса: {}", testCase); }
 
     @Step("Открытие формы создание кейса")
     public CasePage openCreateCase(TestCase testCase) {
         isPageOpened();
         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
+         log.info("Форма создания кейса успешно сохранена");
         return new CasePage();
     }
 

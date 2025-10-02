@@ -2,6 +2,7 @@ package pages;
 
 import io.qameta.allure.Step;
 import lombok.Data;
+import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Condition.selected;
 import static com.codeborne.selenide.Condition.visible;
@@ -11,6 +12,7 @@ import static data.Elements.CREATE_NEW_PROJECT_BTN;
 import static data.Elements.CREATE_PROJECT_BTN;
 
 @Data
+@Log4j2
 public class ModalCreateProjectPage extends BasePage{
 
     private String PUBLIC_RADIO_BTN = "input[value='public']";
@@ -24,12 +26,13 @@ public class ModalCreateProjectPage extends BasePage{
 
     @Step("Создание и заполнение формы проекта")
     public ProductsPage createProject(String project) {
-        CREATE_NEW_PROJECT_BTN .click();
+        log.info("Начало создания проекта с именем: {}", project);
+           CREATE_NEW_PROJECT_BTN .click();
         $(PROJECT_NAME_FIELD_CSS).setValue(project);
         $(PUBLIC_RADIO_BTN).click();
         $(PUBLIC_RADIO_BTN).shouldBe(selected);
-        CREATE_PROJECT_BTN.click();
-        return new ProductsPage();
+  CREATE_PROJECT_BTN.click();
+              return new ProductsPage();
     }
 
     @Step("")
