@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import pages.*;
 import utils.PropertyReader;
 
+import static adapters.ProjectAPI.deleteAllProject;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 
@@ -46,6 +47,10 @@ public class BaseTest {
                         .savePageSource(true)   // сохраняем html страницы
         );
 
+
+        deleteAllProject(); // <-- вызываем метод чистки
+
+
         loginPage = new LoginPage();
         productsPage = new ProductsPage();
         projectPage = new ProjectPage();
@@ -59,5 +64,6 @@ public class BaseTest {
         if (getWebDriver() != null) {
             getWebDriver().quit();
         }
+        deleteAllProject();
     }
 }

@@ -1,9 +1,9 @@
 package pages;
 
 import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import dtos.TestCase;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
@@ -23,23 +23,33 @@ public class CasePage extends BasePage {
     private final String DESCRIPTION_CASE_FIELD = ".toastui-editor-ww-container .ProseMirror-trailingBreak:first-child";
     private final String DROPDAWN_XPATH = "//label[text()='%s']/following-sibling::div//span";
     private final String FIELD_IN_DROPDAWN = "//div[text()='%s']";
+    private final String SAVE_BTN = "Save";
     private static final String TEST_CASES_AREA_CSS = "[data-suite-body-id]";
 
     private static final String TEST_CASES_LIST_CSS = TEST_CASES_AREA_CSS + "[draggable]";
- private final ProjectPage projectPage=new ProjectPage();
-    @Step("Открытие формы создание кейса ")
-    public CasePage openCreateCase() {
-        NEW_TEST_BTN.click();
+    private final ProjectPage projectPage = new ProjectPage();
+
+    public CasePage isPageOpened() {
+        NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
         $(byText(TITLE_CASE_TXT)).shouldBe(visible);
-        $(TITLE_CASE_FIELD).append("TitleCase");
-        $(DESCRIPTION_CASE_FIELD).append("DescriptionCase ");
-        selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, "Actual");
-        selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, "Major");
-        selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, "Functional");
-        selectFromCustomDropdown(DROPDAWN_XPATH, "Priority", FIELD_IN_DROPDAWN, "Medium");
-        // addStep();
-        //   addStep();
-        $(byText("Save")).click();
+        return new CasePage();
+    }
+
+    public void fillCreateCaseForm(TestCase testCase){
+        $(TITLE_CASE_FIELD).append(testCase.getTitle());
+        $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
+
+        selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
+        selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
+        selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
+        selectFromCustomDropdown(DROPDAWN_XPATH, "Priority", FIELD_IN_DROPDAWN, testCase.getPriority());
+    }
+
+    @Step("Открытие формы создание кейса")
+    public CasePage openCreateCase(TestCase testCase) {
+        isPageOpened();
+        fillCreateCaseForm(testCase);
+        $(byText(SAVE_BTN)).click();
         return new CasePage();
     }
 
@@ -71,18 +81,17 @@ public class CasePage extends BasePage {
 
             // Очищаем и вводим текст
             executeJavaScript("arguments[0].innerHTML = '';", field);
-            field.setValue(text.get(i));
+            field.append(text.get(i));
         }
 
         return this;
     }
 
-    public  int getTestCasesCount() {
+    public int getTestCasesCount() {
         return $$(TEST_CASES_LIST_CSS).size();
     }
 
     public CasePage checkThatTestCaseIsCreated() {
-        //  assertTrue(ProjectPage.openRepo(project), "Project Repository page is not opened");
         assertEquals(getTestCasesCount(), 1, "Test Case is not created or more than 1 test cases were created");
         return this;
     }

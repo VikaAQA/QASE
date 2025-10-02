@@ -1,6 +1,5 @@
 package pages;
 
-import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
@@ -23,8 +22,9 @@ public class ProjectPage extends BasePage {
     }
 
     @Step("Oткрыт репозиторий проекта")
-    public ProjectPage openRepo(String project){
+    public ProjectPage openRepository(String project){
 open (PROJECT_URL+"/"+ project);
+        NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
     return this;
     }
 

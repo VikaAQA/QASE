@@ -24,7 +24,7 @@ public class ProductsPage extends BasePage{
     }
 
     public ProductsPage waittingOpen() {
-        CREATE_NEW_PROJECT_BTN.shouldBe(visible, Duration.ofSeconds(60));//с помощью селенида цепляемся за текст, а не локатор
+        CREATE_NEW_PROJECT_BTN.shouldBe(visible, Duration.ofSeconds(90));//с помощью селенида цепляемся за текст, а не локатор
         return this;
     }
 

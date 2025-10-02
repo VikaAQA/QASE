@@ -1,10 +1,7 @@
 package adapters;
 
-import io.restassured.module.jsv.JsonSchemaValidator;
 import models.create.CreateCaseRq;
 import models.create.CreateCaseRs;
-import models.project.create.CreateProjectRq;
-import models.project.create.CreateProjectRs;
 
 public class CaseAPI extends BaseAPI {
 

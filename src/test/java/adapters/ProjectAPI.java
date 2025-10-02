@@ -4,11 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import models.project.create.CreateProjectRq;
 import models.project.create.CreateProjectRs;
 import models.project.get.GetProjectRs;
+
+import java.util.List;
 
 public class ProjectAPI extends BaseAPI{
 
@@ -25,14 +28,15 @@ public class ProjectAPI extends BaseAPI{
                 .as(CreateProjectRs.class);// // Преобразуем JSON в Java объект
     }
 
-    public static void deleteProject(String code) {
-        spec()
-                .body(code)
-                .when()//КОГДА
-                .delete("https://api.qase.io/v1/project/" + code)
-                .then()//тогда
-                .log().all()
-                .statusCode(200);
+    public static void deleteProject(String... codes) {
+        for (String code : codes) {
+            spec()
+                    .when()
+                    .delete("https://api.qase.io/v1/project/" + code)
+                    .then()
+                    .log().all()
+                    .statusCode(200);
+        }
     }
 
     public static GetProjectRs getProject(String code) {
@@ -56,5 +60,26 @@ public class ProjectAPI extends BaseAPI{
                 .extract()
                 .response();
     }
+
+    public static List<String> getAllProject(){//извлечение из респонса коллекции и передача в другой метод
+     String response = spec()
+                .when()
+                .get("https://api.qase.io/v1/project?limit=10&offset=0")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .extract()
+                .asString();
+        JsonPath json = new JsonPath(response);
+
+        return json.getList("result.entities.code");
+    }
+    public static ProjectAPI deleteAllProject() {
+        getAllProject().forEach(ProjectAPI::deleteProject);
+        return new ProjectAPI ();
+    }
+
+
+
 }
 

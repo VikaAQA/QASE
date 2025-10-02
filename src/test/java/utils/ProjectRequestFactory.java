@@ -14,10 +14,10 @@ public class ProjectRequestFactory {
                 .build();
     }
 
-    public static CreateProjectRq projectWithEmptyTitle(String code) {
+    public static CreateProjectRq projectWithEmptyTitle() {
         return CreateProjectRq.builder()
-                .title("") //
-                .code(code)
+                .title("")
+                .code("API")
                 .description("Project created via API with empty title")
                 .group("all")
                 .access("all")
