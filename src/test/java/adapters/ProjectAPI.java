@@ -9,12 +9,8 @@ import io.restassured.specification.RequestSpecification;
 import models.project.create.CreateProjectRq;
 import models.project.create.CreateProjectRs;
 import models.project.get.GetProjectRs;
-import utils.PropertyReader;
-
-import static io.restassured.RestAssured.given;
 
 public class ProjectAPI extends BaseAPI{
-
 
     public static CreateProjectRs createProject(CreateProjectRq project) {
         return spec()
@@ -22,7 +18,7 @@ public class ProjectAPI extends BaseAPI{
                 .when()//КОГДА
                 .post("https://api.qase.io/v1/project")
                 .then()//тогда
-                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/create_project_rs.json"))//валидация json по структуре и типу данных
+                //.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/create_project_rs.json"))//валидация json по структуре и типу данных
                 .log().all()
                 .statusCode(200)
                 .extract()

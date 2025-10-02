@@ -7,27 +7,20 @@ import models.project.create.CreateProjectRq;
 import models.project.create.CreateProjectRs;
 import models.project.get.GetProjectRs;
 import org.testng.annotations.Test;
+import utils.ProjectRequestFactory;
 
 import static adapters.ProjectAPI.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.testng.Assert.assertTrue;
 
-public class ProjectApiTest {
+public class ProjectTest {
 
     @Test
     @Step("Создание и удаление проекта")
     public void checkCreateAndDeleteProject() {
-        CreateProjectRq rq = CreateProjectRq.builder()
-                .title("TMSAPI")
-                .code("API")
-                .description("test")
-                .group("all")
-                .access("all")
-                .build();
-        CreateProjectRs rs = createProject(rq);
+        CreateProjectRs rs = createProject(ProjectRequestFactory.validProject());
         assertTrue(rs.status);//проверка статуса
         String code = rs.getResult().getCode();//получение из респонс значения
-
         deleteProject(code);
     }
 

@@ -14,7 +14,7 @@ import static data.Elements.CREATE_PROJECT_BTN;
 public class ModalCreateProjectPage extends BasePage{
 
     private String PUBLIC_RADIO_BTN = "input[value='public']";
-    public static final String PROJECT_NAME_FIELD_CSS = "#project-name";
+    public static final String PROJECT_NAME_FIELD_CSS = "#project-name";//!!убрать статис
 
     public ModalCreateProjectPage open() {
         CREATE_PROJECT_BTN.shouldBe(visible);//с помощью селенида цепляемся за текста а не локатор

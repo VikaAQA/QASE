@@ -7,10 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.LoginPage;
-import pages.ModalCreateProjectPage;
-import pages.ProductsPage;
-import pages.ProjectPage;
+import pages.*;
 import utils.PropertyReader;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -22,6 +19,8 @@ public class BaseTest {
     ProjectPage projectPage;
     ModalCreateProjectPage modalCreateProjectPage;
 
+    CasePage casePage;
+
     String user = System.getProperty("user", PropertyReader.getProperty("user"));//скрытие кредов указаны в config.properties
     String password = System.getProperty("password", PropertyReader.getProperty("password"));//скрытие кредов
 
@@ -31,7 +30,7 @@ public class BaseTest {
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 5000;
         Configuration.clickViaJs = true;//по умолчанию все клики через JS
-        Configuration.headless = true;// для работы в CI,true - тесты крутяться на удаленном сервере
+        Configuration.headless = false;// для работы в CI,true - тесты крутяться на удаленном сервере
         Configuration.browserSize = "1920x1080";
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
@@ -51,6 +50,7 @@ public class BaseTest {
         productsPage = new ProductsPage();
         projectPage = new ProjectPage();
         modalCreateProjectPage = new ModalCreateProjectPage();
+        casePage = new CasePage();
     }
 
     @AfterMethod
