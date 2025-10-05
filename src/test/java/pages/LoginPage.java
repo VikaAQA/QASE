@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
     private final String USER_FIELD = "[name=email]",
             ERROR_MESSAGE = "//small",
             PASSWORD_FIELD = "[name='password']";
