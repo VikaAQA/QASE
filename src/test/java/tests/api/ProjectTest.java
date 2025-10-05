@@ -13,7 +13,7 @@ import static adapters.ProjectAPI.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.testng.Assert.assertTrue;
 
-public class ProjectTest extends BaseTest {
+public class ProjectTest extends BaseApiTest {
 
     @Test
     @Step("Создание и удаление проекта")

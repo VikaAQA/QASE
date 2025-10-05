@@ -9,7 +9,7 @@ import utils.ProjectRequestFactory;
 import static adapters.CaseAPI.addCase;
 import static adapters.ProjectAPI.createProject;
 
-public class CaseTest extends BaseTest {
+public class CaseTest extends BaseApiTest {
 
     @Test(groups = "smoke")
     @Step("Добавление тест-кейса к проекту")
