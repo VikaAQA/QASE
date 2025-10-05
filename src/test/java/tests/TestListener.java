@@ -8,14 +8,11 @@ import java.util.concurrent.TimeUnit;
 
 @Log4j2
 public class TestListener implements ITestListener {
-
-
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         System.out.printf("======================================== FAILED TEST %s Duration: %ss ========================================%n", iTestResult.getName(),
                 getExecutionTime(iTestResult));
     }
-
     private long getExecutionTime(ITestResult iTestResult) {
         return TimeUnit.MILLISECONDS.toSeconds(iTestResult.getEndMillis() - iTestResult.getStartMillis());
     }

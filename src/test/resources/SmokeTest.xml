@@ -2,8 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="1" name="smokeTest" parallel="tests">
     <listeners>
-        <!--listener class-name="tests.RetryListener"/>
-        <listener class-name="tests.TestListener"/-->
+        <listener class-name="tests.Retry"/>
+        <listener class-name="tests.TestListener"/>
     </listeners>
     <test name="UI-CaseTest">
         <groups>

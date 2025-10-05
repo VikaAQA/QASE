@@ -30,7 +30,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <suiteXmlFile>src/test/resources/CrossBrowserTest.xml</suiteXmlFile>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <retry.count>5</retry.count>
+
     </properties>
 
     <dependencyManagement>
@@ -90,6 +90,7 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-selenide</artifactId>
             <version>${allure.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- Aspect-J -->
@@ -161,13 +162,7 @@
                         --add-opens java.base/java.lang=ALL-UNNAMED
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <systemProperties>
-                        <property>
-                            <name>retry.count</name>
-                            <value>${retry.count}</value>
-                        </property>
-                    </systemProperties>
-                </configuration>
+                 </configuration>
             </plugin>
 
             <plugin>
@@ -177,26 +172,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <!-- Профили -->
-    <profiles>
-        <profile>
-            <id>retry-3</id>
-            <properties>
-                <retry.count>3</retry.count>
-            </properties>
-        </profile>
-        <profile>
-            <id>retry-10</id>
-            <properties>
-                <retry.count>10</retry.count>
-            </properties>
-        </profile>
-        <profile>
-            <id>no-retry</id>
-            <properties>
-                <retry.count>0</retry.count>
-            </properties>
-        </profile>
-    </profiles>
 </project>
