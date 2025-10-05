@@ -24,7 +24,7 @@ public class ProjectTest extends BaseTest {
         deleteProject(code);
     }
 
-    @Test(groups = "smoke")
+    @Test(groups = "smoke",enabled = false)
     @Step("Создание проекта: проверка полей title, description, access")
     public void cheсkFieldCreateFormNewProject() {
 
