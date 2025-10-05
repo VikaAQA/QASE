@@ -6,13 +6,14 @@ import io.restassured.response.Response;
 import models.project.create.CreateProjectRs;
 import models.project.get.GetProjectRs;
 import org.testng.annotations.Test;
+import tests.ui.BaseTest;
 import utils.ProjectRequestFactory;
 
 import static adapters.ProjectAPI.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.testng.Assert.assertTrue;
 
-public class ProjectTest {
+public class ProjectTest extends BaseTest {
 
     @Test
     @Step("Создание и удаление проекта")

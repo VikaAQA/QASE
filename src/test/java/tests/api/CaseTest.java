@@ -2,13 +2,14 @@ package tests.api;
 
 import io.qameta.allure.Step;
 import org.testng.annotations.Test;
+import tests.ui.BaseTest;
 import utils.CaseRequestFactory;
 import utils.ProjectRequestFactory;
 
 import static adapters.CaseAPI.addCase;
 import static adapters.ProjectAPI.createProject;
 
-public class CaseTest {
+public class CaseTest extends BaseTest {
 
     @Test(groups = "smoke")
     @Step("Добавление тест-кейса к проекту")

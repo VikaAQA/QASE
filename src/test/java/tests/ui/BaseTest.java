@@ -18,6 +18,7 @@ import utils.PropertyReader;
 import java.io.ByteArrayInputStream;
 
 import static adapters.ProjectAPI.deleteAllProject;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 @Log4j2
 @Listeners(TestListener.class)
@@ -51,7 +52,7 @@ public class BaseTest {
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 5000;
         Configuration.clickViaJs = true;//по умолчанию все клики через JS
-        Configuration.headless = false;// для работы в CI,true - тесты крутяться на удаленном сервере
+        Configuration.headless = true;// для работы в CI,true - тесты крутяться на удаленном сервере
         Configuration.browserSize = "1920x1080";
 
         // Подключаем Allure listener — именно он прикрепляет скрины к шагам
@@ -85,9 +86,7 @@ public class BaseTest {
         }
 
         // Закрываем браузер
-        if (getWebDriver() != null) {
-            getWebDriver().quit();
-        }
+        closeWebDriver();
 
         // Удаляем проекты после теста
         deleteAllProject();
