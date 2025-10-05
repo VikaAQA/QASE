@@ -11,8 +11,8 @@ import static data.Elements.NEW_TEST_BTN;
 
 
 public class ProjectPage extends BasePage {
-    private static String PROJECT_URL = "/project";
     private static final String TEST_CASE_XPATH = "//*[text()='%s']//ancestor::*[@data-suite-body-id]/ancestor::*[@class][1]/following-sibling::*[1]//*[text()='%s']";
+    private static final String PROJECT_URL = "/project";
 
     @Step("Проверка отображения созданного проекта")
     public ProjectPage checkCreatingProject(String project) {//проверка что после создания провекта отображена кнопка new test
@@ -22,10 +22,10 @@ public class ProjectPage extends BasePage {
     }
 
     @Step("Oткрыт репозиторий проекта")
-    public ProjectPage openRepository(String project){
-open (PROJECT_URL+"/"+ project);
+    public ProjectPage openRepository(String project) {
+        open(PROJECT_URL + "/" + project);
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
-    return this;
+        return this;
     }
 
     public boolean doesTestCaseBelongToSuite(String suiteTitle, String testCaseTitle) {

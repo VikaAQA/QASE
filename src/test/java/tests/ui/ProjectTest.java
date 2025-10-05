@@ -4,6 +4,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
+import tests.Retry;
 
 import static com.codeborne.selenide.Selenide.$;
 import static data.Elements.*;
@@ -14,7 +15,7 @@ import static pages.ModalCreateProjectPage.PROJECT_NAME_FIELD_CSS;
 @Story("Создание проекта")
 public class ProjectTest extends BaseTest {
 
-    @Test
+    @Test(retryAnalyzer = Retry.class,groups = "smoke")
     @Description("Создание проекта и его удаление")
     public void checkCreateProject() {
         loginPage.openPage()

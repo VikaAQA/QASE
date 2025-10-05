@@ -1,6 +1,5 @@
 package pages;
 
-import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
@@ -10,16 +9,16 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static data.Elements.CREATE_NEW_PROJECT_BTN;
 
-public class ProductsPage extends BasePage{
+public class ProductsPage extends BasePage {
 
-    private String PROJECTS_URL = "/projects",
-     REMOVE_BTN  = "[data.data-testid=remove]",
-   DELETE_PROJECTS_BTN  = "//span[text()='Delete project']",
-    OPEN_ACTION_MENU_BTN  = "button[aria-label='Open action menu']";
+    private final String PROJECTS_URL = "/projects";
+    private final String REMOVE_BTN = "[data-testid=remove]";
+    private final String DELETE_PROJECTS_BTN = "//span[text()='Delete project']";
+    private final String OPEN_ACTION_MENU_BTN = "button[aria-label='Open action menu']";
 
     @Step("Открытие страницы проектов")
     public ProductsPage openPage() {
-        open( PROJECTS_URL );
+        open(PROJECTS_URL);
         return this;
     }
 

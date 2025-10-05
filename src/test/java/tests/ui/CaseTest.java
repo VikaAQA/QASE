@@ -1,16 +1,15 @@
 package tests.ui;
 
-import dtos.TestCase;
+import dto.TestCase;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import utils.CaseRequestFactory;
 
 import static data.Elements.NAME_PROJECT;
 
-
 public class CaseTest extends BaseTest {
 
-    @Test
+    @Test(groups = "smoke")
     @Description("Создание тест-кейса")
     public void checkCreateCase() {
         TestCase uiCase = CaseRequestFactory.ui();

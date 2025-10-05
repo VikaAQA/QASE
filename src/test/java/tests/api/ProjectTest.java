@@ -23,7 +23,7 @@ public class ProjectTest {
         deleteProject(code);
     }
 
-    @Test
+    @Test(groups = "smoke")
     @Step("Создание проекта: проверка полей title, description, access")
     public void cheсkFieldCreateFormNewProject() {
 
@@ -42,7 +42,7 @@ public class ProjectTest {
     @Test
     @Step("Проверка негативного сценария: создание проекта без обязательного поля Title")
     public void checkCreateProjectFailsWithoutTitle() {
-          Response response = createProjectWithValidation(ProjectRequestFactory.projectWithEmptyTitle());
+        Response response = createProjectWithValidation(ProjectRequestFactory.projectWithEmptyTitle());
         // Проверяем, что API корректно обрабатывает ошибку
         assertThat(response.getStatusCode())//возвращаем респонс так как упадет в 400 и не сможем десериализовать по схеме
                 .isEqualTo(400);

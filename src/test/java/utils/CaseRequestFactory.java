@@ -1,7 +1,7 @@
 package utils;
 
 import com.github.javafaker.Faker;
-import dtos.TestCase;
+import dto.TestCase;
 import models.create.CreateCaseRq;
 
 import java.util.List;
@@ -11,6 +11,7 @@ public class CaseRequestFactory {
 
     private static final Faker faker = new Faker();
     private static final Random random = new Random();
+
     /**
      * Фабрика для API DTO
      */

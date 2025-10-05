@@ -3,7 +3,7 @@ package pages;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import dtos.TestCase;
+import dto.TestCase;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
@@ -18,16 +18,16 @@ import static data.Elements.TITLE_CASE_TXT;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static wrappers.DropDawn.selectFromCustomDropdown;
+
 @Log4j2
 public class CasePage extends BasePage {
+    private static final String TEST_CASES_AREA_CSS = "[data-suite-body-id]";
+    private static final String TEST_CASES_LIST_CSS = TEST_CASES_AREA_CSS + "[draggable]";
     private final String TITLE_CASE_FIELD = "input[name='title']";
     private final String DESCRIPTION_CASE_FIELD = ".toastui-editor-ww-container .ProseMirror-trailingBreak:first-child";
     private final String DROPDAWN_XPATH = "//label[text()='%s']/following-sibling::div//span";
     private final String FIELD_IN_DROPDAWN = "//div[text()='%s']";
     private final String SAVE_BTN = "Save";
-    private static final String TEST_CASES_AREA_CSS = "[data-suite-body-id]";
-
-    private static final String TEST_CASES_LIST_CSS = TEST_CASES_AREA_CSS + "[draggable]";
     private final ProjectPage projectPage = new ProjectPage();
 
     public CasePage isPageOpened() {
@@ -36,7 +36,7 @@ public class CasePage extends BasePage {
         return new CasePage();
     }
 
-    public void fillCreateCaseForm(TestCase testCase){
+    public void fillCreateCaseForm(TestCase testCase) {
 
         $(TITLE_CASE_FIELD).append(testCase.getTitle());
         $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
@@ -45,14 +45,15 @@ public class CasePage extends BasePage {
         selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
         selectFromCustomDropdown(DROPDAWN_XPATH, "Priority", FIELD_IN_DROPDAWN, testCase.getPriority());
-        log.info("Форма заполнена данными тест-кейса: {}", testCase); }
+        log.info("Форма заполнена данными тест-кейса: {}", testCase);
+    }
 
     @Step("Открытие формы создание кейса")
     public CasePage openCreateCase(TestCase testCase) {
         isPageOpened();
         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
-         log.info("Форма создания кейса успешно сохранена");
+        log.info("Форма создания кейса успешно сохранена");
         return new CasePage();
     }
 

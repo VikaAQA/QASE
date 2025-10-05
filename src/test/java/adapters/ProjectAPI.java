@@ -1,5 +1,6 @@
 package adapters;
 
+import io.qameta.allure.Step;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
@@ -8,9 +9,10 @@ import models.project.create.CreateProjectRs;
 import models.project.get.GetProjectRs;
 
 import java.util.List;
-@Log4j2
-public class ProjectAPI extends BaseAPI{
 
+@Log4j2
+public class ProjectAPI extends BaseAPI {
+    @Step
     public static CreateProjectRs createProject(CreateProjectRq project) {
         log.info("Creating project with body: {}", project);
         return spec()
@@ -25,6 +27,7 @@ public class ProjectAPI extends BaseAPI{
                 .as(CreateProjectRs.class);// // Преобразуем JSON в Java объект
     }
 
+    @Step
     public static void deleteProject(String... codes) {
         for (String code : codes) {
             log.info("Deleting project with code: {}", code);
@@ -37,6 +40,7 @@ public class ProjectAPI extends BaseAPI{
         }
     }
 
+    @Step
     public static GetProjectRs getProject(String code) {
         log.info("Getting project with code: {}", code);
         return spec()
@@ -49,6 +53,7 @@ public class ProjectAPI extends BaseAPI{
                 .as(GetProjectRs.class); // Преобразуем JSON в Java объект
     }
 
+    @Step
     public static Response createProjectWithValidation(CreateProjectRq project) {
         log.info("Creating project with validation, body: {}", project);
         return spec()
@@ -61,7 +66,8 @@ public class ProjectAPI extends BaseAPI{
                 .response();
     }
 
-    public static List<String> getAllProject(){//извлечение из респонса коллекции и передача в другой метод
+    @Step
+    public static List<String> getAllProject() {//извлечение из респонса коллекции и передача в другой метод
         log.info("Retrieving all projects");
         String response = spec()
                 .when()
@@ -75,13 +81,12 @@ public class ProjectAPI extends BaseAPI{
 
         return json.getList("result.entities.code");
     }
+
+    @Step
     public static ProjectAPI deleteAllProject() {
         log.info("Deleting all projects");
         getAllProject().forEach(ProjectAPI::deleteProject);
-        return new ProjectAPI ();
+        return new ProjectAPI();
     }
-
-
-
 }
 
