@@ -2,7 +2,6 @@ package tests.api;
 
 import io.qameta.allure.Step;
 import org.testng.annotations.Test;
-import tests.ui.BaseTest;
 import utils.CaseRequestFactory;
 import utils.ProjectRequestFactory;
 
