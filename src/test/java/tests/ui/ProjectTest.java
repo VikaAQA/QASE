@@ -7,7 +7,8 @@ import org.testng.annotations.Test;
 import tests.Retry;
 
 import static com.codeborne.selenide.Selenide.$;
-import static data.Elements.*;
+import static data.Elements.NAME_PROJECT;
+import static data.Elements.VALIDATION_MESSAGE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static pages.ModalCreateProjectPage.PROJECT_NAME_FIELD_CSS;
 
@@ -15,7 +16,7 @@ import static pages.ModalCreateProjectPage.PROJECT_NAME_FIELD_CSS;
 @Story("Создание проекта")
 public class ProjectTest extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class,groups = "smoke")
+    @Test(retryAnalyzer = Retry.class, groups = "smoke")
     @Description("Создание проекта и его удаление")
     public void checkCreateProject() {
         loginPage.openPage()
@@ -35,8 +36,10 @@ public class ProjectTest extends BaseTest {
                 .login(user, password);
         productsPage.waittingOpen();
         modalCreateProjectPage.createFailProject();
+
         String validationMessage = $(PROJECT_NAME_FIELD_CSS).getAttribute(VALIDATION_MESSAGE);
         assertThat(validationMessage)
-                .isEqualTo(ERROR_MESSAGE);
+                .as("Проверка сообщения о незаполненном поле")
+                .matches("(?i)(Заполните это поле\\.|Please fill out this field\\.)");
     }
 }

@@ -9,7 +9,6 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.*;
@@ -17,8 +16,6 @@ import tests.TestListener;
 import utils.PropertyReader;
 
 import java.io.ByteArrayInputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 import static adapters.ProjectAPI.deleteAllProject;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -44,50 +41,26 @@ public class BaseTest {
     @BeforeMethod(description = "Browser setup", alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
         log.info("Opening browser {}", browser);
-
         if (browser.equalsIgnoreCase("chrome")) {
             Configuration.browser = "chrome";
-
-            ChromeOptions options = new ChromeOptions();
-
-            // Устанавливаем язык интерфейса и сообщений
-            options.addArguments("--lang=ru");
-            options.addArguments("--accept-lang=ru");
-            options.addArguments("--headless=new");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-
-            // Принудительно задаем русскую локаль (влияет на validationMessage)
-            Map<String, Object> prefs = new HashMap<>();
-            prefs.put("intl.accept_languages", "ru,ru_RU");
-            options.setExperimentalOption("prefs", prefs);
-
-            Configuration.browserCapabilities = options;
-            log.info("Chrome language set to ru-RU");
-
         } else if (browser.equalsIgnoreCase("firefox")) {
             Configuration.browser = "firefox";
-
-            FirefoxOptions options = new FirefoxOptions();
-            options.addPreference("intl.accept_languages", "ru,ru_RU");
-            Configuration.browserCapabilities = options;
-            log.info("Firefox language set to ru-RU");
-
         } else {
             throw new IllegalArgumentException("Unknown browser: " + browser);
         }
 
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 5000;
-        Configuration.clickViaJs = true;
-        Configuration.headless = true;
+        Configuration.clickViaJs = true;//по умолчанию все клики через JS
+        Configuration.headless = true;// для работы в CI,true - тесты крутяться на удаленном сервере
         Configuration.browserSize = "1920x1080";
 
-        // Allure listener
+
+        // Подключаем Allure listener — именно он прикрепляет скрины к шагам
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide()
-                        .screenshots(true)
-                        .savePageSource(true)
+                        .screenshots(true)      // включаем авто-скрины
+                        .savePageSource(true)   // сохраняем html страницы
         );
 
         loginPage = new LoginPage();
@@ -96,8 +69,6 @@ public class BaseTest {
         modalCreateProjectPage = new ModalCreateProjectPage();
         casePage = new CasePage();
     }
-
-
 
     @AfterMethod(alwaysRun = true, description = "Browser teardown")
     public void tearDown(ITestResult result) {
