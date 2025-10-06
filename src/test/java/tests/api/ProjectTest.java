@@ -5,8 +5,9 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import models.project.create.CreateProjectRs;
 import models.project.get.GetProjectRs;
+import models.project.get.GetProjectsRs;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import tests.ui.BaseTest;
 import utils.ProjectRequestFactory;
 
 import static adapters.ProjectAPI.*;
@@ -14,6 +15,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.testng.Assert.assertTrue;
 
 public class ProjectTest extends BaseApiTest {
+    @BeforeMethod
+    public void delete(){deleteAllProject();}
 
     @Test
     @Step("Создание и удаление проекта")
@@ -24,7 +27,7 @@ public class ProjectTest extends BaseApiTest {
         deleteProject(code);
     }
 
-    @Test(groups = "smoke",enabled = false)
+    @Test(groups = "smoke")
     @Step("Создание проекта: проверка полей title, description, access")
     public void cheсkFieldCreateFormNewProject() {
 
@@ -33,10 +36,9 @@ public class ProjectTest extends BaseApiTest {
 
         GetProjectRs getRs = getProject(code);//получаем созданный проект по коду
 
-        assertThat(getRs.getProjects().get(0).getTitle())//в responce json приходит со списком обьектов , то есть мы сначало должны получить лист проектов и выбрать первый элемент
+        assertThat(getRs.getResult().getTitle())//в responce json приходит со списком обьектов , то есть мы сначало должны получить лист проектов и выбрать первый элемент
                 .isEqualTo(ProjectRequestFactory.validProject().getTitle());
-        assertThat(getRs.getProjects().get(0).description).isEqualTo(ProjectRequestFactory.validProject().getDescription());
-        assertThat(getRs.getProjects().get(0).isPrivate).isEqualTo(ProjectRequestFactory.validProject().getAccess());
+       assertThat(getRs.getResult().getCode()).isEqualTo(code);
         deleteProject(code);
     }
 

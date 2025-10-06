@@ -4,180 +4,77 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class GetProjectRs {
 
     @SerializedName("status")
     @Expose
-    public Boolean status;
+    private Boolean status;
 
-    @SerializedName("projects")
+    @SerializedName("result")
     @Expose
-    public List<Project> projects;
+    private Result result;
 
-    @SerializedName("total")
-    @Expose
-    public Integer total;
+    // ---------- Вложенные классы ----------
 
     @Data
-    public static class Project {
+    public static class Result {
+        @SerializedName("title")
+        @Expose
+        private String title;
+
         @SerializedName("code")
         @Expose
-        public String code;
+        private String code;
 
-        @SerializedName("title")
+        @SerializedName("counts")
         @Expose
-        public String title;
-
-        @SerializedName("description")
-        @Expose
-        public String description;
-
-        @SerializedName("is_available")
-        @Expose
-        public Boolean isAvailable;
-
-        @SerializedName("is_archived")
-        @Expose
-        public Boolean isArchived;
-
-        @SerializedName("is_private")
-        @Expose
-        public Boolean isPrivate;
-
-        @SerializedName("avatar_url")
-        @Expose
-        public String avatarUrl;
-
-        @SerializedName("case_count")
-        @Expose
-        public Integer caseCount;
-
-        @SerializedName("suite_count")
-        @Expose
-        public Integer suiteCount;
-
-        @SerializedName("milestone_count")
-        @Expose
-        public Integer milestoneCount;
-
-        @SerializedName("run_total")
-        @Expose
-        public Integer runTotal;
-
-        @SerializedName("run_active")
-        @Expose
-        public Integer runActive;
-
-        @SerializedName("defect_total")
-        @Expose
-        public Integer defectTotal;
-
-        @SerializedName("defect_unresolved")
-        @Expose
-        public Integer defectUnresolved;
-
-        @SerializedName("is_creator")
-        @Expose
-        public Boolean isCreator;
-
-        @SerializedName("members")
-        @Expose
-        public List<Member> members;
-
-        @SerializedName("favorite")
-        @Expose
-        public Boolean favorite;
+        private Counts counts;
     }
 
     @Data
-    public static class Member {
-        @SerializedName("internal_id")
+    public static class Counts {
+        @SerializedName("cases")
         @Expose
-        public Integer internalId;
+        private Integer cases;
 
-        @SerializedName("name")
+        @SerializedName("suites")
         @Expose
-        public String name;
+        private Integer suites;
 
-        @SerializedName("role_title")
+        @SerializedName("milestones")
         @Expose
-        public String roleTitle;
+        private Integer milestones;
 
-        @SerializedName("user")
+        @SerializedName("runs")
         @Expose
-        public User user;
+        private Runs runs;
 
-        @SerializedName("role")
+        @SerializedName("defects")
         @Expose
-        public Role role;
-
-        @SerializedName("type")
-        @Expose
-        public Integer type;
-
-        @SerializedName("status")
-        @Expose
-        public Integer status;
+        private Defects defects;
     }
 
     @Data
-    public static class Role {
-        @SerializedName("internal_id")
+    public static class Runs {
+        @SerializedName("total")
         @Expose
-        public Integer internalId;
+        private Integer total;
 
-        @SerializedName("title")
+        @SerializedName("active")
         @Expose
-        public String title;
-
-        @SerializedName("description")
-        @Expose
-        public String description;
-
-        @SerializedName("is_default")
-        @Expose
-        public Boolean isDefault;
-
-        @SerializedName("is_owner")
-        @Expose
-        public Boolean isOwner;
+        private Integer active;
     }
 
     @Data
-    public static class User {
-        @SerializedName("name")
+    public static class Defects {
+        @SerializedName("total")
         @Expose
-        public String name;
+        private Integer total;
 
-        @SerializedName("firstName")
+        @SerializedName("open")
         @Expose
-        public String firstName;
-
-        @SerializedName("lastName")
-        @Expose
-        public String lastName;
-
-        @SerializedName("email")
-        @Expose
-        public String email;
-
-        @SerializedName("avatar_url")
-        @Expose
-        public String avatarUrl;
-
-        @SerializedName("is_online")
-        @Expose
-        public Boolean isOnline;
-
-        @SerializedName("last_action")
-        @Expose
-        public String lastAction;
-
-        @SerializedName("is_active")
-        @Expose
-        public Boolean isActive;
+        private Integer open;
     }
 }
+
