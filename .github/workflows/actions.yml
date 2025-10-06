@@ -14,8 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      USER: ${{secrets.SD_USER}}
-      PASSWORD: ${{secrets.SD_PASSWORD}}
+      USER: ${{secrets.QASE_USER}}
+      PASSWORD: ${{secrets.QASE_PASSWORD}}
+      TOKEN: ${{secrets.QASE_TOKEN}}
     # что делаем
     steps:
       - name: Checkout
@@ -29,7 +30,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Run tests
-        run: mvn clean test -Duser=$USER -Dpassword=$PASSWORD
+        run: mvn clean test -Duser=$USER -Dpassword=$PASSWORD -Dtoken=$TOKEN
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
