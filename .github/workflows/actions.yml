@@ -5,33 +5,32 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-    schedule:
-      -cron: "0 18 * * 5"
+  schedule:
+    - cron: "0 18 * * 5"
 
 jobs:
   build:
-    # где запускаем
     runs-on: ubuntu-latest
 
-  env:
-    QA_USER: ${{ secrets.QASE_USER }}
-    QA_PASSWORD: ${{ secrets.QASE_PASSWORD }}
-    TOKEN: ${{ secrets.QASE_TOKEN }}
+    env:
+      QA_USER: ${{ secrets.QASE_USER }}
+      QA_PASSWORD: ${{ secrets.QASE_PASSWORD }}
+      TOKEN: ${{ secrets.QASE_TOKEN }}
 
-    # что делаем
     steps:
       - name: Checkout
-        #выкачиваем весь код из репозитория
         uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
-          #настраиваем джобу на удаленном сервере
           distribution: 'temurin'
           cache: maven
+
       - name: Run tests
         run: mvn clean test -Duser=$QA_USER -Dpassword=$QA_PASSWORD -Dtoken=$TOKEN
+
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
@@ -39,12 +38,14 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
+
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
           allure_results: target/allure-results
           allure_history: allure-history
+
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v2
