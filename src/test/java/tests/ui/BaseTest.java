@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.*;
@@ -41,25 +42,36 @@ public class BaseTest {
     @BeforeMethod(description = "Browser setup", alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
         log.info("Opening browser {}", browser);
+
         if (browser.equalsIgnoreCase("chrome")) {
             Configuration.browser = "chrome";
+
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--lang=ru");
+            Configuration.browserCapabilities = options;
+
         } else if (browser.equalsIgnoreCase("firefox")) {
             Configuration.browser = "firefox";
+
+            FirefoxOptions options = new FirefoxOptions();
+            options.addPreference("intl.accept_languages", "ru");
+            Configuration.browserCapabilities = options;
+
         } else {
             throw new IllegalArgumentException("Unknown browser: " + browser);
         }
 
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 5000;
-        Configuration.clickViaJs = true;//по умолчанию все клики через JS
-        Configuration.headless = true;// для работы в CI,true - тесты крутяться на удаленном сервере
+        Configuration.clickViaJs = true; // по умолчанию все клики через JS
+        Configuration.headless = true;   // для CI
         Configuration.browserSize = "1920x1080";
 
-        // Подключаем Allure listener — именно он прикрепляет скрины к шагам
+        // Allure listener для скринов и HTML страниц
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide()
-                        .screenshots(true)      // включаем авто-скрины
-                        .savePageSource(true)   // сохраняем html страницы
+                        .screenshots(true)
+                        .savePageSource(true)
         );
 
         loginPage = new LoginPage();
@@ -68,6 +80,7 @@ public class BaseTest {
         modalCreateProjectPage = new ModalCreateProjectPage();
         casePage = new CasePage();
     }
+
 
     @AfterMethod(alwaysRun = true, description = "Browser teardown")
     public void tearDown(ITestResult result) {
