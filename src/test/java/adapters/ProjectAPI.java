@@ -7,7 +7,6 @@ import lombok.extern.log4j.Log4j2;
 import models.project.create.CreateProjectRq;
 import models.project.create.CreateProjectRs;
 import models.project.get.GetProjectRs;
-import models.project.get.GetProjectsRs;
 
 import java.util.List;
 
