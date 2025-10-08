@@ -16,7 +16,6 @@ public class CaseRequestFactory {
      * Фабрика для API DTO
      */
     public static CreateCaseRq caseRq() {
-
         return CreateCaseRq.builder()
                 .title(faker.book().title())
                 .description(faker.lorem().sentence())
@@ -48,15 +47,6 @@ public class CaseRequestFactory {
                 .priority("Medium")
                 .type("Functional")
                 .build();
-    }
-
-    // Возвращает случайный объект API или UI
-    public static Object random() {
-        if (random.nextBoolean()) {
-            return caseRq();
-        } else {
-            return ui();
-        }
     }
 }
 

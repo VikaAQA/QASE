@@ -2,8 +2,6 @@ package tests.ui;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 import tests.Retry;
@@ -32,7 +30,6 @@ public class ProjectTest extends BaseTest {
     public void checkCreateProjectWithNegative() {
         loginAndOpenProductsPage();
         modalCreateProjectPage.createFailProject();
-
         String validationMessage = $(PROJECT_NAME_FIELD_CSS).getAttribute(VALIDATION_MESSAGE);
         assertThat(validationMessage)
                 .as("Проверка сообщения о незаполненном поле")

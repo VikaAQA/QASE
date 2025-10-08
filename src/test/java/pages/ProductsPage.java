@@ -18,14 +18,12 @@ public class ProductsPage extends BasePage {
     private final String REMOVE_BTN = "[data-testid=remove]";
     private final String DELETE_PROJECTS_BTN = "//span[text()='Delete project']";
     private final String OPEN_ACTION_MENU_BTN = "button[aria-label='Open action menu']";
-
     @Step("Открытие страницы проектов")
     public ProductsPage openPage() {
         open(PROJECTS_URL);
         log.info("Открыта страница проектов по URL: {}", PROJECTS_URL);
         return this;
     }
-
     @Step("Ожидание загрузки страницы проектов")
     public ProductsPage waittingOpen() {
         CREATE_NEW_PROJECT_BTN
@@ -33,7 +31,6 @@ public class ProductsPage extends BasePage {
         log.info("Страница проектов успешно загружена и кнопка 'Create new project' отображается");
         return this;
     }
-
     @Step("Удаление проекта с именем: '{project}'")
     public ProductsPage deleteProject(String project) {
         log.info("Начало удаления проекта: {}", project);

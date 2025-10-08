@@ -22,8 +22,6 @@ public class ModalCreateProjectPage extends BasePage {
         CREATE_PROJECT_BTN.shouldBe(visible);//с помощью селенида цепляемся за текста а не локатор
         return this;
     }
-
-
     @Step("Создание нового проекта с именем: '{project}'")
     public ProductsPage createProject(String project) {
         log.info("Начало создания проекта с именем: {}", project);

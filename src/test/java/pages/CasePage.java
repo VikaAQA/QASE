@@ -5,6 +5,9 @@ import com.codeborne.selenide.SelenideElement;
 import dto.TestCase;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
+import wrappers.DropDawn;
+import wrappers.TextArea;
 
 import java.time.Duration;
 
@@ -27,15 +30,30 @@ public class CasePage extends BasePage {
     private final String FIELD_IN_DROPDAWN = "//div[text()='%s']";
     private final String SAVE_BTN = "Save";
     private final ProjectPage projectPage = new ProjectPage();
+
     @Step("Открытие страницы создания тест-кейса")
     public CasePage isPageOpened() {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
         $(byText(TITLE_CASE_TXT)).shouldBe(visible);
         return new CasePage();
     }
+
+    public CasePage openEditCasePage(String projectCode, int testCaseIndex) {
+        open(String.format("/case/%s/edit/%s", projectCode, testCaseIndex));
+        return this;
+    }
+
+    @Step("Open test case number '{index}' of project '{projectCode}'")
+    public CasePage openTestCase(String projectCode, int index) {
+        log.info("Открытие тест-кейса '{}' в проектеt '{}'", index, projectCode);
+        openEditCasePage(projectCode, index);
+        return this;
+    }
+
     @Step("Заполнение формы тест-кейса данными: {testCase}")
     public void fillCreateCaseForm(TestCase testCase) {
-
+        dropDawn = new DropDawn();
+        textArea = new TextArea();
         $(TITLE_CASE_FIELD).append(testCase.getTitle());
         $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
 
@@ -43,11 +61,15 @@ public class CasePage extends BasePage {
         selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
         selectFromCustomDropdown(DROPDAWN_XPATH, "Priority", FIELD_IN_DROPDAWN, testCase.getPriority());
-
+        if (testCase.isFlaky())
+            dropDawn.select("Is flaky", "Yes"); // NO is default value
+        dropDawn.select("Behavior", testCase.getBehavior());
+        dropDawn.select("Automation status", testCase.getAutomationStatus());
         log.info("Форма заполнена данными тест-кейса: {}", testCase);
     }
+
     @Step("Создание нового тест-кейса через UI")
-       public CasePage openCreateCase(TestCase testCase) {
+    public CasePage creattingTestCase(TestCase testCase) {
         isPageOpened();
         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
@@ -58,13 +80,12 @@ public class CasePage extends BasePage {
     @Step("Добавление шагов в тест-кейс")
     public CasePage addStep() {
         $(byText("Add step")).click();
-
         fillProseMirrorField("action", "Step-text");
         fillProseMirrorField("data", "Data-text");
         fillProseMirrorField("expected_result", "Expected Result-text");
-
         return this;
     }
+
     @Step("Заполнение текстового поля ProseMirror: {name} значением '{text}'")
     private void fillProseMirrorField(String name, String text) {
         // Находим именно тот wysiwyg-блок, который идёт ПЕРЕД нужным input
@@ -72,22 +93,49 @@ public class CasePage extends BasePage {
                 "//input[contains(@name,'%s')]/preceding-sibling::div[contains(@class,'wysiwyg')]//div[@contenteditable='true']",
                 name
         );
-
         SelenideElement editor = $x(xpath)
                 .shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
+
     @Step("Получение количества тест-кейсов на странице")
     public int getTestCasesCount() {
         return $$(TEST_CASES_LIST_CSS).size();
     }
+
     @Step("Проверка, что тест-кейс успешно создан")
-    public CasePage checkThatTestCaseIsCreated() {
-        assertEquals(getTestCasesCount(), 1, "Test Case is not created or more than 1 test cases were created");
+    public CasePage checkThatTestCaseIsCreated(int countCase) {
+        assertEquals(getTestCasesCount(), countCase, "Test Case is not created or more than 1 test cases were created");
         return this;
     }
+
     @Step("Проверка, что тест-кейс '{testCaseName}' принадлежит сьюте '{suiteName}'")
     public CasePage checkThatTestCaseBelongsToSuite(String suiteName, String testCaseName) {
         assertTrue(projectPage.doesTestCaseBelongToSuite(suiteName, testCaseName), "Test Case is not created or or belongs to another suite");
         return this;
     }
+    @Step("Получение значений всех полей тест-кейса с формы")
+    public TestCase getTestCaseSpecs() {
+        dropDawn = new DropDawn();
+        textArea = new TextArea();
+
+        return TestCase.builder().
+                title($(By.name("title")).getValue()).
+                status(dropDawn.getPickListText("Status")).
+                description(textArea.getTextAreaText("Description")).
+                severity(dropDawn.getPickListText("Severity")).
+                priority(dropDawn.getPickListText("Priority")).
+                type(dropDawn.getPickListText("Type")).
+                isFlaky(dropDawn.getPickListText("Is flaky").equals("Yes")).
+                behavior(dropDawn.getPickListText("Behavior")).
+                automationStatus(dropDawn.getPickListText("Automation status")).
+                build();
+    }
+
+    @Step("Проверка заполнения полей тест-кейса")
+    public CasePage checkTestCaseSpecs(TestCase testCase) {
+        log.info("Проверяем заполнение полей тест-кейса");
+        assertEquals(getTestCaseSpecs(), testCase, "Характеристики тест-кейса указаны неверно");
+        return this;
+    }
 }
+

@@ -103,7 +103,7 @@ public class BaseTest {
 
     @Step("Авторизация и открытие страницы Projects")
     protected void loginAndOpenProductsPage() {
-        log.info("Авторизация и переход на страницу Products");
+        log.info("Авторизация и переход на страницу Projects");
         loginPage.openPage()
                 .login(user, password);
         productsPage.waittingOpen();
