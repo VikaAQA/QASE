@@ -1,14 +1,12 @@
 package pages;
 
-import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import dto.TestCase;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
 import java.time.Duration;
-import java.util.List;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -29,13 +27,13 @@ public class CasePage extends BasePage {
     private final String FIELD_IN_DROPDAWN = "//div[text()='%s']";
     private final String SAVE_BTN = "Save";
     private final ProjectPage projectPage = new ProjectPage();
-
+    @Step("Открытие страницы создания тест-кейса")
     public CasePage isPageOpened() {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
         $(byText(TITLE_CASE_TXT)).shouldBe(visible);
         return new CasePage();
     }
-
+    @Step("Заполнение формы тест-кейса данными: {testCase}")
     public void fillCreateCaseForm(TestCase testCase) {
 
         $(TITLE_CASE_FIELD).append(testCase.getTitle());
@@ -45,11 +43,11 @@ public class CasePage extends BasePage {
         selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
         selectFromCustomDropdown(DROPDAWN_XPATH, "Priority", FIELD_IN_DROPDAWN, testCase.getPriority());
+
         log.info("Форма заполнена данными тест-кейса: {}", testCase);
     }
-
-    @Step("Открытие формы создание кейса")
-    public CasePage openCreateCase(TestCase testCase) {
+    @Step("Создание нового тест-кейса через UI")
+       public CasePage openCreateCase(TestCase testCase) {
         isPageOpened();
         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
@@ -60,46 +58,34 @@ public class CasePage extends BasePage {
     @Step("Добавление шагов в тест-кейс")
     public CasePage addStep() {
         $(byText("Add step")).click();
-        List<String> text = List.of("Step-text", "Data-text", "Expected Result-text");
 
-        // Находим контейнеры
-        ElementsCollection containers = $$(".Es6DHW.gMuCDP.Hm_zG7.eZv6zA.wysiwyg.dcuUk8")
-                .shouldHave(CollectionCondition.size(3));
-
-        for (int i = 0; i < containers.size(); i++) {
-            SelenideElement container = containers.get(i);
-
-            // Для каждого контейнера используем свой подход
-            SelenideElement field;
-
-            if (i == 0) {
-                // Первое поле - contenteditable (нужно активировать)
-                field = container.$("div[contenteditable='true']")
-                        .shouldBe(visible, Duration.ofSeconds(10));
-                field.click();
-            } else {
-                // Второе и третье поле - обычный div с текстом
-                field = container.$(".toastui-editor-contents")
-                        .shouldBe(visible);
-            }
-
-            // Очищаем и вводим текст
-            executeJavaScript("arguments[0].innerHTML = '';", field);
-            field.append(text.get(i));
-        }
+        fillProseMirrorField("action", "Step-text");
+        fillProseMirrorField("data", "Data-text");
+        fillProseMirrorField("expected_result", "Expected Result-text");
 
         return this;
     }
+    @Step("Заполнение текстового поля ProseMirror: {name} значением '{text}'")
+    private void fillProseMirrorField(String name, String text) {
+        // Находим именно тот wysiwyg-блок, который идёт ПЕРЕД нужным input
+        String xpath = String.format(
+                "//input[contains(@name,'%s')]/preceding-sibling::div[contains(@class,'wysiwyg')]//div[@contenteditable='true']",
+                name
+        );
 
+        SelenideElement editor = $x(xpath)
+                .shouldBe(Condition.visible, Duration.ofSeconds(10));
+    }
+    @Step("Получение количества тест-кейсов на странице")
     public int getTestCasesCount() {
         return $$(TEST_CASES_LIST_CSS).size();
     }
-
+    @Step("Проверка, что тест-кейс успешно создан")
     public CasePage checkThatTestCaseIsCreated() {
         assertEquals(getTestCasesCount(), 1, "Test Case is not created or more than 1 test cases were created");
         return this;
     }
-
+    @Step("Проверка, что тест-кейс '{testCaseName}' принадлежит сьюте '{suiteName}'")
     public CasePage checkThatTestCaseBelongsToSuite(String suiteName, String testCaseName) {
         assertTrue(projectPage.doesTestCaseBelongToSuite(suiteName, testCaseName), "Test Case is not created or or belongs to another suite");
         return this;

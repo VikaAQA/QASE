@@ -1,14 +1,14 @@
-package tests.ui;
+package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.*;
@@ -16,31 +16,39 @@ import tests.TestListener;
 import utils.PropertyReader;
 
 import java.io.ByteArrayInputStream;
-
-import static adapters.ProjectAPI.deleteAllProject;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
+import adapters.CaseAPI;
+import adapters.ProjectAPI;
+
+
 @Log4j2
 @Listeners(TestListener.class)
 public class BaseTest {
-    LoginPage loginPage;
-    ProductsPage productsPage;
-    ProjectPage projectPage;
-    ModalCreateProjectPage modalCreateProjectPage;
-    CasePage casePage;
-    String user = System.getProperty("user", PropertyReader.getProperty("user"));//скрытие кредов указаны в config.properties
-    String password = System.getProperty("password", PropertyReader.getProperty("password"));//скрытие кредов
+
+    protected LoginPage loginPage;
+    protected ProductsPage productsPage;
+    protected ProjectPage projectPage;
+    protected ModalCreateProjectPage modalCreateProjectPage;
+    protected CasePage casePage;
+
+    protected ProjectAPI projectAPI;
+    protected CaseAPI caseAPI;
+
+    protected String user = System.getProperty("user", PropertyReader.getProperty("user"));
+    protected String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
     @BeforeSuite(alwaysRun = true)
     public void globalSetup() {
         log.info("Очистка тестовых данных перед запуском сьюта");
-        deleteAllProject();
+        new ProjectAPI().deleteAllProject(); // очищаем проекты через API
     }
 
     @Parameters({"browser"})
-    @BeforeMethod(description = "Browser setup", alwaysRun = true)
+    @BeforeMethod(alwaysRun = true, description = "Environment setup")
     public void setUp(@Optional("chrome") String browser) {
-        log.info("Opening browser {}", browser);
+        log.info("Инициализация окружения: browser={}, baseUrl={}", browser, "https://app.qase.io");
+
         if (browser.equalsIgnoreCase("chrome")) {
             Configuration.browser = "chrome";
         } else if (browser.equalsIgnoreCase("firefox")) {
@@ -50,17 +58,15 @@ public class BaseTest {
         }
 
         Configuration.baseUrl = "https://app.qase.io";
-        Configuration.timeout = 5000;
-        Configuration.clickViaJs = true;//по умолчанию все клики через JS
-        Configuration.headless = true;// для работы в CI,true - тесты крутяться на удаленном сервере
         Configuration.browserSize = "1920x1080";
+        Configuration.timeout = 5000;
+        Configuration.clickViaJs = true;
+        Configuration.headless = true;
 
-
-        // Подключаем Allure listener — именно он прикрепляет скрины к шагам
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide()
-                        .screenshots(true)      // включаем авто-скрины
-                        .savePageSource(true)   // сохраняем html страницы
+                        .screenshots(true)
+                        .savePageSource(true)
         );
 
         loginPage = new LoginPage();
@@ -68,13 +74,16 @@ public class BaseTest {
         projectPage = new ProjectPage();
         modalCreateProjectPage = new ModalCreateProjectPage();
         casePage = new CasePage();
+
+        projectAPI = new ProjectAPI();
+        caseAPI = new CaseAPI();
+        log.info("UI и API окружение успешно инициализировано");
     }
 
     @AfterMethod(alwaysRun = true, description = "Browser teardown")
     public void tearDown(ITestResult result) {
-        log.info("Closing browser");
+        log.info("Завершение теста: {}", result.getName());
 
-        // Если тест упал — прикрепляем скриншот в Allure
         if (!result.isSuccess()) {
             try {
                 byte[] screenshot = ((TakesScreenshot) WebDriverRunner.getWebDriver())
@@ -86,10 +95,18 @@ public class BaseTest {
             }
         }
 
-        // Закрываем браузер
         closeWebDriver();
 
-        // Удаляем проекты после теста
-        deleteAllProject();
+             new ProjectAPI().deleteAllProject();
+        log.info("Окружение очищено после теста {}", result.getName());
+    }
+
+    @Step("Авторизация и открытие страницы Projects")
+    protected void loginAndOpenProductsPage() {
+        log.info("Авторизация и переход на страницу Products");
+        loginPage.openPage()
+                .login(user, password);
+        productsPage.waittingOpen();
     }
 }
+

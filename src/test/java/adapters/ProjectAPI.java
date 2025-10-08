@@ -12,81 +12,38 @@ import java.util.List;
 
 @Log4j2
 public class ProjectAPI extends BaseAPI {
-    @Step
-    public static CreateProjectRs createProject(CreateProjectRq project) {
-        log.info("Creating project with body: {}", project);
-        return spec()
-                .body(gson.toJson(project)) //преобразуем обьект в json
-                .when()//КОГДА
-                .post("https://api.qase.io/v1/project")
-                .then()//тогда
-                //.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/create_project_rs.json"))//валидация json по структуре и типу данных
-                .log().all()
-                .statusCode(200)
-                .extract()
-                .as(CreateProjectRs.class);// // Преобразуем JSON в Java объект
+
+    @Step("Создание проекта")
+    public CreateProjectRs createProject(CreateProjectRq project) {
+        Response response = post("project", project);
+        return gson.fromJson(response.asString(), CreateProjectRs.class);
     }
 
-    @Step
-    public static void deleteProject(String... codes) {
-        for (String code : codes) {
-            log.info("Deleting project with code: {}", code);
-            spec()
-                    .when()
-                    .delete("https://api.qase.io/v1/project/" + code)
-                    .then()
-                    .log().all()
-                    .statusCode(200);
-        }
+    @Step("Удаление проекта {code}")
+    public void deleteProject(String code) {
+        delete("project/" + code);
     }
 
-    @Step("Получение проекта по коду")
-    public static GetProjectRs getProject(String code) {
-        log.info("Getting project with code: {}", code);
-        return spec()
-                .when()//КОГДА
-                .get("https://api.qase.io/v1/project/" + code)
-                .then()//тогда
-                .log().all()
-                .statusCode(200)
-                .extract()//извлекаем респонс
-                .as(GetProjectRs.class); // Преобразуем JSON в Java объект
+    @Step("Получение проекта по коду {code}")
+    public GetProjectRs getProject(String code) {
+        Response response = get("project/" + code);
+        return gson.fromJson(response.asString(), GetProjectRs.class);
     }
 
-    @Step
-    public static Response createProjectWithValidation(CreateProjectRq project) {
+    @Step("Получение списка всех проектов")
+    public List<String> getAllProject() {
+        Response response = get("project?limit=10&offset=0");
+        return json(response).getList("result.entities.code", String.class);
+    }
+
+    @Step("Удаление всех проектов")
+    public void deleteAllProject() {
+        getAllProject().forEach(this::deleteProject);
+    }
+    @Step("Создание проекта (валидация без десериализации)")
+    public Response createProjectWithValidation(CreateProjectRq project) {
         log.info("Creating project with validation, body: {}", project);
-        return spec()
-                .body(project)
-                .when()
-                .post("https://api.qase.io/v1/project")
-                .then()
-                .log().all() // Логируем для отладки
-                .extract()
-                .response();
-    }
-
-    @Step
-    public static List<String> getAllProject() {//извлечение из респонса коллекции и передача в другой метод
-        log.info("Retrieving all projects");
-        String response = spec()
-                .when()
-                .get("https://api.qase.io/v1/project?limit=10&offset=0")
-                .then()
-                .log().all()
-                .statusCode(200)
-                .extract()
-                .asString();
-        JsonPath json = new JsonPath(response);
-
-        return json.getList("result.entities.code");
-    }
-
-    @Step
-    public static ProjectAPI deleteAllProject() {
-        log.info("Deleting all projects");
-        getAllProject().forEach(ProjectAPI::deleteProject);
-        return new ProjectAPI();
+        return post("project", project);
     }
 }
 

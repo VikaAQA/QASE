@@ -1,9 +1,11 @@
 package tests.ui;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 import tests.Retry;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -12,16 +14,13 @@ import static data.Elements.VALIDATION_MESSAGE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static pages.ModalCreateProjectPage.PROJECT_NAME_FIELD_CSS;
 
-@Feature("Проект ")
-@Story("Создание проекта")
+@Epic("UI Tests")
 public class ProjectTest extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class, groups = "smoke")
-    @Description("Создание проекта и его удаление")
+    @Test(retryAnalyzer = Retry.class, groups = "smoke", description = "Создание проекта и его удаление")
+    @Description("Проверка позитивного сценария создания проекта")
     public void checkCreateProject() {
-        loginPage.openPage()
-                .login(user, password);
-        productsPage.waittingOpen();
+        loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
         projectPage.checkCreatingProject(NAME_PROJECT);
         productsPage.openPage()
@@ -29,12 +28,9 @@ public class ProjectTest extends BaseTest {
                 .deleteProject(NAME_PROJECT);
     }
 
-    @Test
-    @Description("Создание проекта без названия: проверка ошибки")
+    @Test(description = "Создание проекта без названия: проверка ошибки")
     public void checkCreateProjectWithNegative() {
-        loginPage.openPage()
-                .login(user, password);
-        productsPage.waittingOpen();
+        loginAndOpenProductsPage();
         modalCreateProjectPage.createFailProject();
 
         String validationMessage = $(PROJECT_NAME_FIELD_CSS).getAttribute(VALIDATION_MESSAGE);

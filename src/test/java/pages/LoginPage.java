@@ -23,11 +23,11 @@ public class LoginPage extends BasePage {
         $(PASSWORD_FIELD).setValue(password).submit();
         return new ProductsPage();
     }
-
+    @Step("Проверка, что отображается сообщение об ошибке: '{error}'")
     public void checkErrorMessage(String error) {
         $x(ERROR_MESSAGE).shouldHave(Condition.text(error));
     }
-
+    @Step("Получение текста сообщения об ошибке со страницы")
     public String getErrorMessage() {//страница открылась и виден текст , затем в тете ассерт
         return $x(ERROR_MESSAGE).text();
     }

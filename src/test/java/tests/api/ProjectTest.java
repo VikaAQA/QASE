@@ -1,51 +1,54 @@
 package tests.api;
 
-import io.qameta.allure.Step;
+import adapters.BaseAPI;
+import io.qameta.allure.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import models.project.create.CreateProjectRs;
 import models.project.get.GetProjectRs;
-import models.project.get.GetProjectsRs;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 import utils.ProjectRequestFactory;
 
 import static adapters.ProjectAPI.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.testng.Assert.assertTrue;
-
-public class ProjectTest extends BaseApiTest {
+@Epic("API Tests")
+public class ProjectTest extends BaseTest {
     @BeforeMethod
-    public void delete(){deleteAllProject();}
+    public void delete(){projectAPI.deleteAllProject();}
 
-    @Test
-    @Step("Создание и удаление проекта")
-    public void checkCreateAndDeleteProject() {
-        CreateProjectRs rs = createProject(ProjectRequestFactory.validProject());
+    @Test(description = "Создание и удаление проекта")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description(" Проверка базового сценария создания удаления нового проекта")
+        public void checkCreateAndDeleteProject() {
+        CreateProjectRs rs = projectAPI.createProject(ProjectRequestFactory.validProject());
         assertTrue(rs.status);
         String code = rs.getResult().getCode();
-        deleteProject(code);
+        projectAPI.deleteProject(code);
     }
 
-    @Test(groups = "smoke")
-    @Step("Создание проекта: проверка полей title, description, access")
+    @Test(groups = "smoke", description = "Создание проекта: проверка корректности полей title и code")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Проверка корректности данных, возвращаемых при создании проекта")
     public void cheсkFieldCreateFormNewProject() {
 
-        CreateProjectRs rs = createProject(ProjectRequestFactory.validProject());//передаем тело запроса, возвращает обьект
+        CreateProjectRs rs = projectAPI.createProject(ProjectRequestFactory.validProject());//передаем тело запроса, возвращает обьект
         String code = rs.getResult().getCode();
 
-        GetProjectRs getRs = getProject(code);//получаем созданный проект по коду
+        GetProjectRs getRs = projectAPI.getProject(code);//получаем созданный проект по коду
 
         assertThat(getRs.getResult().getTitle())//в responce json приходит со списком обьектов , то есть мы сначало должны получить лист проектов и выбрать первый элемент
                 .isEqualTo(ProjectRequestFactory.validProject().getTitle());
        assertThat(getRs.getResult().getCode()).isEqualTo(code);
-        deleteProject(code);
+        projectAPI.deleteProject(code);
     }
 
-    @Test
-    @Step("Проверка негативного сценария: создание проекта без обязательного поля Title")
-    public void checkCreateProjectFailsWithoutTitle() {
-        Response response = createProjectWithValidation(ProjectRequestFactory.projectWithEmptyTitle());
+    @Test(description = "Создание проекта без обязательного поля Title должно вернуть ошибку 400")
+    @Description("Проверка, что при создании проекта без обязательного поля Title сервер корректно возвращает ошибку (status=false, code=400).")
+       public void checkCreateProjectFailsWithoutTitle() {
+        Response response = projectAPI.createProjectWithValidation(ProjectRequestFactory.projectWithEmptyTitle());
         // Проверяем, что API корректно обрабатывает ошибку
         assertThat(response.getStatusCode())//возвращаем респонс так как упадет в 400 и не сможем десериализовать по схеме
                 .isEqualTo(400);

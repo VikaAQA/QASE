@@ -77,6 +77,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Allure-Rest-Assured -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
         <!-- Allure TestNG -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
