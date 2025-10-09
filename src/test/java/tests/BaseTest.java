@@ -41,7 +41,7 @@ public class BaseTest {
     @BeforeSuite(alwaysRun = true)
     public void globalSetup() {
         log.info("Очистка тестовых данных перед запуском сьюта");
-        new ProjectAPI().deleteAllProject(); // очищаем проекты через API
+        new ProjectAPI().deleteAllProject();
     }
 
     @Parameters({"browser"})
