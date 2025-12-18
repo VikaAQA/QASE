@@ -24,7 +24,7 @@ public class CasePage extends BasePage {
     private static final String TEST_CASES_AREA_CSS = "[data-suite-body-id]";
     private static final String TEST_CASES_LIST_CSS = TEST_CASES_AREA_CSS + "[draggable]";
     private final String TITLE_CASE_FIELD = "input[name='title']";
-    private final String DESCRIPTION_CASE_FIELD = ".toastui-editor-ww-container .ProseMirror-trailingBreak:first-child";
+    private final String DESCRIPTION_CASE_FIELD = ".g7Dk6C div";
     private final String DROPDAWN_XPATH = "//label[text()='%s']/following-sibling::div//span";
     private final String FIELD_IN_DROPDAWN = "//div[text()='%s']";
     private final String SAVE_BTN = "Save";

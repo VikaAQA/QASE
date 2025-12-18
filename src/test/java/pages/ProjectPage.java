@@ -8,6 +8,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static data.Elements.BLOCK_SUITES;
 import static data.Elements.NEW_TEST_BTN;
 
 

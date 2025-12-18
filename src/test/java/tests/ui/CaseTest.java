@@ -3,12 +3,18 @@ package tests.ui;
 import dto.TestCase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
+import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 import utils.factories.ui.TestCaseFactory;
 
-import static data.Elements.NAME_PROJECT;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static data.Elements.*;
+
 
 @Epic("UI Tests")
 public class CaseTest extends BaseTest {
@@ -20,7 +26,7 @@ public class CaseTest extends BaseTest {
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
         casePage.creattingTestCase(uiCase);
-        projectPage.openPage(NAME_PROJECT).isPageOpened();
+       $(By.xpath(BLOCK_CASE)).shouldBe(visible, Duration.ofSeconds(60));
         casePage.checkThatTestCaseIsCreated(1);
     }
 
