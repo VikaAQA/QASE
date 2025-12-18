@@ -21,9 +21,8 @@ public class ProjectTest extends BaseTest {
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
         projectPage.checkCreatingProject(NAME_PROJECT);
-        productsPage.openPage()
-                .waittingOpen()
-                .deleteProject(NAME_PROJECT);
+        productsPage.openPage().isPageOpened()
+                    .deleteProject(NAME_PROJECT);
     }
 
     @Test(description = "Создание проекта без названия: проверка ошибки")

@@ -6,7 +6,7 @@ import io.qameta.allure.Epic;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
-import utils.CaseRequestFactory;
+import utils.factories.ui.TestCaseFactory;
 
 import static data.Elements.NAME_PROJECT;
 
@@ -16,11 +16,11 @@ public class CaseTest extends BaseTest {
     @Test(groups = "smoke", description = "Создание тест-кейса через UI")
     @Description("Проверка, что пользователь может создать тест-кейс через веб-интерфейс")
     public void checkCreateCase() {
-        TestCase uiCase = CaseRequestFactory.ui();
+        TestCase uiCase = TestCaseFactory.valid();
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
         casePage.creattingTestCase(uiCase);
-        projectPage.openRepository(NAME_PROJECT);
+        projectPage.openPage(NAME_PROJECT).isPageOpened();
         casePage.checkThatTestCaseIsCreated(1);
     }
 

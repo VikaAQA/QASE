@@ -7,7 +7,7 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import wrappers.DropDawn;
-import wrappers.TextArea;
+import wrappers.Input;
 
 import java.time.Duration;
 
@@ -18,7 +18,6 @@ import static data.Elements.NEW_TEST_BTN;
 import static data.Elements.TITLE_CASE_TXT;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
-import static wrappers.DropDawn.selectFromCustomDropdown;
 
 @Log4j2
 public class CasePage extends BasePage {
@@ -32,10 +31,17 @@ public class CasePage extends BasePage {
     private final ProjectPage projectPage = new ProjectPage();
 
     @Step("Открытие страницы создания тест-кейса")
-    public CasePage isPageOpened() {
+    public CasePage openPage() {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
-        $(byText(TITLE_CASE_TXT)).shouldBe(visible);
+        log.info("Страница создания тест-кейса открыта");
         return new CasePage();
+    }
+
+    @Step("Проверка, что страница создания тест-кейса открыта")
+    public CasePage isPageOpened() {
+        $(byText(TITLE_CASE_TXT)).shouldBe(visible, Duration.ofSeconds(30));
+        log.info("Страница создания тест-кейса успешно открыта");
+        return this;
     }
 
     public CasePage openEditCasePage(String projectCode, int testCaseIndex) {
@@ -53,14 +59,14 @@ public class CasePage extends BasePage {
     @Step("Заполнение формы тест-кейса данными: {testCase}")
     public void fillCreateCaseForm(TestCase testCase) {
         dropDawn = new DropDawn();
-        textArea = new TextArea();
+        input = new Input();
         $(TITLE_CASE_FIELD).append(testCase.getTitle());
         $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
 
-        selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
-        selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
-        selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
-        selectFromCustomDropdown(DROPDAWN_XPATH, "Priority", FIELD_IN_DROPDAWN, testCase.getPriority());
+        dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
+        dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
+        dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
+        dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Priority", FIELD_IN_DROPDAWN, testCase.getPriority());
         if (testCase.isFlaky())
             dropDawn.select("Is flaky", "Yes"); // NO is default value
         dropDawn.select("Behavior", testCase.getBehavior());
@@ -70,7 +76,7 @@ public class CasePage extends BasePage {
 
     @Step("Создание нового тест-кейса через UI")
     public CasePage creattingTestCase(TestCase testCase) {
-        isPageOpened();
+        openPage().isPageOpened();
         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
         log.info("Форма создания кейса успешно сохранена");
@@ -113,15 +119,16 @@ public class CasePage extends BasePage {
         assertTrue(projectPage.doesTestCaseBelongToSuite(suiteName, testCaseName), "Test Case is not created or or belongs to another suite");
         return this;
     }
+
     @Step("Получение значений всех полей тест-кейса с формы")
     public TestCase getTestCaseSpecs() {
         dropDawn = new DropDawn();
-        textArea = new TextArea();
+        input = new Input();
 
         return TestCase.builder().
                 title($(By.name("title")).getValue()).
                 status(dropDawn.getPickListText("Status")).
-                description(textArea.getTextAreaText("Description")).
+                description(input.getTextAreaText("Description")).
                 severity(dropDawn.getPickListText("Severity")).
                 priority(dropDawn.getPickListText("Priority")).
                 type(dropDawn.getPickListText("Type")).

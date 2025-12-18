@@ -1,6 +1,5 @@
 package tests.api;
 
-import adapters.BaseAPI;
 import io.qameta.allure.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -9,9 +8,8 @@ import models.project.get.GetProjectRs;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.BaseTest;
-import utils.ProjectRequestFactory;
+import utils.factories.api.ProjectRequestFactory;
 
-import static adapters.ProjectAPI.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.testng.Assert.assertTrue;
 @Epic("API Tests")
@@ -23,7 +21,7 @@ public class ProjectTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Description(" Проверка базового сценария создания удаления нового проекта")
         public void checkCreateAndDeleteProject() {
-        CreateProjectRs rs = projectAPI.createProject(ProjectRequestFactory.validProject());
+        CreateProjectRs rs = projectAPI.createProject(ProjectRequestFactory.valid());
         assertTrue(rs.status);
         String code = rs.getResult().getCode();
         projectAPI.deleteProject(code);
@@ -34,13 +32,13 @@ public class ProjectTest extends BaseTest {
     @Description("Проверка корректности данных, возвращаемых при создании проекта")
     public void cheсkFieldCreateFormNewProject() {
 
-        CreateProjectRs rs = projectAPI.createProject(ProjectRequestFactory.validProject());//передаем тело запроса, возвращает обьект
+        CreateProjectRs rs = projectAPI.createProject(ProjectRequestFactory.valid());//передаем тело запроса, возвращает обьект
         String code = rs.getResult().getCode();
 
         GetProjectRs getRs = projectAPI.getProject(code);//получаем созданный проект по коду
 
         assertThat(getRs.getResult().getTitle())//в responce json приходит со списком обьектов , то есть мы сначало должны получить лист проектов и выбрать первый элемент
-                .isEqualTo(ProjectRequestFactory.validProject().getTitle());
+                .isEqualTo(ProjectRequestFactory.valid().getTitle());
        assertThat(getRs.getResult().getCode()).isEqualTo(code);
         projectAPI.deleteProject(code);
     }

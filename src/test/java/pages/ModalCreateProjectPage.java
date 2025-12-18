@@ -18,7 +18,7 @@ public class ModalCreateProjectPage extends BasePage {
     private String PUBLIC_RADIO_BTN = "input[value='public']";
 
     @Step("Открытие модального окна создания проекта")
-    public ModalCreateProjectPage open() {
+    public ModalCreateProjectPage  isPageOpened() {
         CREATE_PROJECT_BTN.shouldBe(visible);//с помощью селенида цепляемся за текста а не локатор
         return this;
     }

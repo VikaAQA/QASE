@@ -1,9 +1,10 @@
 package pages;
 
 import wrappers.DropDawn;
-import wrappers.TextArea;
+import wrappers.Input;
 
-public class BasePage {
+public abstract class BasePage {
     protected DropDawn dropDawn;
-    protected TextArea textArea;
+    protected Input input;
+    public abstract BasePage isPageOpened();
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
@@ -13,6 +14,16 @@ import static data.Elements.NEW_TEST_BTN;
 public class ProjectPage extends BasePage {
     private static final String TEST_CASE_XPATH = "//*[text()='%s']//ancestor::*[@data-suite-body-id]/ancestor::*[@class][1]/following-sibling::*[1]//*[text()='%s']";
     private static final String PROJECT_URL = "/project";
+    @Step("Открытие репозитория проекта '{project}'")
+    public ProjectPage openPage(String project) {
+      open(PROJECT_URL + "/" + project);
+      return new ProjectPage();
+    }
+    @Step("Проверка, что страница проекта '{project}' открыт")
+    public ProjectPage isPageOpened(){
+        NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
+        return this;
+    }
 
     @Step("Проверка, что проект '{project}' успешно создан и отображается на странице")
     public ProjectPage checkCreatingProject(String project) {//проверка что после создания провекта отображена кнопка new test
@@ -21,12 +32,6 @@ public class ProjectPage extends BasePage {
         return this;
     }
 
-    @Step("Открытие репозитория проекта '{project}'")
-    public ProjectPage openRepository(String project) {
-        open(PROJECT_URL + "/" + project);
-        NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
-        return this;
-    }
     @Step("Проверка, что тест-кейс '{testCaseTitle}' принадлежит сьюте '{suiteTitle}'")
     public boolean doesTestCaseBelongToSuite(String suiteTitle, String testCaseTitle) {
         return $x(String.format(TEST_CASE_XPATH, suiteTitle, testCaseTitle)).exists();

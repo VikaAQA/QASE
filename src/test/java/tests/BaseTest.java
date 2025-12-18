@@ -12,7 +12,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.*;
-import tests.TestListener;
 import utils.PropertyReader;
 
 import java.io.ByteArrayInputStream;
@@ -31,6 +30,7 @@ public class BaseTest {
     protected ProjectPage projectPage;
     protected ModalCreateProjectPage modalCreateProjectPage;
     protected CasePage casePage;
+    protected SuitePage suitePage;
 
     protected ProjectAPI projectAPI;
     protected CaseAPI caseAPI;
@@ -74,6 +74,7 @@ public class BaseTest {
         projectPage = new ProjectPage();
         modalCreateProjectPage = new ModalCreateProjectPage();
         casePage = new CasePage();
+        suitePage = new SuitePage();
 
         projectAPI = new ProjectAPI();
         caseAPI = new CaseAPI();
@@ -104,9 +105,9 @@ public class BaseTest {
     @Step("Авторизация и открытие страницы Projects")
     protected void loginAndOpenProductsPage() {
         log.info("Авторизация и переход на страницу Projects");
-        loginPage.openPage()
-                .login(user, password);
-        productsPage.waittingOpen();
+        loginPage.openPage().isPageOpened();
+        loginPage      .login(user, password);
+        productsPage.isPageOpened();
     }
 }
 

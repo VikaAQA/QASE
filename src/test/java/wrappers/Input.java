@@ -1,7 +1,7 @@
 package wrappers;
 
 import static com.codeborne.selenide.Selenide.$x;
-public class TextArea {
+public class Input {
     private static final String TEXT_AREA_XPATH = "(//*[text()='%s']/following-sibling::*//p)[last()]";
 
         public String getTextAreaText(String label) {

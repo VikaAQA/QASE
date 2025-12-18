@@ -1,13 +1,12 @@
-package utils;
+package utils.factories.api;
 
 import com.github.javafaker.Faker;
-import dto.TestCase;
 import models.create.CreateCaseRq;
 
 import java.util.List;
 import java.util.Random;
 
-public class CaseRequestFactory {
+public final class CaseRequestFactory {
 
     private static final Faker faker = new Faker();
     private static final Random random = new Random();
@@ -15,7 +14,7 @@ public class CaseRequestFactory {
     /**
      * Фабрика для API DTO
      */
-    public static CreateCaseRq caseRq() {
+    public static CreateCaseRq valid() {
         return CreateCaseRq.builder()
                 .title(faker.book().title())
                 .description(faker.lorem().sentence())
@@ -32,20 +31,6 @@ public class CaseRequestFactory {
                                 .expectedResult("Успешно")
                                 .build()
                 ))
-                .build();
-    }
-
-    /**
-     * Фабрика для UI DTO
-     */
-    public static TestCase ui() {
-        return TestCase.builder()
-                .title(faker.book().title())
-                .description(faker.lorem().sentence())
-                .status("Actual")
-                .severity("Major")
-                .priority("Medium")
-                .type("Functional")
                 .build();
     }
 }

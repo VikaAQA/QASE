@@ -1,10 +1,10 @@
-package utils;
+package utils.factories.api;
 
 import models.project.create.CreateProjectRq;
 
-public class ProjectRequestFactory {
+public final class ProjectRequestFactory {
 
-    public static CreateProjectRq validProject() {
+    public static CreateProjectRq valid() {
         return CreateProjectRq.builder()
                 .title("TMSAPI")
                 .code("API")

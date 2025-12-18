@@ -23,5 +23,4 @@ public class CreateProjectRq {
     @SerializedName("group")
     @Expose
     private String group;
-
 }
