@@ -3,17 +3,12 @@ package tests.ui;
 import dto.TestCase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 import utils.factories.ui.TestCaseFactory;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static data.Elements.*;
+import static data.Elements.NAME_PROJECT;
 
 
 @Epic("UI Tests")
@@ -25,9 +20,8 @@ public class CaseTest extends BaseTest {
         TestCase uiCase = TestCaseFactory.valid();
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
-        casePage.creattingTestCase(uiCase);
-       $(By.xpath(BLOCK_CASE)).shouldBe(visible, Duration.ofSeconds(60));
-        casePage.checkThatTestCaseIsCreated(1);
+        casePage.creattingTestCase(uiCase)
+                .checkThatTestCaseIsCreated(1);
     }
 
     @DataProvider
@@ -72,12 +66,13 @@ public class CaseTest extends BaseTest {
                 }
         };
     }
-    @Test( description = "Создание тест-кейса с разными входными данными", dataProvider = "testCaseSpecs")
+
+    @Test(description = "Создание тест-кейса с разными входными данными", dataProvider = "testCaseSpecs")
     public void testCaseShouldHasCorrectSpecs(TestCase testCase) {
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
         casePage.creattingTestCase(testCase)
-                .openTestCase(NAME_PROJECT,1);
+                .openTestCase(NAME_PROJECT, 1);
         casePage.checkTestCaseSpecs(testCase);
     }
 }

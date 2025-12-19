@@ -14,8 +14,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static data.Elements.NEW_TEST_BTN;
-import static data.Elements.TITLE_CASE_TXT;
+import static data.Elements.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -110,6 +109,7 @@ public class CasePage extends BasePage {
 
     @Step("Проверка, что тест-кейс успешно создан")
     public CasePage checkThatTestCaseIsCreated(int countCase) {
+        $(By.xpath(BLOCK_CASE)).shouldBe(visible, Duration.ofSeconds(60));
         assertEquals(getTestCasesCount(), countCase, "Test Case is not created or more than 1 test cases were created");
         return this;
     }
