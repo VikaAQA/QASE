@@ -1,8 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","880","cheсkFieldCreateFormNewProject","Surefire suite","Mon Oct 06 13:18:32 UTC 2025","passed","Mon Oct 06 13:18:33 UTC 2025","tests.api.ProjectTest","Surefire test","tests.api.ProjectTest","cheсkFieldCreateFormNewProject"
-"","677","checkCreateAndDeleteProject","Surefire suite","Mon Oct 06 13:18:30 UTC 2025","passed","Mon Oct 06 13:18:31 UTC 2025","tests.api.ProjectTest","Surefire test","tests.api.ProjectTest","checkCreateAndDeleteProject"
-"","1007","addCaseToProject","Surefire suite","Mon Oct 06 13:18:29 UTC 2025","passed","Mon Oct 06 13:18:30 UTC 2025","tests.api.CaseTest","Surefire test","tests.api.CaseTest","addCaseToProject"
-"Создание проекта и его удаление","8849","checkCreateProject","Surefire suite","Mon Oct 06 13:18:59 UTC 2025","passed","Mon Oct 06 13:19:08 UTC 2025","tests.ui.ProjectTest","Surefire test","tests.ui.ProjectTest","checkCreateProject"
-"Создание проекта без названия: проверка ошибки","9203","checkCreateProjectWithNegative","Surefire suite","Mon Oct 06 13:19:08 UTC 2025","passed","Mon Oct 06 13:19:17 UTC 2025","tests.ui.ProjectTest","Surefire test","tests.ui.ProjectTest","checkCreateProjectWithNegative"
-"","421","checkCreateProjectFailsWithoutTitle","Surefire suite","Mon Oct 06 13:18:31 UTC 2025","passed","Mon Oct 06 13:18:32 UTC 2025","tests.api.ProjectTest","Surefire test","tests.api.ProjectTest","checkCreateProjectFailsWithoutTitle"
-"Создание тест-кейса","25189","checkCreateCase","Surefire suite","Mon Oct 06 13:18:33 UTC 2025","passed","Mon Oct 06 13:18:58 UTC 2025","tests.ui.CaseTest","Surefire test","tests.ui.CaseTest","checkCreateCase"
