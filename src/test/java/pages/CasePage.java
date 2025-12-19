@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import dto.TestCase;
 import io.qameta.allure.Step;
@@ -36,6 +37,13 @@ public class CasePage extends BasePage {
         return new CasePage();
     }
 
+    private void disableBeforeUnload() {
+        Selenide.executeJavaScript("window.onbeforeunload = null;");
+        Selenide.executeJavaScript(
+                "window.addEventListener('beforeunload', function(e){ e.stopImmediatePropagation(); }, true);"
+        );
+    }
+
     @Step("Проверка, что страница создания тест-кейса открыта")
     public CasePage isPageOpened() {
         $(byText(TITLE_CASE_TXT)).shouldBe(visible, Duration.ofSeconds(30));
@@ -60,8 +68,9 @@ public class CasePage extends BasePage {
         dropDawn = new DropDawn();
         input = new Input();
         $(TITLE_CASE_FIELD).append(testCase.getTitle());
+        disableBeforeUnload();
         $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
-
+        disableBeforeUnload();
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
@@ -76,6 +85,7 @@ public class CasePage extends BasePage {
     @Step("Создание нового тест-кейса через UI")
     public CasePage creattingTestCase(TestCase testCase) {
         openPage().isPageOpened();
+        disableBeforeUnload();
         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
         log.info("Форма создания кейса успешно сохранена");
