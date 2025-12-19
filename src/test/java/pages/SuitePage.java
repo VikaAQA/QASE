@@ -15,7 +15,7 @@ public class SuitePage extends BasePage {
     private final String NAME_SUITE_CSS = "[title='%s']";
 
     public SuitePage openPage() {
-        $(byText("Add suite")).click();
+        $(byText("Create new suite")).click();
         log.info("Открытие страницы создания Suite");
         return new SuitePage();
     }
