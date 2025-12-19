@@ -138,7 +138,7 @@ public class CasePage extends BasePage {
         return TestCase.builder().
                 title($(By.name("title")).getValue()).
                 status(dropDawn.getPickListText("Status")).
-                description(input.getTextAreaText("Description")).
+            //    description(input.getTextAreaText("Description")).
                 severity(dropDawn.getPickListText("Severity")).
                 priority(dropDawn.getPickListText("Priority")).
                 type(dropDawn.getPickListText("Type")).
