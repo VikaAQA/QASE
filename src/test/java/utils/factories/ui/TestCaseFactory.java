@@ -18,5 +18,6 @@ public final class TestCaseFactory {
                 .priority("Medium")
                 .type("Functional")
                 .build();
+
     }
 }
