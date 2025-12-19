@@ -72,7 +72,8 @@ public class CaseTest extends BaseTest {
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
         casePage.creattingTestCase(testCase)
-                .openTestCase(NAME_PROJECT, 1);
+                .openTestCase(NAME_PROJECT, 1)
+                        .isPageOpened();
         casePage.checkTestCaseSpecs(testCase);
     }
 }

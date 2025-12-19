@@ -4,6 +4,8 @@ import io.qameta.allure.Step;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.selected;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -19,13 +21,13 @@ public class ModalCreateProjectPage extends BasePage {
 
     @Step("Открытие модального окна создания проекта")
     public ModalCreateProjectPage  isPageOpened() {
-        CREATE_PROJECT_BTN.shouldBe(visible);//с помощью селенида цепляемся за текста а не локатор
+        CREATE_PROJECT_BTN.shouldBe(visible, Duration.ofSeconds(60));//с помощью селенида цепляемся за текста а не локатор
         return this;
     }
     @Step("Создание нового проекта с именем: '{project}'")
     public ProductsPage createProject(String project) {
         log.info("Начало создания проекта с именем: {}", project);
-
+        CREATE_NEW_PROJECT_BTN.shouldBe(visible, Duration.ofSeconds(60));
         CREATE_NEW_PROJECT_BTN.click();
         $(PROJECT_NAME_FIELD_CSS).setValue(project);
         $(PUBLIC_RADIO_BTN).click();

@@ -61,7 +61,7 @@ public class BaseTest {
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 5000;
         Configuration.clickViaJs = true;
-        Configuration.headless = false;
+        Configuration.headless = true;
 
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide()
