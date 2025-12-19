@@ -67,7 +67,8 @@ public class CaseTest extends BaseTest {
         };
     }
 
-    @Test(description = "Создание тест-кейса с разными входными данными", dataProvider = "testCaseSpecs")
+    @Test(description = "Создание тест-кейса с разными входными данными")
+    //, dataProvider = "testCaseSpecs"
     public void testCaseShouldHasCorrectSpecs(TestCase testCase) {
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
