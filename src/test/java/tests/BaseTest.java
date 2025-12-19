@@ -70,7 +70,7 @@ public class BaseTest {
         Configuration.timeout = 5000;
 
         Configuration.clickViaJs = true;
-        Configuration.headless = false;
+        Configuration.headless = true;
 
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide()
