@@ -52,13 +52,8 @@ public class BaseTest {
         log.info("Инициализация окружения: browser={}, baseUrl={}", browser, "https://app.qase.io");
 
         if (browser.equalsIgnoreCase("chrome")) {
-            ChromeOptions options = new ChromeOptions();
+           Configuration.browser = "chrome";
 
-            // 🔴 ВАЖНО: отвечать "НЕТ" на ВСЕ native alert/confirm
-            options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.DISMISS);
-
-            Configuration.browser = "chrome";
-            Configuration.browserCapabilities = options;
         } else if (browser.equalsIgnoreCase("firefox")) {
             Configuration.browser = "firefox";
         } else {
@@ -70,7 +65,7 @@ public class BaseTest {
         Configuration.timeout = 5000;
 
         Configuration.clickViaJs = true;
-        Configuration.headless = true;
+        Configuration.headless = false;
 
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide()
