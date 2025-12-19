@@ -68,7 +68,7 @@ public class CasePage extends BasePage {
         dropDawn = new DropDawn();
         input = new Input();
         $(TITLE_CASE_FIELD).append(testCase.getTitle());
-        disableBeforeUnload();
+       // disableBeforeUnload();
       //  $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
         disableBeforeUnload();
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
@@ -85,7 +85,7 @@ public class CasePage extends BasePage {
     @Step("Создание нового тест-кейса через UI")
     public CasePage creattingTestCase(TestCase testCase) {
         openPage().isPageOpened();
-        disableBeforeUnload();
+        //disableBeforeUnload();
         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
         log.info("Форма создания кейса успешно сохранена");
