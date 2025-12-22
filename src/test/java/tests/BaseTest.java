@@ -47,13 +47,15 @@ public class BaseTest {
     }
 
     @Parameters({"browser"})
-    @BeforeMethod(alwaysRun = true, description = "Environment setup")
+    @BeforeMethod(alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
-        log.info("Инициализация окружения: browser={}, baseUrl={}", browser, "https://app.qase.io");
-
         if (browser.equalsIgnoreCase("chrome")) {
-           Configuration.browser = "chrome";
+            ChromeOptions options = new ChromeOptions();
+            options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.DISMISS);//при прогоне через CI настройка предотвращения появления аллерта
+            options.setCapability("unhandledPromptBehavior", "dismiss"); // чтобы точно ушло в сессию
 
+            Configuration.browser = "chrome";
+            Configuration.browserCapabilities = options;
         } else if (browser.equalsIgnoreCase("firefox")) {
             Configuration.browser = "firefox";
         } else {
@@ -63,7 +65,6 @@ public class BaseTest {
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 5000;
-
         Configuration.clickViaJs = true;
         Configuration.headless = true;
 

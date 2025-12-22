@@ -12,7 +12,7 @@ public final class TestCaseFactory {
     public static TestCase valid() {
         return TestCase.builder()
                 .title(faker.book().title())
-                //.description(faker.lorem().sentence())
+                .description(faker.lorem().sentence())
                 .status("Actual")
                 .severity("Major")
                 .priority("Medium")

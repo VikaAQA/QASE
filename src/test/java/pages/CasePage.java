@@ -33,6 +33,7 @@ public class CasePage extends BasePage {
     @Step("Открытие страницы создания тест-кейса")
     public CasePage openPage() {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
+        disableBeforeUnloadSafe();
         log.info("Страница создания тест-кейса открыта");
         return new CasePage();
     }
@@ -67,10 +68,10 @@ public class CasePage extends BasePage {
     public void fillCreateCaseForm(TestCase testCase) {
         dropDawn = new DropDawn();
         input = new Input();
-        $(TITLE_CASE_FIELD).append(testCase.getTitle());
-        disableBeforeUnload();
-       $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
-           disableBeforeUnload();
+        $(TITLE_CASE_FIELD).setValue(testCase.getTitle());
+          disableBeforeUnloadSafe();
+       $(DESCRIPTION_CASE_FIELD).setValue(testCase.getDescription());
+      disableBeforeUnloadSafe();
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
