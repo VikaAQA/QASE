@@ -8,7 +8,7 @@ import lombok.Data;
 public class TestCase {
     String title;
     String status;
-  //  String description;
+    String description;
     String suite;
     String severity;
     String priority;
