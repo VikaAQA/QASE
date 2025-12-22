@@ -7,6 +7,7 @@ import dto.TestCase;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import wrappers.DropDawn;
 import wrappers.Input;
 
@@ -24,7 +25,7 @@ public class CasePage extends BasePage {
     private static final String TEST_CASES_AREA_CSS = "[data-suite-body-id]";
     private static final String TEST_CASES_LIST_CSS = TEST_CASES_AREA_CSS + "[draggable]";
     private final String TITLE_CASE_FIELD = "input[name='title']";
-    private final String DESCRIPTION_CASE_FIELD = ".g7Dk6C div";
+    private final String DESCRIPTION_CASE_FIELD = "div[data-lexical-editor='true'][contenteditable='true']";
     private final String DROPDAWN_XPATH = "//label[text()='%s']/following-sibling::div//span";
     private final String FIELD_IN_DROPDAWN = "//div[text()='%s']";
     private final String SAVE_BTN = "Save";
@@ -36,13 +37,6 @@ public class CasePage extends BasePage {
         disableBeforeUnloadSafe();
         log.info("Страница создания тест-кейса открыта");
         return new CasePage();
-    }
-
-    private void disableBeforeUnload() {
-        Selenide.executeJavaScript("window.onbeforeunload = null;");
-        Selenide.executeJavaScript(
-                "window.addEventListener('beforeunload', function(e){ e.stopImmediatePropagation(); }, true);"
-        );
     }
 
     @Step("Проверка, что страница создания тест-кейса открыта")
@@ -69,9 +63,19 @@ public class CasePage extends BasePage {
         dropDawn = new DropDawn();
         input = new Input();
         $(TITLE_CASE_FIELD).setValue(testCase.getTitle());
-          disableBeforeUnloadSafe();
-       $(DESCRIPTION_CASE_FIELD).setValue(testCase.getDescription());
-      disableBeforeUnloadSafe();
+         // disableBeforeUnloadSafe();
+
+        // Description — Lexical editor
+        SelenideElement descriptionEditor =
+                $(DESCRIPTION_CASE_FIELD)
+                        .shouldBe(visible, Duration.ofSeconds(20));
+
+        descriptionEditor.click();
+        descriptionEditor.sendKeys(Keys.CONTROL + "a");
+        descriptionEditor.sendKeys(Keys.DELETE);
+        descriptionEditor.sendKeys(testCase.getDescription());
+
+     // disableBeforeUnloadSafe();
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
