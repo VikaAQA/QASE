@@ -55,7 +55,7 @@ public class CaseTest extends BaseTest {
                 {
                         TestCase.builder().
                                 title("Test Case 3").
-                              description("Description").
+                                description("Description").
                                 status("Deprecated").
                                 severity("Trivial").
                                 priority("Low").

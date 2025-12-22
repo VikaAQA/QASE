@@ -68,9 +68,9 @@ public class CasePage extends BasePage {
         dropDawn = new DropDawn();
         input = new Input();
         $(TITLE_CASE_FIELD).append(testCase.getTitle());
-       // disableBeforeUnload();
-      //  $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
-        //   disableBeforeUnload();
+        disableBeforeUnload();
+       $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
+           disableBeforeUnload();
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
@@ -138,7 +138,7 @@ public class CasePage extends BasePage {
         return TestCase.builder().
                 title($(By.name("title")).getValue()).
                 status(dropDawn.getPickListText("Status")).
-            //    description(input.getTextAreaText("Description")).
+              description(input.getTextAreaText("Description")).
                 severity(dropDawn.getPickListText("Severity")).
                 priority(dropDawn.getPickListText("Priority")).
                 type(dropDawn.getPickListText("Type")).
