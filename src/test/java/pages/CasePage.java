@@ -70,7 +70,7 @@ public class CasePage extends BasePage {
         $(TITLE_CASE_FIELD).append(testCase.getTitle());
        // disableBeforeUnload();
       //  $(DESCRIPTION_CASE_FIELD).append(testCase.getDescription());
-        disableBeforeUnload();
+        //   disableBeforeUnload();
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());

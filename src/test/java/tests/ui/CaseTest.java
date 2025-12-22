@@ -31,7 +31,7 @@ public class CaseTest extends BaseTest {
                         TestCase.builder().
                                 title("Test Case 1").
                                 status("Draft").
-                             //   description("Description").
+                               description("Description").
                                 severity("Blocker").
                                 priority("High").
                                 type("Functional").
@@ -44,7 +44,7 @@ public class CaseTest extends BaseTest {
                         TestCase.builder().
                                 title("Test Case 2").
                                 status("Actual").
-                             //   description("Description").
+                               description("Description").
                                 severity("Major").
                                 priority("Low").
                                 type("Smoke").
@@ -55,7 +55,7 @@ public class CaseTest extends BaseTest {
                 {
                         TestCase.builder().
                                 title("Test Case 3").
-                              //  description("Description").
+                              description("Description").
                                 status("Deprecated").
                                 severity("Trivial").
                                 priority("Low").
@@ -66,9 +66,8 @@ public class CaseTest extends BaseTest {
                 }
         };
     }
-    @Test(description = "Создание тест-кейса с разными входными данными")
-    //, dataProvider = "testCaseSpecs"
-    public void testCaseShouldHasCorrectSpecs(TestCase testCase) {
+    @Test(description = "Создание тест-кейса с разными входными данными" , dataProvider = "testCaseSpecs")
+       public void testCaseShouldHasCorrectSpecs(TestCase testCase) {
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
         casePage.creattingTestCase(testCase)
