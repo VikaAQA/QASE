@@ -26,10 +26,11 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Авторизация под валидными данными")
-    public ProductsPage login(String user, String password) {
+    public LoginPage login(String user, String password) {
         $(USER_FIELD).shouldBe(visible).setValue(user);
         $(PASSWORD_FIELD).setValue(password).submit();
-        return new ProductsPage();
+        return this;
+        //return new ProductsPage();
     }
 
     @Step("Проверка, что отображается сообщение об ошибке: '{error}'")
