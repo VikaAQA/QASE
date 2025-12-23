@@ -52,7 +52,6 @@ public class BaseTest {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.DISMISS);//при прогоне через CI настройка предотвращения появления аллерта
-            options.setCapability("unhandledPromptBehavior", "dismiss"); // чтобы точно ушло в сессию
 
             Configuration.browser = "chrome";
             Configuration.browserCapabilities = options;
@@ -111,7 +110,7 @@ public class BaseTest {
     protected void loginAndOpenProductsPage() {
         log.info("Авторизация и переход на страницу Projects");
         loginPage.openPage().isPageOpened();
-        loginPage      .login(user, password);
+        loginPage.login(user, password);
         productsPage.isPageOpened();
     }
 }

@@ -1,13 +1,11 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import dto.TestCase;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import wrappers.DropDawn;
 import wrappers.Input;
 
@@ -63,19 +61,8 @@ public class CasePage extends BasePage {
         dropDawn = new DropDawn();
         input = new Input();
         $(TITLE_CASE_FIELD).setValue(testCase.getTitle());
-         // disableBeforeUnloadSafe();
+        input.setTextInLexicalEditor(DESCRIPTION_CASE_FIELD,testCase.getDescription());
 
-        // Description — Lexical editor
-        SelenideElement descriptionEditor =
-                $(DESCRIPTION_CASE_FIELD)
-                        .shouldBe(visible, Duration.ofSeconds(20));
-
-        descriptionEditor.click();
-        descriptionEditor.sendKeys(Keys.CONTROL + "a");
-        descriptionEditor.sendKeys(Keys.DELETE);
-        descriptionEditor.sendKeys(testCase.getDescription());
-
-     // disableBeforeUnloadSafe();
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Type", FIELD_IN_DROPDAWN, testCase.getType());
@@ -90,8 +77,7 @@ public class CasePage extends BasePage {
     @Step("Создание нового тест-кейса через UI")
     public CasePage creattingTestCase(TestCase testCase) {
         openPage().isPageOpened();
-        //disableBeforeUnload();
-        fillCreateCaseForm(testCase);
+         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
         log.info("Форма создания кейса успешно сохранена");
         return new CasePage();
