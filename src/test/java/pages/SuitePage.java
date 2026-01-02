@@ -1,7 +1,6 @@
 package pages;
 
-import com.github.javafaker.Faker;
-import dto.TestSuite;
+import dto.QaseTestSuiteDto;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
@@ -26,7 +25,7 @@ public class SuitePage extends BasePage {
         return this;
     }
 
-    public SuitePage fillFormSuitePge(TestSuite testSuite) {
+    public SuitePage fillFormSuitePge(QaseTestSuiteDto testSuite) {
         $(By.id("title")).append(testSuite.getSuit_name());
         $(byText("Create")).click();
         return this;

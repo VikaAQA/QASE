@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import dto.TestCase;
+import dto.QaseTestCaseDto;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
@@ -57,7 +57,7 @@ public class CasePage extends BasePage {
     }
 
     @Step("Заполнение формы тест-кейса данными: {testCase}")
-    public void fillCreateCaseForm(TestCase testCase) {
+    public void fillCreateCaseForm(QaseTestCaseDto testCase) {
         dropDawn = new DropDawn();
         input = new Input();
         $(TITLE_CASE_FIELD).setValue(testCase.getTitle());
@@ -75,9 +75,9 @@ public class CasePage extends BasePage {
     }
 
     @Step("Создание нового тест-кейса через UI")
-    public CasePage creattingTestCase(TestCase testCase) {
+    public CasePage creattingTestCase(QaseTestCaseDto testCase) {
         openPage().isPageOpened();
-         fillCreateCaseForm(testCase);
+        fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
         log.info("Форма создания кейса успешно сохранена");
         return new CasePage();
@@ -122,11 +122,11 @@ public class CasePage extends BasePage {
     }
 
     @Step("Получение значений всех полей тест-кейса с формы")
-    public TestCase getTestCaseSpecs() {
+    public QaseTestCaseDto getTestCaseSpecs() {
         dropDawn = new DropDawn();
         input = new Input();
 
-        return TestCase.builder().
+        return QaseTestCaseDto.builder().
                 title($(By.name("title")).getValue()).
                 status(dropDawn.getPickListText("Status")).
               description(input.getTextAreaText("Description")).
@@ -140,7 +140,7 @@ public class CasePage extends BasePage {
     }
 
     @Step("Проверка заполнения полей тест-кейса")
-    public CasePage checkTestCaseSpecs(TestCase testCase) {
+    public CasePage checkTestCaseSpecs(QaseTestCaseDto testCase) {
         log.info("Проверяем заполнение полей тест-кейса");
         assertEquals(getTestCaseSpecs(), testCase, "Характеристики тест-кейса указаны неверно");
         return this;

@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class GetProjectsRs {
+public class GetProjectsResponseDto {
 
     @SerializedName("status")
     @Expose

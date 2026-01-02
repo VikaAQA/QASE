@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class TestSuite {
+public class QaseTestSuiteDto {
     String suit_name;
     String description;
     String preconditions;

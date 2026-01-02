@@ -1,11 +1,11 @@
 package utils.factories.api;
 
-import models.project.create.CreateProjectRq;
+import models.project.create.CreateProjectRequestDto;
 
 public final class ProjectRequestFactory {
 
-    public static CreateProjectRq valid() {
-        return CreateProjectRq.builder()
+    public static CreateProjectRequestDto valid() {
+        return CreateProjectRequestDto.builder()
                 .title("TMSAPI")
                 .code("API")
                 .description("test")
@@ -14,8 +14,8 @@ public final class ProjectRequestFactory {
                 .build();
     }
 
-    public static CreateProjectRq projectWithEmptyTitle() {
-        return CreateProjectRq.builder()
+    public static CreateProjectRequestDto projectWithEmptyTitle() {
+        return CreateProjectRequestDto.builder()
                 .title("")
                 .code("API")
                 .description("Project created via API with empty title")
@@ -24,11 +24,11 @@ public final class ProjectRequestFactory {
                 .build();
     }
 
-    public static CreateProjectRq projectWithEmptyCode(String title) {
-        return CreateProjectRq.builder()
-                .title(title)
-                .code("") //
-                .description("Project created via API with empty code")
+    public static CreateProjectRequestDto validWithCode(String code) {
+        return CreateProjectRequestDto.builder()
+                .title("TMSAPI")
+                .code(code)
+                .description("test")
                 .group("all")
                 .access("all")
                 .build();

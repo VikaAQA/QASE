@@ -11,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import utils.PropertyReader;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 @Log4j2
 public class BaseAPI {
@@ -18,7 +19,6 @@ public class BaseAPI {
     protected static final Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .create();
-
     protected static final String BASE_URL = "https://api.qase.io/v1/";
     protected static final String TOKEN = System.getProperty("token", PropertyReader.getProperty("token"));
 
@@ -26,6 +26,7 @@ public class BaseAPI {
     protected RequestSpecification spec() {
         return given()
                 .contentType(ContentType.JSON)
+                .baseUri(BASE_URL)
                 .header("Token", TOKEN)
                 .filter(new AllureRestAssured())
                 .log().all();
@@ -37,7 +38,7 @@ public class BaseAPI {
         return spec()
                 .body(gson.toJson(body))
                 .when()
-                .post(BASE_URL + endpoint)
+                .post(endpoint)
                 .then()
                 .log().all()
                 .extract()
@@ -49,7 +50,7 @@ public class BaseAPI {
         log.info("GET → {}", endpoint);
         return spec()
                 .when()
-                .get(BASE_URL + endpoint)
+                .get(endpoint)
                 .then()
                 .log().all()
                 .extract()
@@ -61,15 +62,18 @@ public class BaseAPI {
         log.info("DELETE → {}", endpoint);
         return spec()
                 .when()
-                .delete(BASE_URL + endpoint)
+                .delete( endpoint)
                 .then()
                 .log().all()
                 .extract()
                 .response();
     }
-
     /** Преобразование ответа в JsonPath */
     protected JsonPath json(Response response) {
         return new JsonPath(response.asString());
+    }
+    protected void validateSchema(Response response, String schemaPathInResources) {
+        response.then().assertThat()
+                .body(matchesJsonSchemaInClasspath(schemaPathInResources));
     }
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class TestCase {
+public class QaseTestCaseDto {
     String title;
     String status;
     String description;

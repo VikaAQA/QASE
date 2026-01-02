@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
-public class GetProjectRs {
+public class GetProjectResponseDto {
 
     @SerializedName("status")
     @Expose

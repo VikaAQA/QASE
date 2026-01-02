@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateCaseRs {
+public class CreateCaseResponseDTO {
 
     @SerializedName("status")
     private Boolean status;

@@ -1,7 +1,7 @@
 package utils.factories.ui;
 
 import com.github.javafaker.Faker;
-import dto.TestCase;
+import dto.QaseTestCaseDto;
 
 public final class TestCaseFactory {
     private static final Faker faker = new Faker();
@@ -9,8 +9,8 @@ public final class TestCaseFactory {
      * Фабрика для UI DTO
      * Создает валидный тест-кейс для UI форм
      */
-    public static TestCase valid() {
-        return TestCase.builder()
+    public static QaseTestCaseDto valid() {
+        return QaseTestCaseDto.builder()
                 .title(faker.book().title())
                 .description(faker.lorem().sentence())
                 .status("Actual")
@@ -18,6 +18,5 @@ public final class TestCaseFactory {
                 .priority("Medium")
                 .type("Functional")
                 .build();
-
     }
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data //оптимизирует код без геттеров и сеттеров
 @Builder //собирает обьект
-public class CreateProjectRq {
+public class CreateProjectRequestDto {
     @SerializedName("title")
     @Expose
     private String title;

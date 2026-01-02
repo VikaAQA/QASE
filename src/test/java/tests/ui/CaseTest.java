@@ -1,11 +1,11 @@
 package tests.ui;
 
-import dto.TestCase;
+import dto.QaseTestCaseDto;
+import tests.BaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import tests.BaseTest;
 import utils.factories.ui.TestCaseFactory;
 
 import static data.Elements.NAME_PROJECT;
@@ -17,7 +17,7 @@ public class CaseTest extends BaseTest {
     @Test(groups = "smoke", description = "Создание тест-кейса через UI")
     @Description("Проверка, что пользователь может создать тест-кейс через веб-интерфейс")
     public void checkCreateCase() {
-        TestCase uiCase = TestCaseFactory.valid();
+        QaseTestCaseDto uiCase = TestCaseFactory.valid();
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
         casePage.creattingTestCase(uiCase)
@@ -28,7 +28,7 @@ public class CaseTest extends BaseTest {
     public Object[][] testCaseSpecs() {
         return new Object[][]{
                 {
-                        TestCase.builder().
+                        QaseTestCaseDto.builder().
                                 title("Test Case 1").
                                 status("Draft").
                                description("Description").
@@ -41,7 +41,7 @@ public class CaseTest extends BaseTest {
                                 build()
                 },
                 {
-                        TestCase.builder().
+                        QaseTestCaseDto.builder().
                                 title("Test Case 2").
                                 status("Actual").
                                description("Description").
@@ -53,7 +53,7 @@ public class CaseTest extends BaseTest {
                                 build()
                 },
                 {
-                        TestCase.builder().
+                        QaseTestCaseDto.builder().
                                 title("Test Case 3").
                                 description("Description").
                                 status("Deprecated").
@@ -67,7 +67,7 @@ public class CaseTest extends BaseTest {
         };
     }
     @Test(description = "Создание тест-кейса с разными входными данными" , dataProvider = "testCaseSpecs")
-       public void testCaseShouldHasCorrectSpecs(TestCase testCase) {
+       public void testCaseShouldHasCorrectSpecs(QaseTestCaseDto testCase) {
         loginAndOpenProductsPage();
         modalCreateProjectPage.createProject(NAME_PROJECT);
         casePage.creattingTestCase(testCase)

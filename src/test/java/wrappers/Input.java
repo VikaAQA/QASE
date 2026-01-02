@@ -1,8 +1,8 @@
 package wrappers;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
@@ -21,9 +21,10 @@ public class Input {
         SelenideElement editor = $(locator)
                 .shouldBe(Condition.visible, Duration.ofSeconds(20));
         editor.click();
-        // Очистка
-        editor.sendKeys(Keys.CONTROL + "a");
-        editor.sendKeys(Keys.DELETE);
+         // CI-safe очистка Lexical
+         Selenide.executeJavaScript(
+                 "arguments[0].innerHTML = '<p><br></p>';", editor
+         );
         // Ввод текста
         editor.sendKeys(text);
     }

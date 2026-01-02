@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Builder
 
-public class CreateCaseRq {
+public class CreateCaseRequestDTO {
 
     @SerializedName("description")
     @Expose
