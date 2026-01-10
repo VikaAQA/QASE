@@ -22,12 +22,12 @@ public final class CaseRequestFactory {
                 .type(3)
                 .steps(List.of(
                         models.create.CreateCaseRequestDTO.Step.builder()
-                                .action("Открыть сайт")
-                                .expectedResult("Сайт открыт")
+                                .action(faker.lorem().word())
+                                .expectedResult(faker.lorem().sentence())
                                 .build(),
                         models.create.CreateCaseRequestDTO.Step.builder()
-                                .action("Авторизоваться")
-                                .expectedResult("Успешно")
+                                .action(faker.lorem().sentence())
+                                .expectedResult(faker.lorem().sentence())
                                 .build()
                 ))
                 .build();

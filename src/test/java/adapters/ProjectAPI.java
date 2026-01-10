@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
 import models.project.create.CreateProjectRequestDto;
 import models.project.create.CreateProjectResponseDto;
+import models.project.create.CreateProjectResponseErrorDto;
 import models.project.get.GetProjectResponseDto;
 
 import java.util.List;
@@ -67,6 +68,21 @@ public class ProjectAPI extends BaseAPI {
         validateSchema(response, "schema/get_project_by_code_rs.json");
 
         return gson.fromJson(response.asString(), GetProjectResponseDto.class);
+    }
+    @Step("Создание проекта ожидаемо падает с кодом 400")
+    public CreateProjectResponseErrorDto createProjectExpectErrorDto(CreateProjectRequestDto dto) {
+        Response response = createProjectRaw(dto);
+
+        assertThat(response.statusCode())
+                .as("Create project error HTTP status, body=%s", response.asString())
+                .isEqualTo(400);
+
+        CreateProjectResponseErrorDto err = gson.fromJson(response.asString(), CreateProjectResponseErrorDto.class);
+
+        assertThat(err.getStatus()).isFalse();
+        assertThat(err.getErrorFields()).isNotNull();
+
+        return err;
     }
 
     @Step("Получение списка всех проектов")

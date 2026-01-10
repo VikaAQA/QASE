@@ -14,9 +14,9 @@ public final class ProjectRequestFactory {
                 .build();
     }
 
-    public static CreateProjectRequestDto projectWithEmptyTitle() {
+    public static CreateProjectRequestDto validWithTitle(String title) {
         return CreateProjectRequestDto.builder()
-                .title("")
+                .title(title)
                 .code("API")
                 .description("Project created via API with empty title")
                 .group("all")
