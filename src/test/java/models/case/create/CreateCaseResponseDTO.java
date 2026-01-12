@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateCaseResponseDTO {
@@ -22,13 +21,14 @@ public class CreateCaseResponseDTO {
     private Result result;
 
     @Data
-    @Builder
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Result {
         @SerializedName("id")
+        @Expose
         private Integer id;
     }
 }
+
 
 

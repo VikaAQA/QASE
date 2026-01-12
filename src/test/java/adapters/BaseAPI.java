@@ -57,6 +57,19 @@ public class BaseAPI {
                 .response();
     }
 
+    /** PATCH-запрос */
+    protected Response patch(String endpoint, Object body) {
+        log.info("PATCH → {} | body={}", endpoint, body);
+        return spec()
+                .body(body)
+                .when()
+                .patch(endpoint)
+                .then()
+                .log().all()
+                .extract()
+                .response();
+    }
+
     /** DELETE-запрос */
     protected Response delete(String endpoint) {
         log.info("DELETE → {}", endpoint);

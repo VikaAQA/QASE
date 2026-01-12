@@ -32,5 +32,31 @@ public final class CaseRequestFactory {
                 ))
                 .build();
     }
+
+    public static models.create.CreateCaseRequestDTO validWithType( int numType) {
+        return models.create.CreateCaseRequestDTO.builder()
+                .title(faker.book().title())
+                .description(faker.lorem().sentence())
+                .priority(2)
+                .severity(1)
+                .type(numType)
+                .steps(List.of(
+                        models.create.CreateCaseRequestDTO.Step.builder()
+                                .action(faker.lorem().word())
+                                .expectedResult(faker.lorem().sentence())
+                                .build(),
+                        models.create.CreateCaseRequestDTO.Step.builder()
+                                .action(faker.lorem().sentence())
+                                .expectedResult(faker.lorem().sentence())
+                                .build()
+                ))
+                .build();
+    }
+
+    public static models.UpdateCaseRequestDTO updateTypeCase(int numTypeCase){
+      return  models.UpdateCaseRequestDTO.builder()
+                .type(numTypeCase)
+                .build();
+    }
 }
 
