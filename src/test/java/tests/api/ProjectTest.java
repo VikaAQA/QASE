@@ -1,12 +1,12 @@
 package tests.api;
 
 import com.github.javafaker.Faker;
+import models.project.get.GetProjectErrorResponse;
 import models.project.create.CreateProjectRequestDto;
 import models.project.create.CreateProjectResponseErrorDto;
 import org.testng.annotations.DataProvider;
 import tests.BaseTest;
 import io.qameta.allure.*;
-import io.restassured.response.Response;
 import models.project.get.GetProjectResponseDto;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,87 +19,97 @@ public class ProjectTest extends BaseTest {
     @BeforeMethod
     public void cleanUp(){projectAPI.deleteAllProject();}
 
-    @Test(description = "Создание нового проекта")
+    @Test(description = "Создание проекта" )
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Проверка успешного создания проекта")
-    public void checkCreateProject() {
-        CreateProjectRequestDto rq = ProjectRequestFactory.valid();
+    @Description("Проверка успешного создания проекта и возможности получить его по коду.")
+    public void shouldCreateProjectAndBeAvailableByCode() {
+        String createdProjectCode = projectAPI.createProject();
 
-        String code = projectAPI.createProjectAndReturnCode(rq);
+        GetProjectResponseDto fetchedProject =
+                projectAPI.getProjectByCode(createdProjectCode);
 
-        Response response = projectAPI.getProjectRaw(code);
-        assertThat(response.jsonPath().getBoolean("status")).isTrue();
+        assertThat(fetchedProject.getResult().getCode())
+                .as("Код проекта, полученного по GET, должен совпадать с кодом созданного проекта")
+                .isEqualTo(createdProjectCode);
     }
 
-    @Test(description = "Удаление проекта")
+    @Test( description = "Удаление проекта"   )
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Проверка успешного удаления проекта")
-    public void checkDeleteProject() {
-        CreateProjectRequestDto rq = ProjectRequestFactory.valid();
-        String code = projectAPI.createProjectAndReturnCode(rq);
+    @Description("Проверка успешного удаления проекта и его недоступности после удаления.")
+    public void shouldDeleteProjectAndMakeItUnavailable() {
+        String createdProjectCode = projectAPI.createProject();
 
-        projectAPI.deleteProject(code);
+        projectAPI.deleteProject(createdProjectCode);
 
-        Response after = projectAPI.getProjectRaw(code);
-        assertThat(after.jsonPath().getBoolean("status")).isFalse();
+        GetProjectErrorResponse errorResponse =
+                projectAPI.getProjectByCodeExpectError(createdProjectCode);
+
+        assertThat(errorResponse.getStatus())
+                .as("После удаления проект должен быть недоступен")
+                .isFalse();
     }
 
-    @Test(groups = "smoke", description = "Создание проекта: проверка корректности полей title и code")
+    @Test(groups = "smoke",  description = "Создание проекта: проверка полей title и code")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Проверка корректности данных, возвращаемых при создании проекта")
-    public void cheсkFieldCreateFormNewProject() {//getRs переименовать
-        CreateProjectRequestDto rq = ProjectRequestFactory.valid();
-        String code = projectAPI.createProjectAndReturnCode(rq);
+    public void  shouldCreateProjectAndReturnCorrectTitleAndCode() {
+        CreateProjectRequestDto request = ProjectRequestFactory.valid();
 
-        GetProjectResponseDto getRs = projectAPI.getProjectByCode(code);
+        String createdProjectCode = projectAPI.createProjectAndReturnCode(request);
 
-        assertThat(getRs.getResult().getTitle()).isEqualTo(rq.getTitle());
-        assertThat(getRs.getResult().getCode()).isEqualTo(code);
-
-        projectAPI.deleteProject(code);
+            GetProjectResponseDto fetchedProject = projectAPI.getProjectByCode(createdProjectCode);
+            assertThat(fetchedProject.getResult().getTitle())
+                    .as("Title проекта должен совпадать с отправленным при создании")
+                    .isEqualTo(request.getTitle());
+            assertThat(fetchedProject.getResult().getCode())
+                    .as("Code проекта должен совпадать с code созданного проекта")
+                    .isEqualTo(createdProjectCode);
     }
 
-    //добавить тест, когда title пустая строка,+
-    //можно сделать 1 тест но с дата провайдером для валидации поля title+
-
-    @DataProvider
-    public Object[][]validationProject() {
+    @DataProvider(name = "invalidProjectRequestsWithoutTitle")
+    public Object[][] invalidProjectRequestsWithoutTitle() {
         return new Object[][]{
-                {ProjectRequestFactory.validWithTitle("")
-                },
-                {ProjectRequestFactory.validWithTitle(null)
-                }
-            };
+                {ProjectRequestFactory.validWithTitle("")},
+                {ProjectRequestFactory.validWithTitle(null)}
+        };
     }
-    @Test(description = "Создание проекта без обязательного поля Title должно вернуть ошибку 400",dataProvider ="validationProject" )
-    @Description("Проверка, что при создании проекта без обязательного поля Title сервер корректно возвращает ошибку (status=false, code=400).")
-       public void checkCreateProjectFailsWithoutTitle(CreateProjectRequestDto titleProject) {//две проверки на поля внутри errorFields через ДТО ошибки в ответе
-        CreateProjectResponseErrorDto err = projectAPI.createProjectExpectErrorDto(titleProject);
+    @Test(  description = "Создание проекта без Title должно вернуть ошибку 400",
+            dataProvider = "invalidProjectRequestsWithoutTitle"
+    )
+    @Description("Проверка валидации: при создании проекта без обязательного поля Title сервер возвращает ошибку.")
+    public void shouldFailToCreateProjectWithoutTitle(CreateProjectRequestDto request) {
+        CreateProjectResponseErrorDto errorResponse =
+                projectAPI.createProjectExpectErrorDto(request);
 
-        assertThat(err.errorMessage).isEqualTo("Data is invalid.");
-        assertThat(err.getErrorFields().get(0).getError()).isEqualTo("Title is required.");
+        assertThat(errorResponse.errorMessage)
+                .as("При невалидных данных должна возвращаться общая ошибка")
+                .isEqualTo("Data is invalid.");
+
+        assertThat(errorResponse.getErrorFields().get(0).getError())
+                .as("Должна вернуться ошибка о том, что Title обязателен")
+                .isEqualTo("Title is required.");
     }
 
     @Test(description = "Создание проекта с уже существующим code должно вернуть ошибку")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Проверка уникальности project code: повторное создание проекта с тем же code запрещено.")
-    public void checkCreateProjectFailsWithDuplicateCode() {
+    public void shouldFailToCreateProjectWithDuplicateCode() {
         Faker faker = new Faker();
-        String duplicateCode = faker.letterify("????").toUpperCase();//переименовать duplicateCode чтобы было понятнее
-        String createdCode = //createdCode - дать понятнее название
-                projectAPI.createProjectAndReturnCode(
-                        ProjectRequestFactory.validWithCode(duplicateCode)
-                );
-        Response response =
-                projectAPI.createProjectRaw(
-                        ProjectRequestFactory.validWithCode(duplicateCode)
-                );
-        assertThat(response.statusCode()).isIn(400, 409, 422);
-        assertThat(response.jsonPath().getBoolean("status")).isFalse();
-        projectAPI.deleteProject(createdCode);
-    }
-    //добавить тесты на обновление проекта+кейс
-    //добавить тест: создали 20 тестов, из них 12 с типом  smoke.В апи тесте получаем все тесты, фильтруем их по типу smoke (самой с помощью коллекции,привести коллекцию к стриму отфильтровать по тегу смоук , и привести к коллекции ) и проверяем что их количество 12
+        String existingProjectCode = faker.letterify("????").toUpperCase();
 
-}
+        String createdProjectCode =
+                projectAPI.createProjectAndReturnCode(
+                        ProjectRequestFactory.validWithCode(existingProjectCode));
+
+                     CreateProjectResponseErrorDto errorResponse =
+                    projectAPI.createProjectExpectErrorDto(
+                            ProjectRequestFactory.validWithCode(existingProjectCode)
+                    );
+
+            assertThat(errorResponse.getStatus())
+                    .as("Повторное создание проекта с уже существующим code должно завершаться ошибкой")
+                    .isFalse();
+        }
+    }
+
 

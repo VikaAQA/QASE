@@ -3,10 +3,12 @@ package adapters;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
+import models.project.get.GetProjectErrorResponse;
 import models.project.create.CreateProjectRequestDto;
 import models.project.create.CreateProjectResponseDto;
 import models.project.create.CreateProjectResponseErrorDto;
 import models.project.get.GetProjectResponseDto;
+import utils.factories.api.ProjectRequestFactory;
 
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class ProjectAPI extends BaseAPI {
     @Step("Создание проекта (POST /project)")
     public Response createProjectRaw(CreateProjectRequestDto dto) {
         return post("project", dto);
-           }
+    }
 
     @Step("GET /project/{code} (raw)")
     public Response getProjectRaw(String code) {
@@ -36,18 +38,26 @@ public class ProjectAPI extends BaseAPI {
         return delete("project/" + code);
     }
 
-    @Step("Создание проекта и возврат projectCode (POST /project)")
-    public String createProjectAndReturnCode(CreateProjectRequestDto project) {
-        Response response = createProjectRaw(project);
+    public String createProject() {
+                return createProjectAndReturnCode(ProjectRequestFactory.valid());
+    }
+
+    @Step("Создать проект и вернуть его код")
+    public String createProjectAndReturnCode(CreateProjectRequestDto request) {
+        Response response = createProjectRaw(request);
+
         assertThat(response.statusCode()).isIn(200, 201);
 
         validateSchema(response, "schema/create_project_rs.json");
-        CreateProjectResponseDto rs = gson.fromJson(response.asString(), CreateProjectResponseDto.class);;
-        assertTrue(rs.status);
-        String code = rs.getResult().getCode();
-        log.info("Проект '{}' успешно создан, code = {}", project.getTitle(), code);
-        return code;
+
+        CreateProjectResponseDto responseDto =
+                gson.fromJson(response.asString(), CreateProjectResponseDto.class);
+        assertTrue(responseDto.status);
+        String projectCode = responseDto.getResult().getCode();
+        log.info("Проект '{}' успешно создан, code = {}", request.getTitle(), projectCode);
+        return projectCode;
     }
+
 
     @Step("Удаление проекта {code}")
     public void deleteProject(String code) {
@@ -68,6 +78,15 @@ public class ProjectAPI extends BaseAPI {
         validateSchema(response, "schema/get_project_by_code_rs.json");
 
         return gson.fromJson(response.asString(), GetProjectResponseDto.class);
+    }
+    @Step("Получение данных проекта по коду {code} ожидаемо падает с кодом 400")
+    public GetProjectErrorResponse getProjectByCodeExpectError(String code) {
+        Response response = getProjectRaw(code);
+
+        assertThat(response.statusCode())
+                .as("Get project HTTP status, code=%s, body: %s", code, response.asString())
+                .isEqualTo(404);
+        return gson.fromJson(response.asString(), GetProjectErrorResponse.class);
     }
     @Step("Создание проекта ожидаемо падает с кодом 400")
     public CreateProjectResponseErrorDto createProjectExpectErrorDto(CreateProjectRequestDto dto) {
@@ -100,6 +119,5 @@ public class ProjectAPI extends BaseAPI {
     public void deleteAllProject() {
         getAllProjectCodes().forEach(this::deleteProject);
     }
-
 }
 

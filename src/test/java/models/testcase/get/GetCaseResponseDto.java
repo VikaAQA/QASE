@@ -1,17 +1,18 @@
-package models;
+package models.testcase.get;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import models.BaseSuccessResponse;
 
 import java.util.List;
 
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public class GetCaseResponseDto  {
+    public class GetCaseResponseDto  implements BaseSuccessResponse<GetCaseResponseDto.Result> {
 
         @SerializedName("status")
         @Expose

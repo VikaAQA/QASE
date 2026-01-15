@@ -1,17 +1,19 @@
-package models;
+package models.testcase.get;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import models.BaseSuccessResponse;
+import models.testcase.create.CreateCaseResponseDto;
 
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetCasesResponseDto {
+public class GetCasesResponseDto implements BaseSuccessResponse<GetCasesResponseDto.Result> {
 
     @SerializedName("status")
     @Expose
@@ -48,8 +50,6 @@ public class GetCasesResponseDto {
     @AllArgsConstructor
     public static class CaseItem {
 
-        // добавляй поля по мере необходимости
-
         @SerializedName("id")
         @Expose
         private Integer id;
@@ -58,9 +58,6 @@ public class GetCasesResponseDto {
         @Expose
         private Integer type;
 
-        // при необходимости:
-        // private String title;
-        // private Integer priority;
     }
 }
 

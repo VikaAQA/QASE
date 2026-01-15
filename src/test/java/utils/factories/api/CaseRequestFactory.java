@@ -1,31 +1,30 @@
 package utils.factories.api;
 
 import com.github.javafaker.Faker;
+import models.testcase.update.UpdateCaseRequestDto;
 
 import java.util.List;
-import java.util.Random;
 
 public final class CaseRequestFactory {
 
     private static final Faker faker = new Faker();
-    private static final Random random = new Random();
 
     /**
      * Фабрика для API DTO
      */
-    public static models.create.CreateCaseRequestDTO valid() {
-        return models.create.CreateCaseRequestDTO.builder()
-                .title(faker.book().title())
+    public static models.create.CreateCaseRequestDto valid() {
+        return models.create.CreateCaseRequestDto.builder()
+                .title(faker.bothify("AUTOTEST-#####"))
                 .description(faker.lorem().sentence())
                 .priority(2)
                 .severity(1)
                 .type(3)
                 .steps(List.of(
-                        models.create.CreateCaseRequestDTO.Step.builder()
+                        models.create.CreateCaseRequestDto.Step.builder()
                                 .action(faker.lorem().word())
                                 .expectedResult(faker.lorem().sentence())
                                 .build(),
-                        models.create.CreateCaseRequestDTO.Step.builder()
+                        models.create.CreateCaseRequestDto.Step.builder()
                                 .action(faker.lorem().sentence())
                                 .expectedResult(faker.lorem().sentence())
                                 .build()
@@ -33,19 +32,19 @@ public final class CaseRequestFactory {
                 .build();
     }
 
-    public static models.create.CreateCaseRequestDTO validWithType( int numType) {
-        return models.create.CreateCaseRequestDTO.builder()
-                .title(faker.book().title())
+    public static models.create.CreateCaseRequestDto validWithType(int numType) {
+        return models.create.CreateCaseRequestDto.builder()
+                .title(faker.bothify("AUTOTEST-#####"))
                 .description(faker.lorem().sentence())
                 .priority(2)
                 .severity(1)
                 .type(numType)
                 .steps(List.of(
-                        models.create.CreateCaseRequestDTO.Step.builder()
+                        models.create.CreateCaseRequestDto.Step.builder()
                                 .action(faker.lorem().word())
                                 .expectedResult(faker.lorem().sentence())
                                 .build(),
-                        models.create.CreateCaseRequestDTO.Step.builder()
+                        models.create.CreateCaseRequestDto.Step.builder()
                                 .action(faker.lorem().sentence())
                                 .expectedResult(faker.lorem().sentence())
                                 .build()
@@ -53,8 +52,8 @@ public final class CaseRequestFactory {
                 .build();
     }
 
-    public static models.UpdateCaseRequestDTO updateTypeCase(int numTypeCase){
-      return  models.UpdateCaseRequestDTO.builder()
+    public static UpdateCaseRequestDto updateTypeCase(int numTypeCase){
+      return  UpdateCaseRequestDto.builder()
                 .type(numTypeCase)
                 .build();
     }
