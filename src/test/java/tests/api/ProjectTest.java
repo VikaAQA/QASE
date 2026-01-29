@@ -97,14 +97,10 @@ public class ProjectTest extends BaseTest {
         Faker faker = new Faker();
         String existingProjectCode = faker.letterify("????").toUpperCase();
 
-        String createdProjectCode =
-                projectAPI.createProjectAndReturnCode(
-                        ProjectRequestFactory.validWithCode(existingProjectCode));
+        projectAPI.createProjectAndReturnCode(ProjectRequestFactory.validWithCode(existingProjectCode));
 
-                     CreateProjectResponseErrorDto errorResponse =
-                    projectAPI.createProjectExpectErrorDto(
-                            ProjectRequestFactory.validWithCode(existingProjectCode)
-                    );
+        CreateProjectResponseErrorDto errorResponse = projectAPI.createProjectExpectErrorDto
+                (ProjectRequestFactory.validWithCode(existingProjectCode));
 
             assertThat(errorResponse.getStatus())
                     .as("Повторное создание проекта с уже существующим code должно завершаться ошибкой")
