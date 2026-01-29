@@ -2,7 +2,6 @@ package tests.api;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import models.testcase.create.CreateCaseResponseDto;
 import models.testcase.get.GetCaseErrorResponseDto;
 import models.testcase.get.GetCaseResponseDto;
 import models.testcase.get.GetCasesResponseDto;
@@ -24,22 +23,10 @@ public class CaseTest extends BaseTest {
     @Test(groups = "smoke", description = "Создание тест-кейса и получение его по id")
     @Description("Проверка позитивного сценария добавления тест-кейса в проект.")
     public void shouldCreateTestCaseInProject() {
-        models.create.CreateCaseRequestDto createCaseExpectedObject = CaseRequestFactory.valid();
-        String projectCode = projectAPI.createProject();
-        CreateCaseResponseDto createdCase = caseAPI.createTestCase(projectCode, createCaseExpectedObject);
-        int createdCaseId = createdCase.getResult().getId();
-
-        GetCaseResponseDto fetchedCase = caseAPI.getCase(projectCode, createdCaseId);
-
-        assertThat(fetchedCase.getResult().getId())
-                .as("Полученный по GET тест-кейс должен иметь id созданного кейса")
-                .isEqualTo(createdCaseId);
-        assertThat(fetchedCase.getResult().getTitle()).isEqualTo(createCaseExpectedObject.getTitle());
-        assertThat(fetchedCase.getResult().getDescription()).isEqualTo(createCaseExpectedObject.getDescription());
-        assertThat(fetchedCase.getResult().getSeverity()).isEqualTo(createCaseExpectedObject.getSeverity());
-        assertThat(fetchedCase.getResult().getPriority()).isEqualTo(createCaseExpectedObject.getPriority());//дописать пояснения к проверкам
-        //ctrl + R
-    }
+            String projectCode = projectAPI.createProject();
+            models.create.CreateCaseRequestDto request = CaseRequestFactory.valid();
+            caseAPI.assertCaseCreatedCorrectly(projectCode, request);
+        }
 
     @Test(description = "Удаление тест-кейса")
     public void shouldDeleteTestCase(){
@@ -55,7 +42,7 @@ public class CaseTest extends BaseTest {
     @Test(description = "Обновление тест-кейса: PATCH, поле type")
     @Description("Проверка корректного обновления тест-кейса методом PATCH на примере поля type.")
     public void shouldUpdateTestCase() {
-        String projectCode = projectAPI.createProject();//сделать дто UpdateCaseRequestDto способным для передачи любого поля для обновления
+        String projectCode = projectAPI.createProject();
         int createdCaseId = caseAPI.createTestCaseAndReturnId(projectCode, CaseRequestFactory.valid());
 
         caseAPI.updateCaseType(projectCode, createdCaseId, SMOKE_TYPE_CASE);
@@ -79,7 +66,6 @@ public class CaseTest extends BaseTest {
     }
 
     @Test(description = "Фильтрация тест-кейсов по типу ")
-    //кажется аннотаация излишняя
     @Description("""
             Проверка корректной фильтрации тест-кейсов:
             - создаётся проект

@@ -83,6 +83,7 @@ public class CaseAPI extends BaseAPI {
         return responseDto;
     }
 
+
     @Step("Создать тест-кейс в проекте {projectCode}")
     public CreateCaseResponseDto createTestCase(String projectCode, models.create.CreateCaseRequestDto request) {
         Response response = createCaseRaw(projectCode, request);
@@ -178,5 +179,31 @@ public class CaseAPI extends BaseAPI {
         return response.getResult().getEntities().stream()
                 .filter(c -> Objects.equals(c.getType(), type))
                 .collect(Collectors.toList());
+    }
+    @Step("Создать тест-кейс и проверить, что он корректно сохранён")
+    public void assertCaseCreatedCorrectly(String projectCode, models.create.CreateCaseRequestDto expected) {
+
+        int caseId = createTestCaseAndReturnId(projectCode, expected);
+        GetCaseResponseDto actual = getCase(projectCode, caseId);
+
+        assertThat(actual.getResult())
+                .as("Созданный тест-кейс должен соответствовать данным запроса")
+                .satisfies(result -> {
+                    assertThat(result.getId())
+                            .as("ID созданного тест-кейса должен быть сгенерирован")
+                            .isNotNull();
+                    assertThat(result.getTitle())
+                            .as("Поле title должно совпадать с переданным при создании")
+                            .isEqualTo(expected.getTitle());
+                    assertThat(result.getDescription())
+                            .as("Поле description должно совпадать с переданным при создании")
+                            .isEqualTo(expected.getDescription());
+                    assertThat(result.getSeverity())
+                            .as("Поле severity должно совпадать с переданным при создании")
+                            .isEqualTo(expected.getSeverity());
+                    assertThat(result.getPriority())
+                            .as("Поле priority должно совпадать с переданным при создании")
+                            .isEqualTo(expected.getPriority());
+         });
     }
 }

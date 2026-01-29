@@ -59,9 +59,11 @@ public class BaseAPI {
 
     /** PATCH-запрос */
     protected Response patch(String endpoint, Object body) {
-        log.info("PATCH → {} | body={}", endpoint, body);
+        String json = gson.toJson(body);
+        log.info("PATCH → {} | body={}", endpoint, json);
         return spec()
-                .body(body)
+                .contentType(ContentType.JSON)
+                .body(json)
                 .when()
                 .patch(endpoint)
                 .then()
