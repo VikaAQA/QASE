@@ -3,6 +3,7 @@ package wrappers;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
@@ -20,12 +21,9 @@ public class Input {
      public void setTextInLexicalEditor(String locator, String text) {
         SelenideElement editor = $(locator)
                 .shouldBe(Condition.visible, Duration.ofSeconds(20));
-        editor.click();
-         // CI-safe очистка Lexical
-         Selenide.executeJavaScript(
-                 "arguments[0].innerHTML = '<p><br></p>';", editor
-         );
-        // Ввод текста
-        editor.sendKeys(text);
+         editor.click();
+         editor.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+         editor.sendKeys(Keys.BACK_SPACE);
+         editor.sendKeys(text);
     }
 }

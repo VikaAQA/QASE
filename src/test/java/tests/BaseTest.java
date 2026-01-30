@@ -88,22 +88,31 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true, description = "Browser teardown")
     public void tearDown(ITestResult result) {
         log.info("Завершение теста: {}", result.getName());
-
         if (!result.isSuccess()) {
             try {
                 byte[] screenshot = ((TakesScreenshot) WebDriverRunner.getWebDriver())
                         .getScreenshotAs(OutputType.BYTES);
                 Allure.addAttachment("Screenshot on failure", new ByteArrayInputStream(screenshot));
-                log.error("Тест упал: {} — скриншот добавлен в отчет Allure", result.getName());
             } catch (Exception e) {
-                log.error("Не удалось сделать скриншот при падении теста {}: {}", result.getName(), e.getMessage());
+                log.error("Не удалось сделать скриншот: {}", e.getMessage());
             }
         }
-
+        dismissAlertIfPresent();
         closeWebDriver();
 
-             new ProjectAPI().deleteAllProject();
+        new ProjectAPI().deleteAllProject();
         log.info("Окружение очищено после теста {}", result.getName());
+    }
+
+    private void dismissAlertIfPresent() {
+        try {
+            WebDriverRunner.getWebDriver()
+                    .switchTo()
+                    .alert()
+                    .dismiss();
+        } catch (Exception ignored) {
+            // alert отсутствует — это нормально
+        }
     }
 
     @Step("Авторизация и открытие страницы Projects")
