@@ -63,7 +63,7 @@ public class BaseTest {
 
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 5000;
+        Configuration.timeout = 15000;
         Configuration.clickViaJs = true;
         Configuration.headless = true;
 
@@ -111,8 +111,7 @@ public class BaseTest {
                     .alert()
                     .dismiss();
         } catch (Exception ignored) {
-            // alert отсутствует — это нормально
-        }
+            }
     }
 
     @Step("Авторизация и открытие страницы Projects")

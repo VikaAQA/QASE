@@ -79,6 +79,8 @@ public class CasePage extends BasePage {
         openPage().isPageOpened();
         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
+        $(byText("Test case was created successfully!"))
+                .shouldBe(Condition.visible, Duration.ofSeconds(20));
         log.info("Форма создания кейса успешно сохранена");
         return new CasePage();
     }
