@@ -108,9 +108,9 @@ public class BaseTest {
 
     @Step("Авторизация и открытие страницы Projects")
     protected void loginAndOpenProductsPage() {
-        log.info("Авторизация и переход на страницу Projects");
         loginPage.openPage().isPageOpened();
-        loginPage.login(user, password);
+
+        ProductsPage productsPage = loginPage.login(user, password);
         productsPage.isPageOpened();
     }
 }

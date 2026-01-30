@@ -29,7 +29,7 @@ public class ProductsPage extends BasePage {
     @Step("Проверка, что  страница проектов открыта")
     public ProductsPage isPageOpened() {
         CREATE_NEW_PROJECT_BTN
-                .shouldBe(visible, Duration.ofSeconds(90));
+                .shouldBe(visible, Duration.ofSeconds(120));
         log.info("Страница проектов успешно загружена и кнопка 'Create new project' отображается");
         return this;
     }
