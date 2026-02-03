@@ -62,7 +62,7 @@ public class CasePage extends BasePage {
         input = new Input();
         $(TITLE_CASE_FIELD).setValue(testCase.getTitle());
         dismissAlertIfPresent();
-        input.setTextInLexicalEditor(DESCRIPTION_CASE_FIELD,testCase.getDescription());
+       input.setTextInLexicalEditor(DESCRIPTION_CASE_FIELD,testCase.getDescription());
 
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Severity", FIELD_IN_DROPDAWN, testCase.getSeverity());
@@ -133,7 +133,7 @@ public class CasePage extends BasePage {
         return QaseTestCaseDto.builder().
                 title($(By.name("title")).getValue()).
                 status(dropDawn.getPickListText("Status")).
-              description(input.getTextAreaText("Description")).
+            description(input.getTextAreaText("Description")).
                 severity(dropDawn.getPickListText("Severity")).
                 priority(dropDawn.getPickListText("Priority")).
                 type(dropDawn.getPickListText("Type")).

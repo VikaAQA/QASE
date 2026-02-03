@@ -20,7 +20,7 @@ public class Input {
         return (text.isEmpty() ? null : text);
     }
 
-     public void setTextInLexicalEditor(String locator, String text) {
+ /*  public void setTextInLexicalEditor(String locator, String text) {
         SelenideElement editor = $(locator)
                 .shouldBe(Condition.visible, Duration.ofSeconds(20));
          editor.click();
@@ -28,6 +28,35 @@ public class Input {
          editor.sendKeys(Keys.chord(Keys.CONTROL, "a"));
          editor.sendKeys(Keys.BACK_SPACE);
          editor.sendKeys(text);
+    }*/
+    public void setTextInLexicalEditor(String locator, String text) {
+        SelenideElement editor = $(locator)
+                .shouldBe(Condition.visible, Duration.ofSeconds(20));
+
+        disableBeforeUnloadSafe();
+
+        Selenide.executeJavaScript(
+                "const el = arguments[0];" +
+                        "el.focus();" +
+                        "el.innerText = arguments[1];" +
+                        "el.dispatchEvent(new InputEvent('input', { bubbles: true }));" +
+                        "el.dispatchEvent(new Event('change', { bubbles: true }));",
+                editor, text
+        );
+    }
+
+    protected void disableBeforeUnloadSafe() {
+        Selenide.executeJavaScript(
+                "window.onbeforeunload = null;" +
+                        "if (!window.__beforeUnloadBlocked) {" +
+                        "  window.__beforeUnloadBlocked = true;" +
+                        "  const add = window.addEventListener;" +
+                        "  window.addEventListener = function(type, listener, options) {" +
+                        "    if (type === 'beforeunload') return;" +
+                        "    return add.call(this, type, listener, options);" +
+                        "  };" +
+                        "}"
+        );
     }
 
     protected void dismissAlertIfPresent() {

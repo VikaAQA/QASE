@@ -63,5 +63,4 @@ public abstract class BasePage {
                         "btn?.click();"
         );
     }
-
-}
+ }
