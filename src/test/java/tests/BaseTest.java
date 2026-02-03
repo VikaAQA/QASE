@@ -116,10 +116,13 @@ public class BaseTest {
 
     @Step("Авторизация и открытие страницы Projects")
     protected void loginAndOpenProductsPage() {
-        loginPage.openPage().isPageOpened();
-
+        loginPage.openPage()
+                .isPageOpened()
+                .acceptCookiesIfPresent();
         ProductsPage productsPage = loginPage.login(user, password);
+        productsPage.acceptCookiesIfPresent();
         productsPage.isPageOpened();
     }
+
 }
 

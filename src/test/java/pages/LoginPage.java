@@ -13,13 +13,15 @@ public class LoginPage extends BasePage {
             ERROR_MESSAGE = "//small",
             PASSWORD_FIELD = "[name='password']";
 
+    private final String SIGN_IN_BUTTON = "button[type='submit']";
+
     @Step("Открытие страницы авторизации")
     public LoginPage openPage() {
         open("/login");
         return new LoginPage();
     }
 
-    @Step("Проверка,что страница авторизации открыта")
+      @Step("Проверка,что страница авторизации открыта")
     public LoginPage isPageOpened() {
         $(PASSWORD_FIELD).shouldBe(visible);
         return this;
@@ -28,9 +30,11 @@ public class LoginPage extends BasePage {
     @Step("Авторизация под валидными данными")
     public ProductsPage login(String user, String password) {
         $(USER_FIELD).shouldBe(visible).setValue(user);
-        $(PASSWORD_FIELD).setValue(password).submit();
-        //  return this;
-        return page(ProductsPage.class);
+        $(PASSWORD_FIELD).setValue(password);
+        $(SIGN_IN_BUTTON)
+                .shouldBe(Condition.enabled)
+                .click();
+         return page(ProductsPage.class);
     }
 
     @Step("Проверка, что отображается сообщение об ошибке: '{error}'")

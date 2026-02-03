@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Step;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.UnhandledAlertException;
 import wrappers.DropDawn;
@@ -24,8 +25,7 @@ public abstract class BasePage {
                     .alert()
                     .dismiss();
                   } catch (NoAlertPresentException ignored) {
-            // alert не появился — это нормально
-        }
+           }
     }
 
     /**
@@ -54,4 +54,14 @@ public abstract class BasePage {
                 "window.addEventListener('beforeunload', function(e){ e.stopImmediatePropagation(); }, true);"
         );
     }
+    @Step("Принять cookies, если баннер появился")
+    public void acceptCookiesIfPresent() {
+        safeExecuteJs(
+                "const b=document.querySelector('#usercentrics-cmp-ui');" +
+                        "if(!b) return;" +
+                        "const btn=b.shadowRoot?.querySelector('#accept');" +
+                        "btn?.click();"
+        );
+    }
+
 }

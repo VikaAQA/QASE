@@ -61,6 +61,7 @@ public class CasePage extends BasePage {
         dropDawn = new DropDawn();
         input = new Input();
         $(TITLE_CASE_FIELD).setValue(testCase.getTitle());
+        dismissAlertIfPresent();
         input.setTextInLexicalEditor(DESCRIPTION_CASE_FIELD,testCase.getDescription());
 
         dropDawn.selectFromCustomDropdown(DROPDAWN_XPATH, "Status", FIELD_IN_DROPDAWN, testCase.getStatus());
@@ -77,6 +78,7 @@ public class CasePage extends BasePage {
     @Step("Создание нового тест-кейса через UI")
     public CasePage creattingTestCase(QaseTestCaseDto testCase) {
         openPage().isPageOpened();
+        dismissAlertIfPresent();
         fillCreateCaseForm(testCase);
         $(byText(SAVE_BTN)).click();
         $(byText("Test case was created successfully!"))

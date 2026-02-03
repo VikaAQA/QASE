@@ -19,7 +19,8 @@ public class ProductsPage extends BasePage {
     private final String DELETE_PROJECTS_BTN = "//span[text()='Delete project']";
     private final String OPEN_ACTION_MENU_BTN = "button[aria-label='Open action menu']";
 
-    @Step("Открытие страницы проектов")
+
+    @Step("Открыть страницу проектов ({PROJECTS_URL})")
     public ProductsPage openPage() {
         open(PROJECTS_URL);
         log.info("Открыта страница проектов по URL: {}", PROJECTS_URL);
