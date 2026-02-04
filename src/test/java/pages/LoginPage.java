@@ -12,7 +12,6 @@ public class LoginPage extends BasePage {
     private final String USER_FIELD = "[name=email]",
             ERROR_MESSAGE = "//small",
             PASSWORD_FIELD = "[name='password']";
-
     private final String SIGN_IN_BUTTON = "button[type='submit']";
 
     @Step("Открытие страницы авторизации")
