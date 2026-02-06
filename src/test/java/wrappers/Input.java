@@ -45,6 +45,7 @@ public class Input {
         SelenideElement editor = $(locator)
                 .shouldBe(Condition.visible, Duration.ofSeconds(20));
         editor.click();
+        dismissAlertIfPresent();
         disableBeforeUnloadSafe();
         editor.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         editor.sendKeys(Keys.BACK_SPACE);
