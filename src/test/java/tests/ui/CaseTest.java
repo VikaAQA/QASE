@@ -1,5 +1,6 @@
 package tests.ui;
 
+import adapters.CaseAPI;
 import dto.QaseTestCaseDto;
 import tests.BaseTest;
 import io.qameta.allure.Description;

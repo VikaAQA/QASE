@@ -30,6 +30,7 @@ public class CaseEditPage extends BasePage{
     @Step("Проверка, что страница редактирования тест-кейса открыта")
     public CaseEditPage isPageOpened() {
         $(byText(TITLE_CASE_TXT)).shouldBe(visible, Duration.ofSeconds(30));
+        disableBeforeUnloadSafe();
         log.info("Страница редактирования тест-кейса успешно загрузилась");
         return this;}
 
