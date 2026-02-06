@@ -22,17 +22,14 @@ public class ProjectAPI extends BaseAPI {
     public Response createProjectRaw(CreateProjectRequestDto dto) {
         return post("project", dto);
     }
-
     @Step("GET /project/{code} (raw)")
     public Response getProjectRaw(String code) {
         return get("project/" + code);
     }
-
     @Step("GET /project?limit={limit}&offset={offset} (raw)")
     public Response getProjectsRaw(int limit, int offset) {
         return get("project?limit=" + limit + "&offset=" + offset);
     }
-
     @Step("DELETE /project/{code} (raw)")
     public Response deleteProjectRaw(String code) {
         return delete("project/" + code);
@@ -41,7 +38,6 @@ public class ProjectAPI extends BaseAPI {
     public String createProject() {
                 return createProjectAndReturnCode(ProjectRequestFactory.valid());
     }
-
     @Step("Создать проект и вернуть его код")
     public String createProjectAndReturnCode(CreateProjectRequestDto request) {
         Response response = createProjectRaw(request);
@@ -57,8 +53,6 @@ public class ProjectAPI extends BaseAPI {
         log.info("Проект '{}' успешно создан, code = {}", request.getTitle(), projectCode);
         return projectCode;
     }
-
-
     @Step("Удаление проекта {code}")
     public void deleteProject(String code) {
         Response response = deleteProjectRaw(code);
@@ -66,7 +60,6 @@ public class ProjectAPI extends BaseAPI {
                 .as("Delete project HTTP status, code=%s, body: %s", code, response.asString())
                 .isIn(200, 204);
     }
-
     @Step("Получение данных проекта по коду {code}")
     public GetProjectResponseDto getProjectByCode(String code) {
         Response response = getProjectRaw(code);
@@ -103,7 +96,6 @@ public class ProjectAPI extends BaseAPI {
 
         return err;
     }
-
     @Step("Получение списка всех проектов")
     public List<String> getAllProjectCodes() {
         Response response = getProjectsRaw(10, 0);
@@ -114,7 +106,6 @@ public class ProjectAPI extends BaseAPI {
 
         return json(response).getList("result.entities.code", String.class);
     }
-
     @Step("Удаление всех проектов")
     public void deleteAllProject() {
         getAllProjectCodes().forEach(this::deleteProject);

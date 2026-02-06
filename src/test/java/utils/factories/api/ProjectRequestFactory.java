@@ -6,7 +6,7 @@ public final class ProjectRequestFactory {
 
     public static CreateProjectRequestDto valid() {
         return CreateProjectRequestDto.builder()
-                .title("TMSAPI")
+                .title("TMS")
                 .code("API")
                 .description("test")
                 .group("all")
@@ -26,7 +26,7 @@ public final class ProjectRequestFactory {
 
     public static CreateProjectRequestDto validWithCode(String code) {
         return CreateProjectRequestDto.builder()
-                .title("TMSAPI")
+                .title("TMS")
                 .code(code)
                 .description("test")
                 .group("all")

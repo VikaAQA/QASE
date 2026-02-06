@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
 import models.BaseSuccessResponse;
+import models.project.get.GetProjectResponseDto;
 import models.testcase.create.CreateCaseResponseDto;
 import models.testcase.get.GetCaseErrorResponseDto;
 import models.testcase.get.GetCaseResponseDto;
@@ -28,27 +29,22 @@ public class CaseAPI extends BaseAPI {
     public Response createCaseRaw(String project, models.create.CreateCaseRequestDto rq) {
         return post("case/" + project, rq);
     }
-
     @Step("GET /case/{project}/{caseId} (raw)")
     public Response getCaseRaw(String project, int caseId) {
         return get("case/" + project + "/" + caseId);
     }
-
     @Step("GET /case/{project} (raw)")
     public Response getAllCasesRaw(String project) {
         return get("case/" + project );
     }
-
     @Step("Patch /case/{project}/{caseId} (raw)")
     public Response updateCaseRaw(String project, int caseId, UpdateCaseRequestDto body) {
         return patch("case/" + project + "/" + caseId, body);
     }
-
     @Step("Delete /case/{project}/{caseId} (raw)")
     public Response deleteCaseRaw (String project, int caseId){
         return delete("case/" + project + "/" + caseId);
     }
-
     @Step("Удалить тест-кейс {caseId} в проекте {projectCode}")
     public void deleteCase(String projectCode, int caseId) {
         Response response = deleteCaseRaw(projectCode, caseId);
@@ -58,32 +54,23 @@ public class CaseAPI extends BaseAPI {
                         projectCode, caseId, response.asString())
                 .isIn(200, 204);
     }
-
     private <T extends BaseSuccessResponse> T generalAssertions(Response response, String projectCode, Class<T> classOfT) {
-
         assertThat(response.statusCode())
                 .as("HTTP-статус должен быть 200 или 201, project=%s, body=%s",
                         projectCode, response.asString())
                 .isIn(200, 201);
-
         T responseDto = gson.fromJson(response.asString(), classOfT);
-
         assertThat(responseDto)
                 .as("Ответ должен быть не null, project=%s", projectCode)
                 .isNotNull();
-
         assertThat(responseDto.getStatus())
                 .as("status должен быть true, project=%s", projectCode)
                 .isTrue();
-
         assertThat(responseDto.getResult())
                 .as("result должен быть не null, project=%s", projectCode)
                 .isNotNull();
-
         return responseDto;
     }
-
-
     @Step("Создать тест-кейс в проекте {projectCode}")
     public CreateCaseResponseDto createTestCase(String projectCode, models.create.CreateCaseRequestDto request) {
         Response response = createCaseRaw(projectCode, request);
@@ -92,10 +79,8 @@ public class CaseAPI extends BaseAPI {
         assertThat(createCaseResponseDto.getResult().getId())
                 .as("ID созданного тест-кейса должен быть заполнен, project=%s", projectCode)
                 .isNotNull();
-
         return createCaseResponseDto;
     }
-
     @Step("Добавление {countCases} тест-кейсов в проект {projectCode}")
     public List<Integer> createSeveralTestCases(String projectCode, int countCases) {
         assertThat(countCases)
@@ -110,7 +95,6 @@ public class CaseAPI extends BaseAPI {
         }
          return ids;
     }
-
     @Step("Добавление {countCases} тест-кейсов типа {type} в проект {projectCode}")
     public List<Integer> createSeveralTestCases(String projectCode, int countCases, int type) {
         assertThat(countCases)
@@ -125,12 +109,10 @@ public class CaseAPI extends BaseAPI {
         }
         return ids;
     }
-
     @Step("Создать тест-кейс в проекте {projectCode} и вернуть его id")
     public int createTestCaseAndReturnId(String projectCode, models.create.CreateCaseRequestDto rq) {
         return createTestCase(projectCode, rq).getResult().getId();
     }
-
     @Step("Получить тест-кейс по id {caseId} в проекте {projectCode}")
     public GetCaseResponseDto getCase(String projectCode, int caseId) {
         Response response = getCaseRaw(projectCode, caseId);

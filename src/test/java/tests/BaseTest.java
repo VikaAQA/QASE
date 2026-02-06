@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import steps.UiSteps;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -28,16 +29,19 @@ import adapters.ProjectAPI;
 public class BaseTest {
 
     protected LoginPage loginPage;
-    protected ProductsPage productsPage;
-    protected ProjectPage projectPage;
+    protected ProjectsPage projectsPage;
+    protected RepositoryPage repositoryPage;
     protected ModalCreateProjectPage modalCreateProjectPage;
-    protected CasePage casePage;
+    protected CaseCreatePage caseCreatePage;
+    protected CaseEditPage caseEditPage;
     protected SuitePage suitePage;
+
 
     protected ProjectAPI projectAPI;
     protected CaseAPI caseAPI;
 
-    protected String user = System.getProperty("user", PropertyReader.getProperty("user"));
+    protected UiSteps uiSteps;
+      protected String user = System.getProperty("user", PropertyReader.getProperty("user"));
     protected String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
     @BeforeSuite(alwaysRun = true)
@@ -74,15 +78,26 @@ public class BaseTest {
         );
 
         loginPage = new LoginPage();
-        productsPage = new ProductsPage();
-        projectPage = new ProjectPage();
+        projectsPage = new ProjectsPage();
+        repositoryPage = new RepositoryPage();
         modalCreateProjectPage = new ModalCreateProjectPage();
-        casePage = new CasePage();
+        caseCreatePage = new CaseCreatePage();
         suitePage = new SuitePage();
+        caseEditPage = new CaseEditPage();
 
         projectAPI = new ProjectAPI();
         caseAPI = new CaseAPI();
-        log.info("UI и API окружение успешно инициализировано");
+
+        uiSteps = new UiSteps(
+                modalCreateProjectPage,
+                repositoryPage,
+                projectsPage,
+                caseCreatePage,
+                suitePage,
+                caseEditPage
+        );
+
+       log.info("UI и API окружение успешно инициализировано");
     }
 
     @AfterMethod(alwaysRun = true, description = "Browser teardown")
@@ -119,10 +134,9 @@ public class BaseTest {
         loginPage.openPage()
                 .isPageOpened()
                 .acceptCookiesIfPresent();
-        ProductsPage productsPage = loginPage.login(user, password);
+        ProjectsPage productsPage = loginPage.login(user, password);
         productsPage.acceptCookiesIfPresent();
         productsPage.isPageOpened();
     }
-
 }
 

@@ -5,13 +5,9 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.UnhandledAlertException;
-import wrappers.DropDawn;
-import wrappers.Input;
 
 public abstract class BasePage {
-    protected DropDawn dropDawn;
-    protected Input input;
-    public abstract BasePage isPageOpened();
+      public abstract BasePage isPageOpened();
 
     /**
      * Закрывает браузерный alert (confirm/prompt),
@@ -47,13 +43,26 @@ public abstract class BasePage {
      * чтобы браузер не показывал confirm
      * «Are you sure you want to leave?»
      */
-
     protected void disableBeforeUnloadSafe() {
+        Selenide.executeJavaScript(
+                "window.onbeforeunload = null;" +
+                        "if (!window.__beforeUnloadBlocked) {" +
+                        "  window.__beforeUnloadBlocked = true;" +
+                        "  const add = window.addEventListener;" +
+                        "  window.addEventListener = function(type, listener, options) {" +
+                        "    if (type === 'beforeunload') return;" +
+                        "    return add.call(this, type, listener, options);" +
+                        "  };" +
+                        "}"
+        );
+    }
+
+  /*  protected void disableBeforeUnloadSafe() {
         safeExecuteJs("window.onbeforeunload = null;");
         safeExecuteJs(
                 "window.addEventListener('beforeunload', function(e){ e.stopImmediatePropagation(); }, true);"
         );
-    }
+    }*/
     @Step("Принять cookies, если баннер появился")
     public void acceptCookiesIfPresent() {
         safeExecuteJs(
