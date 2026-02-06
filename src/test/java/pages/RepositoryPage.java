@@ -24,12 +24,13 @@ public class RepositoryPage extends BasePage {
     public RepositoryPage openRepository(String project) {
        log.info("Открываем страницу проекта: {}", project);
       open(PROJECT_URL + "/" + project);
-      disableBeforeUnloadSafe();
+    //  disableBeforeUnloadSafe();
       return this;
     }
     @Step("Проверка, что страница проекта '{project}' открыт")
     public RepositoryPage isPageOpened(){
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
+        disableBeforeUnloadSafe();
         log.info("Страница проекта успешно открыта");
         return this;
     }
@@ -56,10 +57,11 @@ public class RepositoryPage extends BasePage {
     @Step("Открыть страницу создания тест-кейса")
     public CaseCreatePage openCasePage() {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
-        // CI fix: иногда появляется beforeunload alert при вводе в Lexical editor
-        disableBeforeUnloadSafe();
-        log.info("Страница создания тест-кейса открыта");
-        return new CaseCreatePage();
+
+        CaseCreatePage page = page(CaseCreatePage.class)
+                .isPageOpened();
+        page.disableBeforeUnloadSafe();    // ⬅️ CI fix AFTER load
+        return page;
     }
     @Step("Открыть страницу создания тестового набора (Suite)")
     public SuitePage openSuitPage() {
