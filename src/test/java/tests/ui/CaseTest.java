@@ -8,6 +8,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.factories.ui.TestCaseFactory;
 
+import static data.Elements.NAME_PROJECT;
+
 
 @Epic("UI Tests")
 public class CaseTest extends BaseTest {
@@ -65,10 +67,11 @@ public void checkCreateCase() {
     @Test(description = "Создание тест-кейса с разными входными данными", dataProvider = "testCaseSpecs")
     public void testCaseShouldHasCorrectSpecs(QaseTestCaseDto testCase) {
         loginAndOpenProductsPage();
-        String projectCode = projectAPI.createProject();
-        repositoryPage.openRepository(projectCode);
+        uiSteps.createProject(NAME_PROJECT);
+      /*  String projectCode = projectAPI.createProject();
+        repositoryPage.openRepository(projectCode);*/
         uiSteps.createCase(testCase)
-               .openEditAndAssertCaseFormMatches(projectCode, 1, testCase);
+               .openEditAndAssertCaseFormMatches(NAME_PROJECT, 1, testCase);
     }
 }
 

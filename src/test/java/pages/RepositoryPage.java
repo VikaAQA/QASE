@@ -60,7 +60,7 @@ public class RepositoryPage extends BasePage {
 
         CaseCreatePage page = page(CaseCreatePage.class)
                 .isPageOpened();
-        page.disableBeforeUnloadSafe();    // ⬅️ CI fix AFTER load
+        page.disableBeforeUnloadSafe();
         return page;
     }
     @Step("Открыть страницу создания тестового набора (Suite)")
