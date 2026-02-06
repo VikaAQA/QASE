@@ -20,7 +20,7 @@ public void checkCreateCase() {
     QaseTestCaseDto uiCase = TestCaseFactory.valid();
 
     loginAndOpenProductsPage();
-    String projectCode = projectAPI.createProject();
+    //    String projectCode = projectAPI.createProject();
     uiSteps.createProject(NAME_PROJECT);
       /*  String projectCode = projectAPI.createProject();
         repositoryPage.openRepository(projectCode);*/
