@@ -51,7 +51,6 @@ public class Input {
         dismissAlertIfPresent();
         editor.sendKeys(text);
     }
-
     private void disableBeforeUnloadSafe() {
         Selenide.executeJavaScript(DISABLE_BEFOREUNLOAD_JS);
     }
