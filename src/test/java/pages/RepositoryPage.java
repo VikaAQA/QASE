@@ -1,5 +1,6 @@
 package pages;
 
+import dto.QaseTestCaseDto;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
@@ -20,6 +21,7 @@ public class RepositoryPage extends BasePage {
     private final String TEST_CASES_AREA_CSS = "[data-suite-body-id]";
     private final String TEST_CASES_LIST_CSS = TEST_CASES_AREA_CSS + "[draggable]";
     private final String NAME_SUITE_CSS = "[title='%s']";
+
     @Step("Открытие репозитория проекта '{project}'")
     public RepositoryPage openRepository(String project) {
        log.info("Открываем страницу проекта: {}", project);
@@ -63,6 +65,8 @@ public class RepositoryPage extends BasePage {
         page.disableBeforeUnloadSafe();
         return page;
     }
+
+
     @Step("Открыть страницу создания тестового набора (Suite)")
     public SuitePage openSuitPage() {
         $(byText("Create new suite"))

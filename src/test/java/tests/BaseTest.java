@@ -35,8 +35,6 @@ public class BaseTest {
     protected CaseCreatePage caseCreatePage;
     protected CaseEditPage caseEditPage;
     protected SuitePage suitePage;
-
-
     protected ProjectAPI projectAPI;
     protected CaseAPI caseAPI;
 

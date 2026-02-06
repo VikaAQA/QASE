@@ -47,10 +47,7 @@ public class CaseCreatePage extends BasePage {
         log.info("Форма заполнена данными тест-кейса: {}", testCase);
         return this;
     }
-    @Step("Создание нового тест-кейса через UI")
-    public RepositoryPage createTestCase(QaseTestCaseDto testCase) {
-        return fillCreateCaseForm(testCase).clickSave();
-    }
+
     @Step("Нажатие кнопки Save")
     public RepositoryPage clickSave() {
         $(byText(SAVE_BTN)).click();

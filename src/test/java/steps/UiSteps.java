@@ -59,7 +59,8 @@ public class UiSteps {
 
         repositoryPage.openCasePage();
         caseCreatePage.isPageOpened()
-                      .createTestCase(testCase);
+                .fillCreateCaseForm(testCase)
+                .clickSave();
         repositoryPage.shouldSeeSuccessToast();
         return this;
     }
