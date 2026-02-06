@@ -3,7 +3,11 @@ package wrappers;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoAlertPresentException;
+import pages.BasePage;
+
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -37,16 +41,26 @@ public class Input {
      * поэтому перед вводом отключаем beforeunload-обработчики.
      */
 
-   public void setTextInLexicalEditor(String locator, String text) {
+    public void setTextInLexicalEditor(String locator, String text) {
         SelenideElement editor = $(locator)
                 .shouldBe(Condition.visible, Duration.ofSeconds(20));
-         editor.click();
-         disableBeforeUnloadSafe();
-         editor.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-         editor.sendKeys(Keys.BACK_SPACE);
-         editor.sendKeys(text);
+        editor.click();
+        disableBeforeUnloadSafe();
+        editor.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        editor.sendKeys(Keys.BACK_SPACE);
+        dismissAlertIfPresent();
+        editor.sendKeys(text);
     }
+
     private void disableBeforeUnloadSafe() {
         Selenide.executeJavaScript(DISABLE_BEFOREUNLOAD_JS);
     }
- }
+
+    public void dismissAlertIfPresent() {
+        try {
+            WebDriverRunner.getWebDriver().switchTo().alert().dismiss();
+        } catch (NoAlertPresentException ignored) {
+            // алерта нет — ок
+        }
+    }
+}
