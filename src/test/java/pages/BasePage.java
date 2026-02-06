@@ -44,18 +44,31 @@ public abstract class BasePage {
      * «Are you sure you want to leave?»
      */
     protected void disableBeforeUnloadSafe() {
-        Selenide.executeJavaScript(
-                "window.onbeforeunload = null;" +
-                        "if (!window.__beforeUnloadBlocked) {" +
-                        "  window.__beforeUnloadBlocked = true;" +
-                        "  const add = window.addEventListener;" +
-                        "  window.addEventListener = function(type, listener, options) {" +
-                        "    if (type === 'beforeunload') return;" +
-                        "    return add.call(this, type, listener, options);" +
-                        "  };" +
-                        "}"
-        );
-    }
+                  try {
+                // 1) если alert уже открыт — сначала его закрываем
+                if (Selenide.switchTo().alert() != null) {
+                    try { Selenide.switchTo().alert().dismiss(); } catch (Exception ignored) {}
+                }
+            } catch (Exception ignored) {
+                // alert не открыт — ок
+            }
+
+            // 2) теперь можно выполнять JS
+            Selenide.executeJavaScript(
+                    "try {" +
+                            "  window.onbeforeunload = null;" +
+                            "  window.onunload = null;" +
+                            "  if (!window.__beforeUnloadBlocked) {" +
+                            "    window.__beforeUnloadBlocked = true;" +
+                            "    const add = window.addEventListener;" +
+                            "    window.addEventListener = function(type, listener, options) {" +
+                            "      if (type === 'beforeunload') return;" +
+                            "      return add.call(this, type, listener, options);" +
+                            "    };" +
+                            "  }" +
+                            "} catch(e) {}"
+            );
+        }
 
   /*  protected void disableBeforeUnloadSafe() {
         safeExecuteJs("window.onbeforeunload = null;");
