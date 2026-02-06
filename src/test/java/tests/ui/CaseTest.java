@@ -23,8 +23,8 @@ public void checkCreateCase() {
     loginAndOpenProductsPage();
     //    String projectCode = projectAPI.createProject();
     uiSteps.createProject(NAME_PROJECT);
-      /*  String projectCode = projectAPI.createProject();
-        repositoryPage.openRepository(projectCode);*/
+
+   //     repositoryPage.openRepository(projectCode);*/
  //   uiSteps.createCase(testCase)
             //  repositoryPage.openRepository(projectCode);
     uiSteps.createCase(uiCase)
