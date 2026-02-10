@@ -8,9 +8,7 @@ import io.qameta.allure.Epic;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.factories.ui.TestCaseFactory;
-
 import static data.Elements.NAME_PROJECT;
-
 
 @Epic("UI Tests")
 public class CaseTest extends BaseTest {
