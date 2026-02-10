@@ -37,10 +37,10 @@ public class CaseCreatePage extends BasePage {
         //dismissAlertIfPresent();
          input.fillInTextArea("Description", testCase.getDescription());
       //  input.setTextInLexicalEditor(DESCRIPTION_CASE_FIELD,testCase.getDescription());
-        dropDown.selectFromCustomDropdown(DROPDOWN_XPATH, "Status", FIELD_IN_DROPDOWN, testCase.getStatus());
-        dropDown.selectFromCustomDropdown(DROPDOWN_XPATH, "Severity", FIELD_IN_DROPDOWN, testCase.getSeverity());
-        dropDown.selectFromCustomDropdown(DROPDOWN_XPATH, "Type", FIELD_IN_DROPDOWN, testCase.getType());
-        dropDown.selectFromCustomDropdown(DROPDOWN_XPATH, "Priority", FIELD_IN_DROPDOWN, testCase.getPriority());
+        dropDown.select( "Status", testCase.getStatus());
+        dropDown.select( "Severity",  testCase.getSeverity());
+        dropDown.select("Type", testCase.getType());
+        dropDown.select( "Priority", testCase.getPriority());
         if (testCase.isFlaky())
             dropDown.select("Is flaky", "Yes");
         dropDown.select("Behavior", testCase.getBehavior());

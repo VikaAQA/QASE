@@ -26,7 +26,6 @@ public class RepositoryPage extends BasePage {
     public RepositoryPage openRepository(String project) {
        log.info("Открываем страницу проекта: {}", project);
       open(PROJECT_URL + "/" + project);
-    //  disableBeforeUnloadSafe();
       return this;
     }
     @Step("Проверка, что страница проекта '{project}' открыт")
@@ -43,7 +42,6 @@ public class RepositoryPage extends BasePage {
         log.info("Проект '{}' успешно создан и отображается", project);
         return this;
     }
-
     @Step("Проверка, что тест-кейс успешно создан")
     public RepositoryPage checkThatTestCaseIsCreated(int countCase) {
         $(By.xpath(BLOCK_CASE)).shouldBe(visible, Duration.ofSeconds(60));
@@ -61,12 +59,9 @@ public class RepositoryPage extends BasePage {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
 
         CaseCreatePage page = page(CaseCreatePage.class);
-                // .isPageOpened();
-        page. disableBeforeUnloadHard();;
+                  page. disableBeforeUnloadHard();;
         return page;
     }
-
-
     @Step("Открыть страницу создания тестового набора (Suite)")
     public SuitePage openSuitPage() {
         $(byText("Create new suite"))
@@ -82,13 +77,6 @@ public class RepositoryPage extends BasePage {
         log.info("Suite '{}' успешно отображается на странице", suiteName);
         return this;
     }
-  /*  @Step("Проверка успешного создания тест-кейса")
-    public RepositoryPage shouldSeeSuccessToast() {
-        $(byText("Test case was created successfully!"))
-                .shouldBe(visible, Duration.ofSeconds(20));
-        log.info("Отображён toast об успешном создании тест-кейса");
-        return this;
-    }*/
      @Step("Проверка, что тест-кейс '{testCaseTitle}' принадлежит сьюте '{suiteTitle}'")
     public boolean doesTestCaseBelongToSuite(String suiteTitle, String testCaseTitle) {
         return $x(String.format(TEST_CASE_XPATH, suiteTitle, testCaseTitle)).exists();
