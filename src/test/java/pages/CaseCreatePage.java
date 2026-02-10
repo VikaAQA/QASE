@@ -35,7 +35,8 @@ public class CaseCreatePage extends BasePage {
     public CaseCreatePage fillCreateCaseForm(QaseTestCaseDto testCase) {
         $(TITLE_CASE_FIELD).setValue(testCase.getTitle());
         //dismissAlertIfPresent();
-        input.setTextInLexicalEditor(DESCRIPTION_CASE_FIELD,testCase.getDescription());
+         input.fillInTextArea("Description", testCase.getDescription());
+      //  input.setTextInLexicalEditor(DESCRIPTION_CASE_FIELD,testCase.getDescription());
         dropDown.selectFromCustomDropdown(DROPDOWN_XPATH, "Status", FIELD_IN_DROPDOWN, testCase.getStatus());
         dropDown.selectFromCustomDropdown(DROPDOWN_XPATH, "Severity", FIELD_IN_DROPDOWN, testCase.getSeverity());
         dropDown.selectFromCustomDropdown(DROPDOWN_XPATH, "Type", FIELD_IN_DROPDOWN, testCase.getType());

@@ -62,6 +62,13 @@ public class Input {
         Selenide.executeJavaScript(DISABLE_BEFOREUNLOAD_JS);
     }
 
+    public void fillInTextArea(String label, String text) {
+        if (text != null) {
+            log.info("Writing text '{}' into text area with label '{}'", text, label);
+            $x(String.format(TEXT_AREA_XPATH, label)).setValue(text);
+        }
+    }
+
     public void dismissAlertIfPresent() {
         try {
             WebDriverRunner.getWebDriver().switchTo().alert().dismiss();
