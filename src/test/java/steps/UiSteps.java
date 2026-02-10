@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import pages.*;
 
-import static com.codeborne.selenide.Selectors.byText;
+import static org.testng.Assert.assertEquals;
 
 @Log4j2
 public class UiSteps {
@@ -74,13 +74,19 @@ public class UiSteps {
         return this;
     }
     @Step("UI: Открыть редактирование кейса id={caseId} в проекте '{projectCode}' и проверить соответствие введенных данных")
-    public UiSteps openEditAndAssertCaseFormMatches(String projectCode, int caseId, QaseTestCaseDto expected) {
+    public UiSteps openEditCaseForm(String projectCode, int caseId, QaseTestCaseDto expected) {
         log.info("UI: проверяем, что форма кейса id={} соответствует введённым данным", caseId, projectCode);
 
         caseEditPage.openEditCasePage(projectCode, caseId)
-                .isPageOpened()
-                .assertEditFormMatchesTestCase(expected);;
+                .isPageOpened();
+                //.assertEditFormMatchesTestCase(expected);
         return this;
+    }
+
+    @Step("Проверка заполнения полей тест-кейса на форме редактирования")
+    public void assertEditFormMatchesTestCase(QaseTestCaseDto testCase) {
+        log.info("Проверяем заполнение полей тест-кейса");
+        assertEquals(caseEditPage.getTestCaseSpecs(), testCase, "Характеристики тест-кейса указаны неверно");
     }
     @Step("UI: Создать Suite '{suiteName}'")
     public UiSteps createSuite(QaseTestSuiteDto suite) {

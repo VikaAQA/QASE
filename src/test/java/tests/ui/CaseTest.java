@@ -1,6 +1,5 @@
 package tests.ui;
 
-import adapters.CaseAPI;
 import dto.QaseTestCaseDto;
 import tests.BaseTest;
 import io.qameta.allure.Description;
@@ -72,7 +71,8 @@ public void checkCreateCase() {
       /*  String projectCode = projectAPI.createProject();
         repositoryPage.openRepository(projectCode);*/
         uiSteps.createCase(testCase)
-               .openEditAndAssertCaseFormMatches(NAME_PROJECT, 1, testCase);
+               .openEditCaseForm(NAME_PROJECT, 1, testCase)
+                .assertEditFormMatchesTestCase(testCase);
     }
 }
 
