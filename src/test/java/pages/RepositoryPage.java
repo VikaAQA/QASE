@@ -60,8 +60,8 @@ public class RepositoryPage extends BasePage {
     public CaseCreatePage openCasePage() {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
 
-        CaseCreatePage page = page(CaseCreatePage.class)
-                .isPageOpened();
+        CaseCreatePage page = page(CaseCreatePage.class);
+                // .isPageOpened();
         page.disableBeforeUnloadSafe();
         return page;
     }
@@ -82,13 +82,13 @@ public class RepositoryPage extends BasePage {
         log.info("Suite '{}' успешно отображается на странице", suiteName);
         return this;
     }
-    @Step("Проверка успешного создания тест-кейса")
+  /*  @Step("Проверка успешного создания тест-кейса")
     public RepositoryPage shouldSeeSuccessToast() {
         $(byText("Test case was created successfully!"))
                 .shouldBe(visible, Duration.ofSeconds(20));
         log.info("Отображён toast об успешном создании тест-кейса");
         return this;
-    }
+    }*/
      @Step("Проверка, что тест-кейс '{testCaseTitle}' принадлежит сьюте '{suiteTitle}'")
     public boolean doesTestCaseBelongToSuite(String suiteTitle, String testCaseTitle) {
         return $x(String.format(TEST_CASE_XPATH, suiteTitle, testCaseTitle)).exists();

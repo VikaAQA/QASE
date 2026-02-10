@@ -35,7 +35,9 @@ public class BaseTest {
     protected CaseCreatePage caseCreatePage;
     protected CaseEditPage caseEditPage;
     protected SuitePage suitePage;
+    protected RepositoryCasePreviewPage repositoryCasePreviewPage;
     protected ProjectAPI projectAPI;
+
     protected CaseAPI caseAPI;
 
     protected UiSteps uiSteps;
@@ -82,6 +84,7 @@ public class BaseTest {
         caseCreatePage = new CaseCreatePage();
         suitePage = new SuitePage();
         caseEditPage = new CaseEditPage();
+        repositoryCasePreviewPage = new RepositoryCasePreviewPage();
 
         projectAPI = new ProjectAPI();
         caseAPI = new CaseAPI();
@@ -92,7 +95,8 @@ public class BaseTest {
                 projectsPage,
                 caseCreatePage,
                 suitePage,
-                caseEditPage
+                caseEditPage,
+                repositoryCasePreviewPage
         );
 
        log.info("UI и API окружение успешно инициализировано");
