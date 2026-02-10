@@ -5,23 +5,24 @@ REST API и Web UI на примере системы управления те�
 - показать архитектурное мышление
 - продемонстрировать навыки API и UI автоматизации
 
-##  Technology Stack
-Core:
-Java
-TestNG
-Selenium/Selenide
-Lombok
-Rest Assured
-Jackson
-Gson
+## Technology Stack
 
-Reports and logs:
-Allure
-Log4j2
+### Core
+- Java
+- TestNG
+- Selenium / Selenide
+- Lombok
+- REST Assured
+- Jackson
+- Gson
 
-CI:
-GitHub Actions
-Maven
+### Reports and logs
+- Allure
+- Log4j2
+
+### CI
+- GitHub Actions
+- Maven
 
 ##  Test Coverage
 ###  API Tests
