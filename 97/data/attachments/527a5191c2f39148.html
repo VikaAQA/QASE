@@ -1,0 +1,53 @@
+<div>POST to https://api.qase.io/v1/case/API</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+{
+    &quot;description&quot;: &quot;Dolore aut aut laudantium.&quot;,
+    &quot;title&quot;: &quot;AUTOTEST-02618&quot;,
+    &quot;severity&quot;: 1,
+    &quot;priority&quot;: 2,
+    &quot;type&quot;: 3,
+    &quot;steps&quot;: [
+        {
+            &quot;action&quot;: &quot;nihil&quot;,
+            &quot;expected_result&quot;: &quot;Eum odit rerum eveniet eligendi vitae et.&quot;
+        },
+        {
+            &quot;action&quot;: &quot;Excepturi repellat illum quo cum voluptatem optio.&quot;,
+            &quot;expected_result&quot;: &quot;Excepturi at laborum.&quot;
+        }
+    ]
+}    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Token: 16a159bbf58faf5e4dbdcca7339ac92571e4f8c05d3973f7f09be2856ba5761d</div>
+        <div>Accept: */*</div>
+        <div>Content-Type: application/json</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;https://api.qase.io/v1/case/API&#39; -H &#39;Token: 16a159bbf58faf5e4dbdcca7339ac92571e4f8c05d3973f7f09be2856ba5761d&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;description&quot;: &quot;Dolore aut aut laudantium.&quot;,
+    &quot;title&quot;: &quot;AUTOTEST-02618&quot;,
+    &quot;severity&quot;: 1,
+    &quot;priority&quot;: 2,
+    &quot;type&quot;: 3,
+    &quot;steps&quot;: [
+        {
+            &quot;action&quot;: &quot;nihil&quot;,
+            &quot;expected_result&quot;: &quot;Eum odit rerum eveniet eligendi vitae et.&quot;
+        },
+        {
+            &quot;action&quot;: &quot;Excepturi repellat illum quo cum voluptatem optio.&quot;,
+            &quot;expected_result&quot;: &quot;Excepturi at laborum.&quot;
+        }
+    ]
+}&#39;
+</div>
