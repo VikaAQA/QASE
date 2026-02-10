@@ -20,6 +20,7 @@ import static org.testng.Assert.assertEquals;
 public class CaseEditPage extends BasePage{
     private final DropDown dropDown = new DropDown();
     private final Input input = new Input();
+    private final String SAVE_BTN = "Save";
 
     @Step("Открыть страницу редактирования тест-кейса №{index} в проекте {projectCode}")
     public CaseEditPage openEditCasePage(String projectCode, int index) {
@@ -38,6 +39,7 @@ public class CaseEditPage extends BasePage{
         public void assertEditFormMatchesTestCase(QaseTestCaseDto testCase) {
             log.info("Проверяем заполнение полей тест-кейса");
             assertEquals(getTestCaseSpecs(), testCase, "Характеристики тест-кейса указаны неверно");
+            $(byText(SAVE_BTN)).click();
         }
     @Step("Получение значений всех полей тест-кейса с формы")
     public QaseTestCaseDto getTestCaseSpecs() {

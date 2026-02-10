@@ -49,32 +49,14 @@ public class Input {
             // 1. Отключаем beforeunload сразу
             disableBeforeUnloadSafe();
 
-            SelenideElement editor;
-            try {
-                editor = $(locator).shouldBe(Condition.visible, Duration.ofSeconds(20));
-            } catch (UnhandledAlertException e) {
-                log.warn("UnhandledAlertException при поиске элемента — закрываем и пробуем снова");
-                dismissAlertIfPresent();
-                // Ждём немного перед повтором
-                sleep(500);
-                editor = $(locator).shouldBe(Condition.visible, Duration.ofSeconds(20));
-            }
-
-            editor.click();
-            dismissAlertIfPresent();
-
-            // 2. Безопасный ввод текста
-            safeSendKeys(editor, Keys.chord(Keys.CONTROL, "a"));
-            safeSendKeys(editor, Keys.BACK_SPACE);
-            safeSendKeys(editor, text);
-        }
-     /*   editor.click();
+            SelenideElement editor = $(locator).shouldBe(Condition.visible, Duration.ofSeconds(20));
+          editor.click();
         dismissAlertIfPresent();
         disableBeforeUnloadSafe();
         editor.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         editor.sendKeys(Keys.BACK_SPACE);
         dismissAlertIfPresent();
-        editor.sendKeys(text);*/
+        editor.sendKeys(text);}
 
     private void disableBeforeUnloadSafe() {
         Selenide.executeJavaScript(DISABLE_BEFOREUNLOAD_JS);
@@ -85,19 +67,5 @@ public class Input {
             WebDriverRunner.getWebDriver().switchTo().alert().dismiss();
         } catch (NoAlertPresentException ignored) {
           }
-    }
-
-    private void safeSendKeys(SelenideElement element, CharSequence... keys) {
-        int maxRetries = 3;
-        for (int i = 0; i < maxRetries; i++) {
-            try {
-                element.sendKeys(keys);
-                return;
-            } catch (UnhandledAlertException e) {
-                log.warn("Алерт при sendKeys (попытка {}), закрываем...", i + 1);
-                dismissAlertIfPresent();
-                if (i == maxRetries - 1) throw e;
-            }
-        }
     }
 }

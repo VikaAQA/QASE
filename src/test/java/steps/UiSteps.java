@@ -6,6 +6,8 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import pages.*;
 
+import static com.codeborne.selenide.Selectors.byText;
+
 @Log4j2
 public class UiSteps {
 
@@ -77,7 +79,7 @@ public class UiSteps {
 
         caseEditPage.openEditCasePage(projectCode, caseId)
                 .isPageOpened()
-                .assertEditFormMatchesTestCase(expected);
+                .assertEditFormMatchesTestCase(expected);;
         return this;
     }
     @Step("UI: Создать Suite '{suiteName}'")
