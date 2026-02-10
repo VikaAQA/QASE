@@ -4,15 +4,17 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.UnhandledAlertException;
 import pages.BasePage;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
-
+@Log4j2
 public class Input {
     private static final String TEXT_AREA_XPATH = "(//*[text()='%s']/following-sibling::*//p)[last()]";
 
@@ -47,10 +49,17 @@ public class Input {
         editor.click();
         dismissAlertIfPresent();
         disableBeforeUnloadSafe();
+
+        safeSendKeys(editor, Keys.chord(Keys.CONTROL, "a"));
+        safeSendKeys(editor, Keys.BACK_SPACE);
+        safeSendKeys(editor, text);
+     /*   editor.click();
+        dismissAlertIfPresent();
+        disableBeforeUnloadSafe();
         editor.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         editor.sendKeys(Keys.BACK_SPACE);
         dismissAlertIfPresent();
-        editor.sendKeys(text);
+        editor.sendKeys(text);*/
     }
     private void disableBeforeUnloadSafe() {
         Selenide.executeJavaScript(DISABLE_BEFOREUNLOAD_JS);
@@ -61,5 +70,19 @@ public class Input {
             WebDriverRunner.getWebDriver().switchTo().alert().dismiss();
         } catch (NoAlertPresentException ignored) {
           }
+    }
+
+    private void safeSendKeys(SelenideElement element, CharSequence... keys) {
+        int maxRetries = 3;
+        for (int i = 0; i < maxRetries; i++) {
+            try {
+                element.sendKeys(keys);
+                return;
+            } catch (UnhandledAlertException e) {
+                log.warn("Алерт при sendKeys (попытка {}), закрываем...", i + 1);
+                dismissAlertIfPresent();
+                if (i == maxRetries - 1) throw e;
+            }
+        }
     }
 }
