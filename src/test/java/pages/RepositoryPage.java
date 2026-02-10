@@ -32,7 +32,7 @@ public class RepositoryPage extends BasePage {
     @Step("Проверка, что страница проекта '{project}' открыт")
     public RepositoryPage isPageOpened(){
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
-        disableBeforeUnloadSafe();
+        disableBeforeUnloadHard();
         log.info("Страница проекта успешно открыта");
         return this;
     }
@@ -62,7 +62,7 @@ public class RepositoryPage extends BasePage {
 
         CaseCreatePage page = page(CaseCreatePage.class);
                 // .isPageOpened();
-        page.disableBeforeUnloadSafe();
+        page. disableBeforeUnloadHard();;
         return page;
     }
 

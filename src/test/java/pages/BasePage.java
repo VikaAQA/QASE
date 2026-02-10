@@ -43,17 +43,24 @@ public abstract class BasePage {
      * чтобы браузер не показывал confirm
      * «Are you sure you want to leave?»
      */
-    protected void disableBeforeUnloadSafe() {
+    public void disableBeforeUnloadHard() {
         Selenide.executeJavaScript(
-                "window.onbeforeunload = null;" +
-                        "if (!window.__beforeUnloadBlocked) {" +
-                        "  window.__beforeUnloadBlocked = true;" +
-                        "  const add = window.addEventListener;" +
+                "try {" +
+                        "  if (window.__bu_blocked) return;" +
+                        "  window.__bu_blocked = true;" +
+                        "  const origAdd = window.addEventListener;" +
                         "  window.addEventListener = function(type, listener, options) {" +
                         "    if (type === 'beforeunload') return;" +
-                        "    return add.call(this, type, listener, options);" +
+                        "    return origAdd.call(this, type, listener, options);" +
                         "  };" +
-                        "}"
+                        "  try {" +
+                        "    Object.defineProperty(window, 'onbeforeunload', {" +
+                        "      configurable: true," +
+                        "      get: function(){ return null; }," +
+                        "      set: function(v){ /* blocked */ }" +
+                        "    });" +
+                        "  } catch(e) { window.onbeforeunload = null; }" +
+                        "} catch(e) {}"
         );
     }
 

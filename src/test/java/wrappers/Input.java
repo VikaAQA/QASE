@@ -18,27 +18,6 @@ import static com.codeborne.selenide.Selenide.*;
 public class Input {
     private static final String TEXT_AREA_XPATH = "(//*[text()='%s']/following-sibling::*//p)[last()]";
 
-    // CI fix:
-    // В Qase (SPA) иногда появляется confirm "Are you sure you want to leave?"
-    // из-за beforeunload, особенно при вводе в rich editor (Lexical).
-    private static final String DISABLE_BEFOREUNLOAD_JS =
-            "try {" +
-                    "  if (window.__bu_blocked) return;" +
-                    "  window.__bu_blocked = true;" +
-                    "  const origAdd = window.addEventListener;" +
-                    "  window.addEventListener = function(type, listener, options) {" +
-                    "    if (type === 'beforeunload') return;" +
-                    "    return origAdd.call(this, type, listener, options);" +
-                    "  };" +
-                    "  try {" +
-                    "    Object.defineProperty(window, 'onbeforeunload', {" +
-                    "      configurable: true," +
-                    "      get: function(){ return null; }," +
-                    "      set: function(v){ /* blocked */ }" +
-                    "    });" +
-                    "  } catch(e) { window.onbeforeunload = null; }" +
-                    "} catch(e) {}";
-
     public String getTextAreaText(String label) {
         String text = $x(String.format(TEXT_AREA_XPATH, label)).getText();
         return (text.isEmpty() ? null : text);

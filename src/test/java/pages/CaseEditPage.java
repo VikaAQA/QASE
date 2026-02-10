@@ -34,11 +34,6 @@ public class CaseEditPage extends BasePage{
         log.info("Страница редактирования тест-кейса успешно загрузилась");
         return this;}
 
-       /* @Step("Проверка заполнения полей тест-кейса на форме редактирования")
-        public void assertEditFormMatchesTestCase(QaseTestCaseDto testCase) {
-            log.info("Проверяем заполнение полей тест-кейса");
-            assertEquals(getTestCaseSpecs(), testCase, "Характеристики тест-кейса указаны неверно");
-            }*/
     @Step("Получение значений всех полей тест-кейса с формы")
     public QaseTestCaseDto getTestCaseSpecs() {
         return QaseTestCaseDto.builder().
