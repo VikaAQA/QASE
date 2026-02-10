@@ -6,15 +6,22 @@ REST API и Web UI на примере системы управления те�
 - продемонстрировать навыки API и UI автоматизации
 
 ##  Technology Stack
-- Java 17
-- Maven
-- TestNG
-- REST Assured
-- Selenide / Selenium
-- Allure Report
-- Lombok
-- Gson
-- GitHub Actions (CI)
+Core:
+Java
+TestNG
+Selenium/Selenide
+Lombok
+Rest Assured
+Jackson
+Gson
+
+Reports and logs:
+Allure
+Log4j2
+
+CI:
+GitHub Actions
+Maven
 
 ##  Test Coverage
 ###  API Tests
