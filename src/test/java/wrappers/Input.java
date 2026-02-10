@@ -6,7 +6,6 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.UnhandledAlertException;
 import pages.BasePage;
 
 import java.time.Duration;
@@ -42,7 +41,7 @@ public class Input {
      * поэтому перед вводом отключаем beforeunload-обработчики.
      */
 
-  /*  public void setTextInLexicalEditor(String locator, String text) {
+    public void setTextInLexicalEditor(String locator, String text) {
         SelenideElement editor = $(locator)
                 .shouldBe(Condition.visible, Duration.ofSeconds(20));
         editor.click();
@@ -52,39 +51,6 @@ public class Input {
         editor.sendKeys(Keys.BACK_SPACE);
         dismissAlertIfPresent();
         editor.sendKeys(text);
-    }*/
-    public void setTextInLexicalEditor(String locator, String text) {
-        SelenideElement editor = $(locator).shouldBe(Condition.visible, Duration.ofSeconds(20));
-
-        // Убедимся, что алерта нет перед началом
-        dismissAlertIfPresent();
-
-        // Отключаем beforeunload (сразу!)
-        disableBeforeUnloadSafe();
-
-        try {
-            // Клик — может вызвать beforeunload
-            editor.click();
-
-            // На всякий случай — снова проверим алерт
-            dismissAlertIfPresent();
-
-            // Лучше не использовать sendKeys, т.к. он может вызвать событие, вызывающее beforeunload
-            // Вставляем текст через JS — безопаснее
-            Selenide.executeJavaScript("arguments[0].innerText = arguments[1];", editor, text);
-
-            // Если приложение ожидает событие input — эмулируем его
-            Selenide.executeJavaScript(
-                    "var evt = document.createEvent('HTMLEvents');" +
-                            "evt.initEvent('input', true, true);" +
-                            "arguments[0].dispatchEvent(evt);",
-                    editor
-            );
-        } catch (UnhandledAlertException e) {
-            // Если всё равно появился алерт — убираем его и пробуем снова
-            dismissAlertIfPresent();
-            Selenide.executeJavaScript("arguments[0].innerText = arguments[1];", editor, text);
-        }
     }
     private void disableBeforeUnloadSafe() {
         Selenide.executeJavaScript(DISABLE_BEFOREUNLOAD_JS);
