@@ -12,7 +12,6 @@ import static data.Elements.NAME_PROJECT;
 
 @Epic("UI Tests")
 public class CaseTest extends BaseTest {
-
 @Test(groups = "smoke", description = "Создание тест-кейса через UI")
 @Description("Проверка, что пользователь может создать тест-кейс через веб-интерфейс")
 public void checkCreateCase() {
