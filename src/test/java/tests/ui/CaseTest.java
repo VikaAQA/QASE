@@ -72,7 +72,7 @@ public void checkCreateCase() {
         repositoryPage.openRepository(projectCode);*/
         uiSteps.createCase(testCase)
                .openEditCaseForm(NAME_PROJECT, 1, testCase)
-                .assertEditFormMatchesTestCase(testCase);
+               .assertEditFormMatchesTestCase(testCase);
     }
 }
 

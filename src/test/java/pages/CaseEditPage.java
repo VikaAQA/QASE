@@ -21,17 +21,16 @@ public class CaseEditPage extends BasePage{
     private final DropDown dropDown = new DropDown();
     private final Input input = new Input();
 
-
     @Step("Открыть страницу редактирования тест-кейса №{index} в проекте {projectCode}")
     public CaseEditPage openEditCasePage(String projectCode, int index) {
         open(String.format("/case/%s/edit/%s", projectCode, index));
-        return this;
+         return this;
     }
 
     @Step("Проверка, что страница редактирования тест-кейса открыта")
     public CaseEditPage isPageOpened() {
         $(byText(TITLE_CASE_TXT)).shouldBe(visible, Duration.ofSeconds(30));
-        disableBeforeUnloadSafe();
+        input.disableBeforeUnloadHard();
         log.info("Страница редактирования тест-кейса успешно загрузилась");
         return this;}
 

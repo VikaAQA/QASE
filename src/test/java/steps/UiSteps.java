@@ -79,6 +79,7 @@ public class UiSteps {
 
         caseEditPage.openEditCasePage(projectCode, caseId)
                 .isPageOpened();
+
                 //.assertEditFormMatchesTestCase(expected);
         return this;
     }

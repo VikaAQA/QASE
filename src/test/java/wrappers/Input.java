@@ -22,15 +22,22 @@ public class Input {
     // В Qase (SPA) иногда появляется confirm "Are you sure you want to leave?"
     // из-за beforeunload, особенно при вводе в rich editor (Lexical).
     private static final String DISABLE_BEFOREUNLOAD_JS =
-            "window.onbeforeunload = null;" +
-                    "if (!window.__beforeUnloadBlocked) {" +
-                    "  window.__beforeUnloadBlocked = true;" +
-                    "  const add = window.addEventListener;" +
+            "try {" +
+                    "  if (window.__bu_blocked) return;" +
+                    "  window.__bu_blocked = true;" +
+                    "  const origAdd = window.addEventListener;" +
                     "  window.addEventListener = function(type, listener, options) {" +
                     "    if (type === 'beforeunload') return;" +
-                    "    return add.call(this, type, listener, options);" +
+                    "    return origAdd.call(this, type, listener, options);" +
                     "  };" +
-                    "}";
+                    "  try {" +
+                    "    Object.defineProperty(window, 'onbeforeunload', {" +
+                    "      configurable: true," +
+                    "      get: function(){ return null; }," +
+                    "      set: function(v){ /* blocked */ }" +
+                    "    });" +
+                    "  } catch(e) { window.onbeforeunload = null; }" +
+                    "} catch(e) {}";
 
     public String getTextAreaText(String label) {
         String text = $x(String.format(TEXT_AREA_XPATH, label)).getText();
@@ -47,24 +54,42 @@ public class Input {
             // 0. Проверим, нет ли алерта перед началом
             dismissAlertIfPresent();
             // 1. Отключаем beforeunload сразу
-            disableBeforeUnloadSafe();
+        //    disableBeforeUnloadSafe();
 
             SelenideElement editor = $(locator).shouldBe(Condition.visible, Duration.ofSeconds(20));
           editor.click();
         dismissAlertIfPresent();
-        disableBeforeUnloadSafe();
+       // disableBeforeUnloadSafe();
         editor.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         editor.sendKeys(Keys.BACK_SPACE);
         dismissAlertIfPresent();
         editor.sendKeys(text);}
 
-    private void disableBeforeUnloadSafe() {
-        Selenide.executeJavaScript(DISABLE_BEFOREUNLOAD_JS);
+    public void disableBeforeUnloadHard() {
+        Selenide.executeJavaScript(
+                "try {" +
+                        "  if (window.__bu_blocked) return;" +
+                        "  window.__bu_blocked = true;" +
+                        "  const origAdd = window.addEventListener;" +
+                        "  window.addEventListener = function(type, listener, options) {" +
+                        "    if (type === 'beforeunload') return;" +
+                        "    return origAdd.call(this, type, listener, options);" +
+                        "  };" +
+                        "  try {" +
+                        "    Object.defineProperty(window, 'onbeforeunload', {" +
+                        "      configurable: true," +
+                        "      get: function(){ return null; }," +
+                        "      set: function(v){ /* blocked */ }" +
+                        "    });" +
+                        "  } catch(e) { window.onbeforeunload = null; }" +
+                        "} catch(e) {}"
+        );
     }
 
     public void fillInTextArea(String label, String text) {
         if (text != null) {
             log.info("Writing text '{}' into text area with label '{}'", text, label);
+            dismissAlertIfPresent();
             $x(String.format(TEXT_AREA_XPATH, label)).setValue(text);
         }
     }
