@@ -36,10 +36,8 @@ public class UiSteps {
     @Step("UI: Создать проект '{projectName}'")
     public UiSteps createProject(String projectName) {
            log.info("UI: создаём проект '{}'", projectName);
-
             projectsPage.openCreateProjectModal()
                         .createProject(projectName);
-
             repositoryPage.checkCreatingProject(projectName);
             return this;
         }
@@ -57,10 +55,9 @@ public class UiSteps {
                 .deleteProject(projectName);
         return this;
     }
-    @Step("UI: Создать тест-кейс '{title}'")
+    @Step("UI: Создать тест-кейс ")
     public UiSteps createCase(QaseTestCaseDto testCase) {
-        log.info("UI: создаём тест-кейс '{}'", testCase.getTitle());
-
+        log.info("UI: создаём тест-кейс ", testCase.getTitle());
         repositoryPage.openCasePage();
         caseCreatePage.isPageOpened()
                 .fillCreateCaseForm(testCase)
@@ -79,11 +76,8 @@ public class UiSteps {
 
         caseEditPage.openEditCasePage(projectCode, caseId)
                 .isPageOpened();
-
-                //.assertEditFormMatchesTestCase(expected);
         return this;
     }
-
     @Step("Проверка заполнения полей тест-кейса на форме редактирования")
     public void assertEditFormMatchesTestCase(QaseTestCaseDto testCase) {
         log.info("Проверяем заполнение полей тест-кейса");
@@ -92,9 +86,7 @@ public class UiSteps {
     @Step("UI: Создать Suite '{suiteName}'")
     public UiSteps createSuite(QaseTestSuiteDto suite) {
         log.info("UI: создаём suite '{}'", suite.getSuit_name());
-
         repositoryPage.openSuitPage();
-
         suitePage.isPageOpened()
                 .fillFormSuitePge(suite);
         return this;

@@ -34,7 +34,7 @@ public class LoginPage extends BasePage {
         $(SIGN_IN_BUTTON_CSS)
                 .shouldBe(Condition.enabled)
                 .click();
-        log.info("Авторизация выполнена, ожидаем переход на страницу продуктов");
+        log.info("Авторизация выполнена, ожидаем переход на страницу проектов");
         return page(ProjectsPage.class);
     }
 }
