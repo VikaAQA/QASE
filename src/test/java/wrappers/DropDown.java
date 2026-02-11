@@ -26,7 +26,7 @@ public class DropDown {
     }
     public void select(String label, String option) {
         if (option != null) {
-            log.info("Selecting option '{}' from picklist with label '{}'", option, label);
+            log.info("Выбираем значение '{}' в выпадающем списке с меткой '{}'", option, label);
             $x(String.format(PICKLIST_XPATH, label)).click();
             $x(String.format(PICKLIST_ITEM_XPATH, option)).click();
         }

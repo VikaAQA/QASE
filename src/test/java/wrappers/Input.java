@@ -67,7 +67,7 @@ public class Input {
 
     public void fillInTextArea(String label, String text) {
         if (text != null) {
-            log.info("Writing text '{}' into text area with label '{}'", text, label);
+            log.info("Ввод текста '{}' в текстовое поле с меткой '{}'", text, label);
             dismissAlertIfPresent();
             $x(String.format(TEXT_AREA_XPATH, label)).setValue(text);
         }

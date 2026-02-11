@@ -38,6 +38,7 @@ public class RepositoryPage extends BasePage {
     @Step("Проверка, что проект '{project}' успешно создан и отображается на странице")
     public RepositoryPage checkCreatingProject(String project) {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
+        $(byText("Create new case")).shouldBe(visible);
         $(byText(project)).shouldBe(visible);
         log.info("Проект '{}' успешно создан и отображается", project);
         return this;
