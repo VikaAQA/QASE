@@ -58,7 +58,6 @@ public class RepositoryPage extends BasePage {
     @Step("Открыть страницу создания тест-кейса")
     public CaseCreatePage openCasePage() {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
-
         CaseCreatePage page = page(CaseCreatePage.class);
                   page. disableBeforeUnloadHard();;
         return page;

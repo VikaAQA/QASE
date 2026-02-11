@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import dto.QaseTestCaseDto;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
@@ -17,16 +18,15 @@ import static data.Elements.*;
 public class CaseCreatePage extends BasePage {
 
     private final String TITLE_CASE_FIELD = "input[name='title']";
-    private final String DESCRIPTION_CASE_FIELD = "div[data-lexical-editor='true'][contenteditable='true']";
-    private final String DROPDOWN_XPATH = "//label[text()='%s']/following-sibling::div//span";
-    private final String FIELD_IN_DROPDOWN = "//div[text()='%s']";
+    private final SelenideElement BEHAVIOR_SECTION = $(byText("Behavior"));
     private final String SAVE_BTN = "Save";
     private final DropDown dropDown = new DropDown();
     private final Input input = new Input();
 
     @Step("Проверка, что страница создания тест-кейса открыта")
     public CaseCreatePage isPageOpened() {
-        $(byText(TITLE_CASE_TXT)).shouldBe(visible, Duration.ofSeconds(30));
+        //   $(byText(TITLE_CASE_TXT)).shouldBe(visible, Duration.ofSeconds(30));
+        BEHAVIOR_SECTION.shouldBe(visible, Duration.ofSeconds(30));
         disableBeforeUnloadHard();
         log.info("Страница создания тест-кейса успешно загрузилась");
         return this;
