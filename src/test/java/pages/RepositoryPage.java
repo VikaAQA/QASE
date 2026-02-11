@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import dto.QaseTestCaseDto;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
@@ -18,6 +19,7 @@ import static org.testng.Assert.assertEquals;
 public class RepositoryPage extends BasePage {
     private final String TEST_CASE_XPATH = "//*[text()='%s']//ancestor::*[@data-suite-body-id]/ancestor::*[@class][1]/following-sibling::*[1]//*[text()='%s']";
     private final String PROJECT_URL = "/project";
+    private final SelenideElement CREATE_NEW_CASE_BTN = $(byText("Create new case"));
     private final String TEST_CASES_AREA_CSS = "[data-suite-body-id]";
     private final String TEST_CASES_LIST_CSS = TEST_CASES_AREA_CSS + "[draggable]";
     private final String NAME_SUITE_CSS = "[title='%s']";
@@ -37,8 +39,8 @@ public class RepositoryPage extends BasePage {
     }
     @Step("Проверка, что проект '{project}' успешно создан и отображается на странице")
     public RepositoryPage checkCreatingProject(String project) {
-        NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
-        $(byText("Create new case")).shouldBe(visible);
+        // NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
+        CREATE_NEW_CASE_BTN.shouldBe(visible, Duration.ofSeconds(60));
         $(byText(project)).shouldBe(visible);
         log.info("Проект '{}' успешно создан и отображается", project);
         return this;

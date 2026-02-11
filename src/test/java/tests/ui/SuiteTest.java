@@ -28,14 +28,11 @@ public class SuiteTest extends BaseTest {
 @Test
 public void createTestSuite() {
     QaseTestSuiteDto testSuite = new TestSuiteFactory().random();
-
     loginAndOpenProductsPage();
 
     String code = projectAPI.createProjectAndReturnCode(ProjectRequestFactory.valid());
     Selenide.refresh();
-
     repositoryPage.openRepository(code);
-
     uiSteps.createSuite(testSuite)
             .assertSuiteVisible(testSuite.getSuit_name());
 }
