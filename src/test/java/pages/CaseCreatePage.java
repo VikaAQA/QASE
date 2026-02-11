@@ -48,7 +48,6 @@ public class CaseCreatePage extends BasePage {
         log.info("Форма заполнена данными тест-кейса: {}", testCase);
         return this;
     }
-
     @Step("Нажатие кнопки Save")
     public RepositoryCasePreviewPage clickSave() {
         $(byText(SAVE_BTN)).click();
