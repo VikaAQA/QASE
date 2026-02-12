@@ -15,13 +15,14 @@ public class CaseTest extends BaseTest {
 @Description("Проверка, что пользователь может создать тест-кейс через веб-интерфейс")
 public void checkCreateCase() {
     QaseTestCaseDto uiCase = TestCaseFactory.valid();
+    String projectCode = projectAPI.createProject();
 
     loginAndOpenProductsPage();
-    //    String projectCode = projectAPI.createProject();
-    uiSteps.createProject(NAME_PROJECT);
+
+  //  uiSteps.createProject(NAME_PROJECT);
    //     repositoryPage.openRepository(projectCode);*/
  //   uiSteps.createCase(testCase)
-            //  repositoryPage.openRepository(projectCode);
+           repositoryPage.openRepository(projectCode);
     uiSteps.createCase(uiCase)
             .assertCaseCount(1);
 }
@@ -66,10 +67,11 @@ public void checkCreateCase() {
     }
     @Test(description = "Создание тест-кейса с разными входными данными", dataProvider = "testCaseSpecs")
     public void testCaseShouldHasCorrectSpecs(QaseTestCaseDto testCase) {
+        String projectCode = projectAPI.createProject();
         loginAndOpenProductsPage();
-        uiSteps.createProject(NAME_PROJECT);
-      /*  String projectCode = projectAPI.createProject();
-        repositoryPage.openRepository(projectCode);*/
+      //  uiSteps.createProject(NAME_PROJECT);
+
+        repositoryPage.openRepository(projectCode);
         uiSteps.createCase(testCase)
                .openEditCaseForm(NAME_PROJECT, 1, testCase)
                .assertEditFormMatchesTestCase(testCase);
