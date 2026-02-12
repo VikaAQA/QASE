@@ -30,7 +30,7 @@ public class RepositoryPage extends BasePage {
       open(PROJECT_URL + "/" + project);
       return this;
     }
-    @Step("Проверка, что страница проекта '{project}' открыт")
+    @Step("Проверка, что страница проекта открыта")
     public RepositoryPage isPageOpened(){
      //   NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
         CREATE_NEW_CASE_BTN.shouldBe(visible, Duration.ofSeconds(60));
