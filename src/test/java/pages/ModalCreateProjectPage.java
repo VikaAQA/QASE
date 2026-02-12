@@ -38,7 +38,7 @@ public class ModalCreateProjectPage extends BasePage {
     @Step("Проверка создания проекта без названия (негативный сценарий)")
     public ModalCreateProjectPage createFailProject() {
         log.info("Проверка валидации: попытка создать проект без названия");
-
+        CREATE_NEW_PROJECT_BTN.shouldBe(visible, Duration.ofSeconds(60));
         CREATE_NEW_PROJECT_BTN.click();
         $(PUBLIC_RADIO_BTN_CSS ).click();
         $(PUBLIC_RADIO_BTN_CSS ).shouldBe(selected);
