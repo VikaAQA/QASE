@@ -10,7 +10,6 @@ import static org.testng.Assert.assertEquals;
 
 @Log4j2
 public class UiSteps {
-
     private final ModalCreateProjectPage modalCreateProjectPage;
     private final RepositoryPage repositoryPage;
     private final ProjectsPage projectsPage;
