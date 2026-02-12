@@ -7,7 +7,6 @@ import io.qameta.allure.Epic;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.factories.ui.TestCaseFactory;
-import static data.Elements.NAME_PROJECT;
 
 @Epic("UI Tests")
 public class CaseTest extends BaseTest {
@@ -68,12 +67,13 @@ public void checkCreateCase() {
     @Test(description = "Создание тест-кейса с разными входными данными", dataProvider = "testCaseSpecs")
     public void testCaseShouldHasCorrectSpecs(QaseTestCaseDto testCase) {
         String projectCode = projectAPI.createProject();
+
         loginAndOpenProductsPage();
       //  uiSteps.createProject(NAME_PROJECT);
-
-        repositoryPage.openRepository(projectCode);
+        repositoryPage.openRepository(projectCode)
+                        .isPageOpened();
         uiSteps.createCase(testCase)
-               .openEditCaseForm(NAME_PROJECT, 1, testCase)
+               .openEditCaseForm(projectCode, 1, testCase)
                .assertEditFormMatchesTestCase(testCase);
     }
 }
