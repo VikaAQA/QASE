@@ -19,8 +19,6 @@ public void checkCreateCase() {
     loginAndOpenProductsPage();
 
   //  uiSteps.createProject(NAME_PROJECT);
-   //     repositoryPage.openRepository(projectCode);*/
- //   uiSteps.createCase(testCase)
            repositoryPage.openRepository(projectCode);
     uiSteps.createCase(uiCase)
             .assertCaseCount(1);
