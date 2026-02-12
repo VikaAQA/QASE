@@ -1,6 +1,7 @@
 package pages;
 
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
@@ -18,6 +19,7 @@ public class ProjectsPage extends BasePage {
     private final String REMOVE_BTN = "[data-testid=remove]";
     private final String DELETE_PROJECTS_BTN = "//span[text()='Delete project']";
     private final String OPEN_ACTION_MENU_BTN = "button[aria-label='Open action menu']";
+    private final String PROJECTS_LIST_LOAD_RESULT_XPATH = "//table | //*[contains(text(),'you don’t have any projects yet')]";
 
     @Step("Открыть страницу проектов (/projects)")
     public ProjectsPage openPage() {
@@ -27,8 +29,10 @@ public class ProjectsPage extends BasePage {
     }
     @Step("Проверка, что  страница проектов открыта")
     public ProjectsPage isPageOpened() {
-        CREATE_NEW_PROJECT_BTN
-                .shouldBe(visible, Duration.ofSeconds(120));
+                  $x(PROJECTS_LIST_LOAD_RESULT_XPATH).shouldBe(Condition.visible,Duration.ofSeconds(120));
+
+      /*  CREATE_NEW_PROJECT_BTN
+                .shouldBe(visible, Duration.ofSeconds(120));*/
         log.info("Страница проектов успешно загружена и кнопка 'Create new project' отображается");
         return this;
     }
