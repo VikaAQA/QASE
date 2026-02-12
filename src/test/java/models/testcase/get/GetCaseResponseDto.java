@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import models.BaseSuccessResponse;
+import models.base.BaseSuccessResponse;
 
 import java.util.List;
 

@@ -32,7 +32,8 @@ public class RepositoryPage extends BasePage {
     }
     @Step("Проверка, что страница проекта '{project}' открыт")
     public RepositoryPage isPageOpened(){
-        NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
+     //   NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
+        CREATE_NEW_CASE_BTN.shouldBe(visible, Duration.ofSeconds(60));
         disableBeforeUnloadHard();
         log.info("Страница проекта успешно открыта");
         return this;

@@ -63,13 +63,6 @@ public abstract class BasePage {
                         "} catch(e) {}"
         );
     }
-
-  /*  protected void disableBeforeUnloadSafe() {
-        safeExecuteJs("window.onbeforeunload = null;");
-        safeExecuteJs(
-                "window.addEventListener('beforeunload', function(e){ e.stopImmediatePropagation(); }, true);"
-        );
-    }*/
     @Step("Принять cookies, если баннер появился")
     public void acceptCookiesIfPresent() {
         safeExecuteJs(

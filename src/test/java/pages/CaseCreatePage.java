@@ -25,7 +25,6 @@ public class CaseCreatePage extends BasePage {
 
     @Step("Проверка, что страница создания тест-кейса открыта")
     public CaseCreatePage isPageOpened() {
-        //   $(byText(TITLE_CASE_TXT)).shouldBe(visible, Duration.ofSeconds(30));
         BEHAVIOR_SECTION.shouldBe(visible, Duration.ofSeconds(30));
         disableBeforeUnloadHard();
         log.info("Страница создания тест-кейса успешно загрузилась");

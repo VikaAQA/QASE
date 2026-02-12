@@ -31,10 +31,10 @@ public void createTestSuite() {
     loginAndOpenProductsPage();
 
     String code = projectAPI.createProjectAndReturnCode(ProjectRequestFactory.valid());
-    Selenide.refresh();
-    repositoryPage.openRepository(code);
+
+    repositoryPage.openRepository(code)
+                  .isPageOpened();
     uiSteps.createSuite(testSuite)
-            .assertSuiteVisible(testSuite.getSuit_name());
-}
+            .assertSuiteVisible(testSuite.getSuit_name());}
 }
 

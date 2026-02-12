@@ -2,12 +2,11 @@ package models.project.get;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import lombok.Builder;
 import lombok.Data;
 
 @Data
 
-public class GetProjectErrorResponse {
+public class GetProjectErrorResponseDto {
     @SerializedName("status")
     @Expose
     private Boolean status;

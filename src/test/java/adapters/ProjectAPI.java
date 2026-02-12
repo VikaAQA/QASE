@@ -3,7 +3,7 @@ package adapters;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
-import models.project.get.GetProjectErrorResponse;
+import models.project.get.GetProjectErrorResponseDto;
 import models.project.create.CreateProjectRequestDto;
 import models.project.create.CreateProjectResponseDto;
 import models.project.create.CreateProjectResponseErrorDto;
@@ -73,13 +73,13 @@ public class ProjectAPI extends BaseAPI {
         return gson.fromJson(response.asString(), GetProjectResponseDto.class);
     }
     @Step("Получение данных проекта по коду {code} ожидаемо падает с кодом 400")
-    public GetProjectErrorResponse getProjectByCodeExpectError(String code) {
+    public GetProjectErrorResponseDto getProjectByCodeExpectError(String code) {
         Response response = getProjectRaw(code);
 
         assertThat(response.statusCode())
                 .as("Get project HTTP status, code=%s, body: %s", code, response.asString())
                 .isEqualTo(404);
-        return gson.fromJson(response.asString(), GetProjectErrorResponse.class);
+        return gson.fromJson(response.asString(), GetProjectErrorResponseDto.class);
     }
     @Step("Создание проекта ожидаемо падает с кодом 400")
     public CreateProjectResponseErrorDto createProjectExpectErrorDto(CreateProjectRequestDto dto) {

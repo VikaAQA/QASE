@@ -1,7 +1,7 @@
 package tests.api;
 
 import com.github.javafaker.Faker;
-import models.project.get.GetProjectErrorResponse;
+import models.project.get.GetProjectErrorResponseDto;
 import models.project.create.CreateProjectRequestDto;
 import models.project.create.CreateProjectResponseErrorDto;
 import org.testng.annotations.DataProvider;
@@ -32,7 +32,6 @@ public class ProjectTest extends BaseTest {
                 .as("Код проекта, полученного по GET, должен совпадать с кодом созданного проекта")
                 .isEqualTo(createdProjectCode);
     }
-
     @Test( description = "Удаление проекта"   )
     @Severity(SeverityLevel.CRITICAL)
     @Description("Проверка успешного удаления проекта и его недоступности после удаления.")
@@ -41,14 +40,13 @@ public class ProjectTest extends BaseTest {
 
         projectAPI.deleteProject(createdProjectCode);
 
-        GetProjectErrorResponse errorResponse =
+        GetProjectErrorResponseDto errorResponse =
                 projectAPI.getProjectByCodeExpectError(createdProjectCode);
 
         assertThat(errorResponse.getStatus())
                 .as("После удаления проект должен быть недоступен")
                 .isFalse();
     }
-
     @Test(groups = "smoke",  description = "Создание проекта: проверка полей title и code")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Проверка корректности данных, возвращаемых при создании проекта")
@@ -65,7 +63,6 @@ public class ProjectTest extends BaseTest {
                     .as("Code проекта должен совпадать с code созданного проекта")
                     .isEqualTo(createdProjectCode);
     }
-
     @DataProvider(name = "invalidProjectRequestsWithoutTitle")
     public Object[][] invalidProjectRequestsWithoutTitle() {
         return new Object[][]{

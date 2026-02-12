@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
 
-@Data //оптимизирует код без геттеров и сеттеров
-@Builder //собирает обьект
+@Data
+@Builder
 public class CreateProjectRequestDto {
     @SerializedName("title")
     @Expose

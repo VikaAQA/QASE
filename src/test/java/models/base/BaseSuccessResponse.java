@@ -1,4 +1,4 @@
-package models;
+package models.base;
 
 public interface BaseSuccessResponse<R> {
 

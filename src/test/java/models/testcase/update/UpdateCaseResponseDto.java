@@ -3,7 +3,7 @@ package models.testcase.update;
 import com.google.gson.annotations.Expose;
 import lombok.Builder;
 import lombok.Data;
-import models.BaseSuccessResponse;
+import models.base.BaseSuccessResponse;
 
 @Data
 @Builder
