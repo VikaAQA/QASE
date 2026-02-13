@@ -13,7 +13,6 @@ public final class ProjectRequestFactory {
                 .access("all")
                 .build();
     }
-
     public static CreateProjectRequestDto validWithTitle(String title) {
         return CreateProjectRequestDto.builder()
                 .title(title)
@@ -23,7 +22,6 @@ public final class ProjectRequestFactory {
                 .access("all")
                 .build();
     }
-
     public static CreateProjectRequestDto validWithCode(String code) {
         return CreateProjectRequestDto.builder()
                 .title("TMS")

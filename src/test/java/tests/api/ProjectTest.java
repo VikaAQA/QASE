@@ -86,7 +86,6 @@ public class ProjectTest extends BaseTest {
                 .as("Должна вернуться ошибка о том, что Title обязателен")
                 .isEqualTo("Title is required.");
     }
-
     @Test(description = "Создание проекта с уже существующим code должно вернуть ошибку")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Проверка уникальности project code: повторное создание проекта с тем же code запрещено.")
@@ -102,7 +101,7 @@ public class ProjectTest extends BaseTest {
             assertThat(errorResponse.getStatus())
                     .as("Повторное создание проекта с уже существующим code должно завершаться ошибкой")
                     .isFalse();
-        }
     }
+}
 
 

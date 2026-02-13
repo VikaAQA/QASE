@@ -17,9 +17,7 @@ public void checkCreateCase() {
     String projectCode = projectAPI.createProject();
 
     loginAndOpenProductsPage();
-
-  //  uiSteps.createProject(NAME_PROJECT);
-           repositoryPage.openRepository(projectCode);
+    repositoryPage.openRepository(projectCode);
     uiSteps.createCase(uiCase)
             .assertCaseCount(1);
 }
@@ -65,8 +63,7 @@ public void checkCreateCase() {
     @Test(description = "Создание тест-кейса с разными входными данными", dataProvider = "testCaseSpecs")
     public void testCaseShouldHasCorrectSpecs(QaseTestCaseDto testCase) {
         String projectCode = projectAPI.createProject();
-               loginAndOpenProductsPage();
-      //  uiSteps.createProject(NAME_PROJECT);
+        loginAndOpenProductsPage();
 
         repositoryPage.openRepository(projectCode)
                         .isPageOpened();

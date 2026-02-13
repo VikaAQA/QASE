@@ -26,14 +26,11 @@ public class CaseEditPage extends BasePage{
         open(String.format("/case/%s/edit/%s", projectCode, index));
          return this;
     }
-
     @Step("Проверка, что страница редактирования тест-кейса открыта")
     public CaseEditPage isPageOpened() {
         $(byText(TITLE_CASE_TXT)).shouldBe(visible, Duration.ofSeconds(30));
-        input.disableBeforeUnloadHard();
         log.info("Страница редактирования тест-кейса успешно загрузилась");
         return this;}
-
     @Step("Получение значений всех полей тест-кейса с формы")
     public QaseTestCaseDto getTestCaseSpecs() {
         return QaseTestCaseDto.builder().

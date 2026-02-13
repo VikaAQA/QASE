@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import dto.QaseTestCaseDto;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
@@ -32,15 +31,12 @@ public class RepositoryPage extends BasePage {
     }
     @Step("Проверка, что страница проекта открыта")
     public RepositoryPage isPageOpened(){
-     //   NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
         CREATE_NEW_CASE_BTN.shouldBe(visible, Duration.ofSeconds(60));
-        disableBeforeUnloadHard();
         log.info("Страница проекта успешно открыта");
         return this;
     }
     @Step("Проверка, что проект '{project}' успешно создан и отображается на странице")
     public RepositoryPage checkCreatingProject(String project) {
-        // NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60));
         CREATE_NEW_CASE_BTN.shouldBe(visible, Duration.ofSeconds(60));
         $(byText(project)).shouldBe(visible);
         log.info("Проект '{}' успешно создан и отображается", project);
@@ -78,6 +74,13 @@ public class RepositoryPage extends BasePage {
         String locator = String.format(NAME_SUITE_CSS, suiteName);
         $(locator).shouldBe(visible, Duration.ofSeconds(30));
         log.info("Suite '{}' успешно отображается на странице", suiteName);
+        return this;
+    }
+    @Step("Проверка успешного создания тест-кейса")
+    public RepositoryPage shouldSeeSuccessToast() {
+        $(byText("Test case was created successfully!"))
+                .shouldBe(visible, Duration.ofSeconds(20));
+        log.info("Отображён toast об успешном создании тест-кейса");
         return this;
     }
      @Step("Проверка, что тест-кейс '{testCaseTitle}' принадлежит сьюте '{suiteTitle}'")

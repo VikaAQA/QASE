@@ -35,13 +35,10 @@ public class BaseTest {
     protected CaseCreatePage caseCreatePage;
     protected CaseEditPage caseEditPage;
     protected SuitePage suitePage;
-    protected RepositoryCasePreviewPage repositoryCasePreviewPage;
     protected ProjectAPI projectAPI;
-
     protected CaseAPI caseAPI;
-
     protected UiSteps uiSteps;
-      protected String user = System.getProperty("user", PropertyReader.getProperty("user"));
+    protected String user = System.getProperty("user", PropertyReader.getProperty("user"));
     protected String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
     @BeforeSuite(alwaysRun = true)
@@ -49,7 +46,6 @@ public class BaseTest {
         log.info("Очистка тестовых данных перед запуском сьюта");
         new ProjectAPI().deleteAllProject();
     }
-
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
@@ -84,7 +80,6 @@ public class BaseTest {
         caseCreatePage = new CaseCreatePage();
         suitePage = new SuitePage();
         caseEditPage = new CaseEditPage();
-        repositoryCasePreviewPage = new RepositoryCasePreviewPage();
 
         projectAPI = new ProjectAPI();
         caseAPI = new CaseAPI();
@@ -95,13 +90,11 @@ public class BaseTest {
                 projectsPage,
                 caseCreatePage,
                 suitePage,
-                caseEditPage,
-                repositoryCasePreviewPage
+                caseEditPage
         );
 
        log.info("UI и API окружение успешно инициализировано");
     }
-
     @AfterMethod(alwaysRun = true, description = "Browser teardown")
     public void tearDown(ITestResult result) {
         log.info("Завершение теста: {}", result.getName());
@@ -130,7 +123,6 @@ public class BaseTest {
         } catch (Exception ignored) {
             }
     }
-
     @Step("Авторизация и открытие страницы Projects")
     protected void loginAndOpenProductsPage() {
         loginPage.openPage()

@@ -33,9 +33,7 @@ public class CaseCreatePage extends BasePage {
      @Step("Заполнение формы тест-кейса данными: {testCase}")
     public CaseCreatePage fillCreateCaseForm(QaseTestCaseDto testCase) {
         $(TITLE_CASE_FIELD).setValue(testCase.getTitle());
-        //dismissAlertIfPresent();
-         input.fillInTextArea("Description", testCase.getDescription());
-      //  input.setTextInLexicalEditor(DESCRIPTION_CASE_FIELD,testCase.getDescription());
+        input.fillInTextArea("Description", testCase.getDescription());
         dropDown.select( "Status", testCase.getStatus());
         dropDown.select( "Severity",  testCase.getSeverity());
         dropDown.select("Type", testCase.getType());
@@ -48,10 +46,10 @@ public class CaseCreatePage extends BasePage {
         return this;
     }
     @Step("Нажатие кнопки Save")
-    public RepositoryCasePreviewPage clickSave() {
+    public RepositoryPage clickSave() {
         $(byText(SAVE_BTN)).click();
         log.info("Нажата кнопка Save");
-        return new RepositoryCasePreviewPage ();
+        return new RepositoryPage ();
     }
 }
 

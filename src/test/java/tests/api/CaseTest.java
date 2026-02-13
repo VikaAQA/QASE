@@ -27,7 +27,6 @@ public class CaseTest extends BaseTest {
         models.create.CreateCaseRequestDto request = CaseRequestFactory.valid();
         caseAPI.assertCaseCreatedCorrectly(projectCode, request);
     }
-
     @Test(description = "Удаление тест-кейса")
     public void shouldDeleteTestCase(){
         String projectCode = projectAPI.createProject();
@@ -52,7 +51,6 @@ public class CaseTest extends BaseTest {
                 .as("Значение поля type должно обновиться")
                 .isEqualTo(SMOKE_TYPE_CASE);
     }
-
     @Test(description = "Добавление нескольких тест-кейсов и проверка их количества в проекте")
     @Description("Проверка корректного увеличения количества тест-кейсов в проекте.")
     public void shouldIncreaseTestCaseCountInProject() {
@@ -64,7 +62,6 @@ public class CaseTest extends BaseTest {
                 .as("Количество тест-кейсов в проекте должно увеличиться на добавленное значение")
                 .isEqualTo(4);
     }
-
     @Test(description = "Фильтрация тест-кейсов по типу ")
     @Description("""
             Проверка корректной фильтрации тест-кейсов:

@@ -29,10 +29,7 @@ public class ProjectsPage extends BasePage {
     }
     @Step("Проверка, что  страница проектов открыта")
     public ProjectsPage isPageOpened() {
-                  $x(PROJECTS_LIST_LOAD_RESULT_XPATH).shouldBe(Condition.visible,Duration.ofSeconds(120));
-
-      /*  CREATE_NEW_PROJECT_BTN
-                .shouldBe(visible, Duration.ofSeconds(120));*/
+        $x(PROJECTS_LIST_LOAD_RESULT_XPATH).shouldBe(Condition.visible,Duration.ofSeconds(120));
         log.info("Страница проектов успешно загружена и кнопка 'Create new project' отображается");
         return this;
     }
@@ -45,7 +42,6 @@ public class ProjectsPage extends BasePage {
     @Step("Удаление проекта с именем: '{project}'")
     public ProjectsPage deleteProject(String project) {
         log.info("Начало удаления проекта: {}", project);
-
         $(byText(project))
                 .ancestor("tr")
                 .find(OPEN_ACTION_MENU_BTN)

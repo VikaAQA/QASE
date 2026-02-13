@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static data.Elements.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-
 @Epic("UI Tests")
 public class ProjectTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class, groups = "smoke", description = "Создание проекта и его удаление")

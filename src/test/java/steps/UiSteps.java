@@ -16,21 +16,19 @@ public class UiSteps {
     private final CaseCreatePage caseCreatePage;
     private final SuitePage suitePage;
     private final CaseEditPage caseEditPage;
-    private final RepositoryCasePreviewPage repositoryCasePreviewPage ;
 
     public UiSteps(ModalCreateProjectPage modalCreateProjectPage,
                    RepositoryPage repositoryPage,
                    ProjectsPage projectsPage,
                    CaseCreatePage caseCreatePage,
                    SuitePage suitePage,
-                   CaseEditPage caseEditPage, RepositoryCasePreviewPage repositoryCasePreviewPage) {
+                   CaseEditPage caseEditPage) {
         this.modalCreateProjectPage = modalCreateProjectPage;
         this.repositoryPage = repositoryPage;
         this.projectsPage = projectsPage;
         this.caseCreatePage = caseCreatePage;
         this.suitePage = suitePage;
         this.caseEditPage = caseEditPage;
-        this.repositoryCasePreviewPage = repositoryCasePreviewPage;
     }
     @Step("UI: Создать проект '{projectName}'")
     public UiSteps createProject(String projectName) {
@@ -39,7 +37,7 @@ public class UiSteps {
                         .createProject(projectName);
             repositoryPage.checkCreatingProject(projectName);
             return this;
-        }
+     }
     @Step("UI: Попытаться создать проект без названия (негативный сценарий)")
     public UiSteps createProjectWithoutTitle() {
         log.info("UI: негативный сценарий создания проекта без названия");
@@ -61,7 +59,7 @@ public class UiSteps {
         caseCreatePage.isPageOpened()
                 .fillCreateCaseForm(testCase)
                 .clickSave();
-        repositoryCasePreviewPage.shouldSeeSuccessToast();
+        repositoryPage.shouldSeeSuccessToast();
         return this;
     }
     @Step("UI: Проверить, что количество тест-кейсов = {expectedCount}")

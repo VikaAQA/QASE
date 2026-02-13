@@ -31,7 +31,6 @@ public final class CaseRequestFactory {
                 ))
                 .build();
     }
-
     public static models.create.CreateCaseRequestDto validWithType(int numType) {
         return models.create.CreateCaseRequestDto.builder()
                 .title(faker.bothify("AUTOTEST-#####"))

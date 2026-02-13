@@ -1,9 +1,6 @@
 package wrappers;
 
 import lombok.extern.log4j.Log4j2;
-
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 @Log4j2
 public class DropDown {
@@ -14,16 +11,6 @@ public class DropDown {
     /**
      * Выбирает элемент из кастомного выпадающего списка по тексту.
      */
-    public void selectFromCustomDropdown(String dropdownLocator,
-                                                String dropdownName,
-                                                String optionLocator,
-                                                String optionText) {
-        String dropdownXpath = String.format(dropdownLocator, dropdownName);
-        $(byXpath(dropdownXpath)).click(); // открываем список
-
-        String optionXpath = String.format(optionLocator, optionText);
-        $(byXpath(optionXpath)).click(); // выбираем элемент
-    }
     public void select(String label, String option) {
         if (option != null) {
             log.info("Выбираем значение '{}' в выпадающем списке '{}'", option, label);
@@ -31,6 +18,9 @@ public class DropDown {
             $x(String.format(PICKLIST_ITEM_XPATH, option)).click();
         }
     }
+    /**
+     * Возвращает текущее выбранное значение кастомного выпадающего списка.
+    */
     public String getPickListText(String label) {
         return $x(String.format(PICKLIST_TEXT_XPATH, label)).getText();
     }
