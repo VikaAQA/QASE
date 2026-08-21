@@ -1,0 +1,24 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","32596","Создание тест-кейса с разными входными данными","Surefire suite","2026-08-21","passed","2026-08-21","tests.ui.CaseTest","Surefire test","tests.ui.CaseTest","testCaseShouldHasCorrectSpecs"
+"","11915","Создание проекта без названия: проверка ошибки","Surefire suite","2026-08-21","passed","2026-08-21","tests.ui.ProjectTest","Surefire test","tests.ui.ProjectTest","checkCreateProjectWithNegative"
+"Проверка позитивного сценария создания проекта","23694","Создание проекта и его удаление","Surefire suite","2026-08-21","passed","2026-08-21","tests.ui.ProjectTest","Surefire test","tests.ui.ProjectTest","checkCreateProject"
+"Проверка валидации: при создании проекта без обязательного поля Title сервер возвращает ошибку.","285","Создание проекта без Title должно вернуть ошибку 400","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.ProjectTest","Surefire test","tests.api.ProjectTest","shouldFailToCreateProjectWithoutTitle"
+"Проверка корректного увеличения количества тест-кейсов в проекте.","2302","Добавление нескольких тест-кейсов и проверка их количества в проекте","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.CaseTest","Surefire test","tests.api.CaseTest","shouldIncreaseTestCaseCountInProject"
+"Проверка корректной фильтрации тест-кейсов:
+- создаётся проект
+- добавляются тест-кейсы с разными типами
+- выполняется фильтрация по типу SMOKE
+- проверяется количество отфильтрованных тест-кейсов
+","8193","Фильтрация тест-кейсов по типу ","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.CaseTest","Surefire test","tests.api.CaseTest","shouldFilterCasesByType"
+"Проверка позитивного сценария добавления тест-кейса в проект.","1238","Создание тест-кейса и получение его по id","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.CaseTest","Surefire test","tests.api.CaseTest","shouldCreateTestCaseInProject"
+"","1772","Удаление тест-кейса","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.CaseTest","Surefire test","tests.api.CaseTest","shouldDeleteTestCase"
+"","32253","Создание тест-кейса с разными входными данными","Surefire suite","2026-08-21","passed","2026-08-21","tests.ui.CaseTest","Surefire test","tests.ui.CaseTest","testCaseShouldHasCorrectSpecs"
+"Проверка корректности данных, возвращаемых при создании проекта","780","Создание проекта: проверка полей title и code","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.ProjectTest","Surefire test","tests.api.ProjectTest","shouldCreateProjectAndReturnCorrectTitleAndCode"
+"Проверка успешного удаления проекта и его недоступности после удаления.","1136","Удаление проекта","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.ProjectTest","Surefire test","tests.api.ProjectTest","shouldDeleteProjectAndMakeItUnavailable"
+"Проверка, что пользователь может создать тест-кейс через веб-интерфейс","91067","Создание тест-кейса через UI","Surefire suite","2026-08-21","failed","2026-08-21","tests.ui.CaseTest","Surefire test","tests.ui.CaseTest","checkCreateCase"
+"Проверка валидации: при создании проекта без обязательного поля Title сервер возвращает ошибку.","274","Создание проекта без Title должно вернуть ошибку 400","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.ProjectTest","Surefire test","tests.api.ProjectTest","shouldFailToCreateProjectWithoutTitle"
+"Проверка корректного обновления тест-кейса методом PATCH на примере поля type.","1537","Обновление тест-кейса: PATCH, поле type","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.CaseTest","Surefire test","tests.api.CaseTest","shouldUpdateTestCase"
+"Проверка уникальности project code: повторное создание проекта с тем же code запрещено.","828","Создание проекта с уже существующим code должно вернуть ошибку","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.ProjectTest","Surefire test","tests.api.ProjectTest","shouldFailToCreateProjectWithDuplicateCode"
+"","32917","Создание тест-кейса с разными входными данными","Surefire suite","2026-08-21","passed","2026-08-21","tests.ui.CaseTest","Surefire test","tests.ui.CaseTest","testCaseShouldHasCorrectSpecs"
+"","133599","createTestSuite","Surefire suite","2026-08-21","failed","2026-08-21","tests.ui.SuiteTest","Surefire test","tests.ui.SuiteTest","createTestSuite"
+"Проверка успешного создания проекта и возможности получить его по коду.","753","Создание проекта","Surefire suite","2026-08-21","passed","2026-08-21","tests.api.ProjectTest","Surefire test","tests.api.ProjectTest","shouldCreateProjectAndBeAvailableByCode"
