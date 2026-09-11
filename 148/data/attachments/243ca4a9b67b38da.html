@@ -1,0 +1,710 @@
+<html lang="en" style="font-size: 16px;" data-theme="light"><head><style id="react-aria-pressable-style">@layer {
+  [data-react-aria-pressable] {
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+}</style>
+    <script type="text/javascript" async="" src="https://widget.intercom.io/widget/wsaz8vex"></script><script>
+        window.UC_UI_DOMAINS = {
+            crossDomainConsentSharingIFrame: 'https://qase.io/cross-domain-bridge.html',
+        };
+    </script>
+    
+    
+
+    <meta charset="UTF-8">
+    <meta name="sentry-trace" content="0dbdf1c96c8aa0f9ff1ae93cc1d6f6a4-f4a1acd11ded76ac-0">
+<meta name="baggage" content="sentry-environment=production,sentry-release=release-202609111644,sentry-public_key=5c4961c1c6d94f50b57187ee70cbaf59,sentry-trace_id=0dbdf1c96c8aa0f9ff1ae93cc1d6f6a4,sentry-org_id=151863,sentry-sampled=false,sentry-sample_rand=0.91669199819503,sentry-sample_rate=0.01">
+    
+        <title>Qase</title>
+    
+    <style type="text/css">:root, :host {
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
+  --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-regular: normal 400 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-light: normal 300 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-thin: normal 100 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-regular: normal 400 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-light: normal 300 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-thin: normal 100 1em/1 "Font Awesome 6 Sharp Duotone";
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-2xs {
+  vertical-align: 0.1em;
+}
+.svg-inline--fa.fa-xs {
+  vertical-align: 0em;
+}
+.svg-inline--fa.fa-sm {
+  vertical-align: -0.0714285705em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.2em;
+}
+.svg-inline--fa.fa-xl {
+  vertical-align: -0.25em;
+}
+.svg-inline--fa.fa-2xl {
+  vertical-align: -0.3125em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-li {
+  width: var(--fa-li-width, 2em);
+  top: 0.25em;
+}
+.svg-inline--fa.fa-fw {
+  width: var(--fa-fw-width, 1.25em);
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  transform-origin: center center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: var(--fa-counter-background-color, #ff253a);
+  border-radius: var(--fa-counter-border-radius, 1em);
+  box-sizing: border-box;
+  color: var(--fa-inverse, #fff);
+  line-height: var(--fa-counter-line-height, 1);
+  max-width: var(--fa-counter-max-width, 5em);
+  min-width: var(--fa-counter-min-width, 1.5em);
+  overflow: hidden;
+  padding: var(--fa-counter-padding, 0.25em 0.5em);
+  right: var(--fa-right, 0);
+  text-overflow: ellipsis;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-counter-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: var(--fa-bottom, 0);
+  right: var(--fa-right, 0);
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: var(--fa-bottom, 0);
+  left: var(--fa-left, 0);
+  right: auto;
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  top: var(--fa-top, 0);
+  right: var(--fa-right, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: var(--fa-left, 0);
+  right: auto;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top left;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(-1 * var(--fa-li-width, 2em));
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  animation-name: fa-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  animation-name: fa-shake;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  animation-name: fa-spin;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
+    animation-delay: -1ms;
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%, 24% {
+    transform: rotate(-18deg);
+  }
+  12%, 28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%, 100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+
+.fa-stack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}</style><style type="text/css">
+        @font-face {
+            font-family: "Inter Fallback";
+            src: local('Arial');
+            ascent-override: 90.0021%;
+            descent-override: 22.4345%;
+            size-adjust: 107.6364%;
+        }
+    </style>
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <!-- Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <!-- Variable font (doesn't need separate bold, thin, etc.) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' data: ws: o151863.ingest.sentry.io ingest.tiden.ai rum.qase.io translate.googleapis.com google.com fonts.googleapis.com google-analytics.com *.google-analytics.com analytics.google.com *.analytics.google.com *.googletagmanager.com *.g.doubleclick.net google.ad google.ae google.com.af google.com.ag google.al google.am google.co.ao google.com.ar google.as google.at google.com.au google.az google.ba google.com.bd google.be google.bf google.bg google.com.bh google.bi google.bj google.com.bn google.com.bo google.com.br google.bs google.bt google.co.bw google.by google.com.bz google.ca google.cd google.cf google.cg google.ch google.ci google.co.ck google.cl google.cm google.cn google.com.co google.co.cr google.com.cu google.cv google.com.cy google.cz google.de google.dj google.dk google.dm google.com.do google.dz google.com.ec google.ee google.com.eg google.es google.com.et google.fi google.com.fj google.fm google.fr google.ga google.ge google.gg google.com.gh google.com.gi google.gl google.gm google.gr google.com.gt google.gy google.com.hk google.hn google.hr google.ht google.hu google.co.id google.ie google.co.il google.im google.co.in google.iq google.is google.it google.je google.com.jm google.jo google.co.jp google.co.ke google.com.kh google.ki google.kg google.co.kr google.com.kw google.kz google.la google.com.lb google.li google.lk google.co.ls google.lt google.lu google.lv google.com.ly google.co.ma google.md google.me google.mg google.mk google.ml google.com.mm google.mn google.com.mt google.mu google.mv google.mw google.com.mx google.com.my google.co.mz google.com.na google.com.ng google.com.ni google.ne google.nl google.no google.com.np google.nr google.nu google.co.nz google.com.om google.com.pa google.com.pe google.com.pg google.com.ph google.com.pk google.pl google.pn google.com.pr google.ps google.pt google.com.py google.com.qa google.ro google.ru google.rw google.com.sa google.com.sb google.sc google.se google.com.sg google.sh google.si google.sk google.com.sl google.sn google.so google.sm google.sr google.st google.com.sv google.td google.tg google.co.th google.com.tj google.tl google.tm google.tn google.to google.com.tr google.tt google.com.tw google.co.tz google.com.ua google.co.ug google.co.uk google.com.uy google.co.uz google.com.vc google.co.ve google.co.vi google.com.vn google.vu google.ws google.rs google.co.za google.co.zm google.co.zw google.cat *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za *.google.co.zm *.google.co.zw *.google.cat *.intercom.io *.intercomcdn.com *.intercomcdn.eu *.intercomusercontent.com https://*.intercom-messenger.com wss://*.intercom-messenger.com *.hubapi.com js.hscta.net *.hubspot.com *.hs-banner.com *.hscollectedforms.net *.hsforms.com https://uploads.userpilot.io https://api.userpilot.io wss://api.userpilot.io https://find.userpilot.io https://find-x.userpilot.io https://find-y.userpilot.io https://find-z.userpilot.io https://find-w.userpilot.io wss://analytex.userpilot.io wss://analytex-us.userpilot.io wss://analytex-eu.userpilot.io wss://analytex-in.userpilot.io https://analytex.userpilot.io https://analytex-us.userpilot.io https://analytex-eu.userpilot.io https://analytex-in.userpilot.io https://reporting.userpilot.io wss://reporting.userpilot.io https://playground.userpilot.io https://web.cmp.usercentrics.eu https://v1.api.service.cmp.usercentrics.eu https://consent-api.service.consent.usercentrics.eu *.googlesyndication.com https://*.g2.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.googleapis.com connect-cdn.atl-paas.net www.google.com cdn.headwayapp.co cdn.jsdelivr.net gstatic.com www.gstatic.com code.jquery.com cdnjs.cloudflare.com aui-cdn.atlassian.com google-analytics.com *.google-analytics.com analytics.google.com *.analytics.google.com *.googletagmanager.com googleads.g.doubleclick.net js.stripe.com connect-js.stripe.com *.intercom.io js.intercomcdn.com *.hsadspixel.net *.hs-analytics.net js.hscta.net *.hubspot.com static.hsappstatic.net *.usemessages.com *.hs-banner.com *.hubspotusercontent00.net *.hubspotusercontent10.net *.hubspotusercontent20.net *.hubspotusercontent30.net *.hubspotusercontent40.net *.hubspot.net *.hscollectedforms.net *.hsleadflows.net *.hsforms.net *.hsforms.com *.hs-scripts.com *.hubspotfeedback.com feedback.hubapi.com https://js.userpilot.io https://deploy.userpilot.io https://web.cmp.usercentrics.eu https://v1.api.service.cmp.usercentrics.eu https://consent-api.service.consent.usercentrics.eu *.googlesyndication.com https://*.g2.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com aui-cdn.atlassian.com cdn.headwayapp.co cdnjs.cloudflare.com gstatic.com www.gstatic.com connect-cdn.atl-paas.net js.stripe.com unsafe-inline *.hubspotusercontent00.net *.hubspotusercontent10.net *.hubspotusercontent20.net *.hubspotusercontent30.net *.hubspotusercontent40.net cdn2.hubspot.net; img-src * data: blob: *.google-analytics.com *.analytics.google.com *.googletagmanager.com https://media.userpilot.io https://uploads.userpilot.io https://gifs.userpilot.io https://videos.userpilot.io https://web.cmp.usercentrics.eu https://v1.api.service.cmp.usercentrics.eu; font-src 'self' fonts.gstatic.com google.com cdnjs.cloudflare.com aui-cdn.atlassian.com *.intercomcdn.com https://fonts.googleapis.com https://fonts.gstatic.com https://fonts.userpilot.io; frame-src 'self' blob: headway-widget.net google.com www.google.com www.googletagmanager.com td.doubleclick.net js.stripe.com connect-js.stripe.com intercom-sheets.com *.hubspot.com *.hs-sites.com *.hubspot.net play.hubspotvideo.com *.hsforms.net *.hsforms.com https://web.cmp.usercentrics.eu/; media-src data: *.cloudfront.net js.intercomcdn.com https://js.userpilot.io; child-src 'self' intercom-sheets.com www.intercom-reporting.com www.youtube.com player.vimeo.com fast.wistia.net *.hsforms.com">
+    
+    
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/main.CLMIxDZS.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/app.BAh0nCdd.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/sandbox.M-iZgsB_.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/ui-kit.pFsjykPY.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/Button.CGUGrXbL.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/light.COaMl0Bs.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/Modal.CJGI1E7r.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/TariffLimitationModal.DHodvVSA.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/ErrorPage.P_MbnJ4d.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/HintText.CKvL4FKI.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/layoutTheme.BXnJPbk8.css">
+        
+    
+    
+    <script type="text/javascript">
+        window.CENTRIFUGO_CONNECTION_URL = 'wss:///app.qase.io/centrifugo/connection/websocket'
+    </script>
+    <script type="text/javascript">
+        window.OAUTH_LOGIN_STATUS = document.cookie.includes('_oauth_login_status=1')
+    </script>
+    
+<link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/es.ChPw-XFg.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/rolldown-runtime.CF6gOSGR.js"><script src="https://js.stripe.com/basil/stripe.js"></script><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AttachmentModal.CNSY27nv.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/vendor.react.BDcRxO_q.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/sandbox.Bv2coKI7.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/vendor.mobx.Cwe31Oa1.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ui-kit.icj6eSBD.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/reporter.CSJnCP4w.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/axios.DhcTPPE-.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Button.DKmYttAn.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/light.module.D7pKih0w.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Me.se7lJWe2.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/dropzone.Bw96NB_-.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Modal.fDK1AbWt.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/assign.B9AsmHhn.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/LocalStorage.B88EAyw7.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/service.B_N12V9W.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/vendor.lodash.BG4gfo70.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/configuration.Ck3sFCg-.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Analytics.NCqqS5ER.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AttachmentList.C26d1JRv.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/loadableConfig.CBvzQM2L.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/extends.189kkm6a.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/base64.CKjo64xl.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/array.BSqQvBGG.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/string.CqfL-yR7.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useDeferredDimensions.D3jlkn6l.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/useDeferredDimensions.LOl1_Siv.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/AttachmentList.HQ9E08Jk.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/AttachmentModal.B6WhFnSb.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ApplicationsContent.CllIqHBn.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/decorate.CXyO8pJJ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/esm5.CSG3JOr0.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/react-redux.C0cCNsSa.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/redux.Cj-7yC__.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/selectors.BAbN6-Ce.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/utils.B8qPnDbJ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/models.DMeVEnEV.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/dist.Bv0_kUVo.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ErrorPage.DCMUxmtW.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/react-use-intercom.esm.CxTVAKOR.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/HintText.DycCZgEH.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/navigation.BPTJpYJl.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Configuration.NMoKHvC5.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Filters.BA_2lK87.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Milestone.DE75zMpe.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/MilestonesList.DGRawzDl.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Project.CaV0y5vF.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Requirement.A5VD7E17.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Project.BkmPQEBu.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ReviewList.Di4ybqn_.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/LoadingDataState.0ExX259R.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Plan.rrex-XKp.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/SuggestionsAction.r6cIMZ3z.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/TeamAction.C2fl5eFw.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/RequirementType.C2Jl72sT.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Case.CGjFS-yU.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CustomField.CPS654PQ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useAppDispatch.BRW2Dh8G.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/groups-permissions.D9OCnex6.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/roles-permissions.BTGW3X-a.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/team-permissions.BhulBbkk.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/webhooks-permissions.CqQsh85g.js"></head>
+<body class="">
+
+
+    <script id="initialState" type="application/base64">W251bGwse30seyJ0aXRsZSI6IlRNUyIsImlzX2FpX2VuYWJsZWQiOnRydWUsImlzX2FpX2ZpbmVfdHVuaW5nX2VuYWJsZWQiOnRydWUsImlzX3dlZWtseV9hdXRvbWF0aW9uX3JlcG9ydF9lbmFibGVkIjp0cnVlLCJoYXNoIjoiYWIyZjVmYWNlOTY2YzBjYjU3ZDQ1NjVmYjRmNmRiZmM3NTc0NWY4NyIsImlzX3RyaWFsX2F2YWlsYWJsZSI6dHJ1ZSwidHJpYWxfZW5kc19hdCI6bnVsbCwiaXNfYmlsbGluZ19kYXRhX25lZWRlZCI6ZmFsc2UsImlzX3dlZWtseV9hdXRvbWF0aW9uX3JlcG9ydF9hdmFpbGFibGUiOmZhbHNlfV0=</script>
+
+
+    <script id="flashMessages" type="application/base64">W10=</script>
+
+
+<div id="app"><div id="layout" class="_0-PKcZ eOohX2 xhoMhl _5F5dM- _3tfhYZ TaCqCj vULLpn IlfFjk TQU6kb light" data-sentry-component="LayoutTheme" data-sentry-source-file="layoutTheme.tsx"><header class="xcQv0x" role="banner"><nav class="dKfORT" aria-label="Main navigation"><a class="b8HUG7 xmY5KU" data-sentry-element="Link" data-sentry-source-file="index.tsx" href="/projects" data-discover="true">Projects</a><a class="b8HUG7" data-sentry-element="Link" data-sentry-source-file="index.tsx" href="/workspace" data-discover="true">Workspace</a></nav><div class="B-9E2q" role="toolbar" aria-label="User actions"><button type="button" class="AukLXn" aria-label="Notifications" aria-pressed="false" aria-live="polite" aria-atomic="true" data-balloon-pos="down"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bell" class="svg-inline--fa fa-bell _3rGiS6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="16" width="20"><path fill="currentColor" d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 25.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416l400 0c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4l0-25.4c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm0 96c61.9 0 112 50.1 112 112l0 25.4c0 47.9 13.9 94.6 39.7 134.6L72.3 368C98.1 328 112 281.3 112 233.4l0-25.4c0-61.9 50.1-112 112-112zm64 352l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg></button><button type="button" class="AukLXn" aria-label="Chat" data-sentry-element="NavbarButton" data-sentry-source-file="index.tsx" data-balloon-pos="down"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="comment" class="svg-inline--fa fa-comment _3rGiS6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" width="20"><path fill="currentColor" d="M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9l.3-.5z"></path></svg></button><button data-sentry-element="Button" data-sentry-source-file="UserMenuView.tsx" class="BBDwiM" data-rac="" type="button" tabindex="0" aria-haspopup="true" aria-expanded="false" id="react-aria7498599840-:r4:" data-react-aria-pressable="true" aria-label="user"></button></div></header><div class="_1tBlvt" data-sentry-component="ApplicationWrapper" data-sentry-source-file="index.tsx"><div id="application-content" class="_6-1aO-"><div role="progressbar" class="loader row text-center mt-5 ON26l9" data-sentry-component="Loader" data-sentry-source-file="index.tsx"><div class="col-lg-12"><div class="w6iITs" data-sentry-element="SvgLoader" data-sentry-source-file="index.tsx" data-sentry-component="SvgLoader"></div><span class="loading">Loading...</span></div></div></div></div><div id="modals"><div class="aLJlC9"></div></div></div></div>
+
+
+    
+        <script type="module" src="/assets/client/1789145202047/js/rolldown-runtime.CF6gOSGR.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/vendor.react.BDcRxO_q.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/extends.189kkm6a.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/vendor.mobx.Cwe31Oa1.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/sandbox.Bv2coKI7.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/axios.DhcTPPE-.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/reporter.CSJnCP4w.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/light.module.D7pKih0w.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/Button.DKmYttAn.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/Me.se7lJWe2.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/ui-kit.icj6eSBD.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/assign.B9AsmHhn.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/vendor.lodash.BG4gfo70.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/configuration.Ck3sFCg-.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/service.B_N12V9W.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/LocalStorage.B88EAyw7.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/Analytics.NCqqS5ER.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/Modal.fDK1AbWt.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/base64.CKjo64xl.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/array.BSqQvBGG.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/string.CqfL-yR7.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/loadableConfig.CBvzQM2L.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/react-use-intercom.esm.CxTVAKOR.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/TariffLimitationModal.Bboct0DA.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/locked-features.BLX7_9J4.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/HintText.DycCZgEH.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/ErrorPage.DCMUxmtW.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/layoutTheme.C62PRWOl.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/features.CB0oz2TN.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/ResourcesStore.CSInpcqq.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/consts.C7HgfYL8.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/entry.main.B9U3E93V.js"></script>
+    
+
+
+
+<iframe name="__privateStripeMetricsController7300" frameborder="0" allowtransparency="true" scrolling="no" role="presentation" allow="payment *" src="https://js.stripe.com/v3/m-outer-3437aaddcdf6922d623e172c2d6f9278.html#url=https%3A%2F%2Fapp.qase.io%2Fprojects&amp;title=Qase&amp;referrer=https%3A%2F%2Fapp.qase.io%2Flogin&amp;muid=NA&amp;sid=NA&amp;version=6&amp;preview=false&amp;__shared_params__[version]=basil" aria-hidden="true" tabindex="-1" style="border-width: medium !important; border-style: none !important; border-color: currentcolor !important; border-image: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe></body></html>

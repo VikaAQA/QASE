@@ -1,0 +1,719 @@
+<html lang="en" style="font-size: 16px;" data-theme="light"><head><style id="react-aria-pressable-style">@layer {
+  [data-react-aria-pressable] {
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+}</style>
+    <script type="text/javascript" async="" src="https://widget.intercom.io/widget/wsaz8vex"></script><script>
+        window.UC_UI_DOMAINS = {
+            crossDomainConsentSharingIFrame: 'https://qase.io/cross-domain-bridge.html',
+        };
+    </script>
+    
+    
+
+    <meta charset="UTF-8">
+    <meta name="sentry-trace" content="087a9097242351f9e87f3b88d212543c-9365c867d09ba783-0">
+<meta name="baggage" content="sentry-environment=production,sentry-release=release-202609111644,sentry-public_key=5c4961c1c6d94f50b57187ee70cbaf59,sentry-trace_id=087a9097242351f9e87f3b88d212543c,sentry-org_id=151863,sentry-sampled=false,sentry-sample_rand=0.697050157986408,sentry-sample_rate=0.01">
+    
+        <title>API | Repository | Qase</title>
+    
+    <style type="text/css">:root, :host {
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
+  --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-regular: normal 400 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-light: normal 300 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-thin: normal 100 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-regular: normal 400 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-light: normal 300 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-thin: normal 100 1em/1 "Font Awesome 6 Sharp Duotone";
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-2xs {
+  vertical-align: 0.1em;
+}
+.svg-inline--fa.fa-xs {
+  vertical-align: 0em;
+}
+.svg-inline--fa.fa-sm {
+  vertical-align: -0.0714285705em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.2em;
+}
+.svg-inline--fa.fa-xl {
+  vertical-align: -0.25em;
+}
+.svg-inline--fa.fa-2xl {
+  vertical-align: -0.3125em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-li {
+  width: var(--fa-li-width, 2em);
+  top: 0.25em;
+}
+.svg-inline--fa.fa-fw {
+  width: var(--fa-fw-width, 1.25em);
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  transform-origin: center center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: var(--fa-counter-background-color, #ff253a);
+  border-radius: var(--fa-counter-border-radius, 1em);
+  box-sizing: border-box;
+  color: var(--fa-inverse, #fff);
+  line-height: var(--fa-counter-line-height, 1);
+  max-width: var(--fa-counter-max-width, 5em);
+  min-width: var(--fa-counter-min-width, 1.5em);
+  overflow: hidden;
+  padding: var(--fa-counter-padding, 0.25em 0.5em);
+  right: var(--fa-right, 0);
+  text-overflow: ellipsis;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-counter-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: var(--fa-bottom, 0);
+  right: var(--fa-right, 0);
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: var(--fa-bottom, 0);
+  left: var(--fa-left, 0);
+  right: auto;
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  top: var(--fa-top, 0);
+  right: var(--fa-right, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: var(--fa-left, 0);
+  right: auto;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top left;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(-1 * var(--fa-li-width, 2em));
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  animation-name: fa-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  animation-name: fa-shake;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  animation-name: fa-spin;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
+    animation-delay: -1ms;
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%, 24% {
+    transform: rotate(-18deg);
+  }
+  12%, 28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%, 100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+
+.fa-stack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}</style><style type="text/css">
+        @font-face {
+            font-family: "Inter Fallback";
+            src: local('Arial');
+            ascent-override: 90.0021%;
+            descent-override: 22.4345%;
+            size-adjust: 107.6364%;
+        }
+    </style>
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <!-- Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <!-- Variable font (doesn't need separate bold, thin, etc.) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' data: ws: o151863.ingest.sentry.io ingest.tiden.ai rum.qase.io translate.googleapis.com google.com fonts.googleapis.com google-analytics.com *.google-analytics.com analytics.google.com *.analytics.google.com *.googletagmanager.com *.g.doubleclick.net google.ad google.ae google.com.af google.com.ag google.al google.am google.co.ao google.com.ar google.as google.at google.com.au google.az google.ba google.com.bd google.be google.bf google.bg google.com.bh google.bi google.bj google.com.bn google.com.bo google.com.br google.bs google.bt google.co.bw google.by google.com.bz google.ca google.cd google.cf google.cg google.ch google.ci google.co.ck google.cl google.cm google.cn google.com.co google.co.cr google.com.cu google.cv google.com.cy google.cz google.de google.dj google.dk google.dm google.com.do google.dz google.com.ec google.ee google.com.eg google.es google.com.et google.fi google.com.fj google.fm google.fr google.ga google.ge google.gg google.com.gh google.com.gi google.gl google.gm google.gr google.com.gt google.gy google.com.hk google.hn google.hr google.ht google.hu google.co.id google.ie google.co.il google.im google.co.in google.iq google.is google.it google.je google.com.jm google.jo google.co.jp google.co.ke google.com.kh google.ki google.kg google.co.kr google.com.kw google.kz google.la google.com.lb google.li google.lk google.co.ls google.lt google.lu google.lv google.com.ly google.co.ma google.md google.me google.mg google.mk google.ml google.com.mm google.mn google.com.mt google.mu google.mv google.mw google.com.mx google.com.my google.co.mz google.com.na google.com.ng google.com.ni google.ne google.nl google.no google.com.np google.nr google.nu google.co.nz google.com.om google.com.pa google.com.pe google.com.pg google.com.ph google.com.pk google.pl google.pn google.com.pr google.ps google.pt google.com.py google.com.qa google.ro google.ru google.rw google.com.sa google.com.sb google.sc google.se google.com.sg google.sh google.si google.sk google.com.sl google.sn google.so google.sm google.sr google.st google.com.sv google.td google.tg google.co.th google.com.tj google.tl google.tm google.tn google.to google.com.tr google.tt google.com.tw google.co.tz google.com.ua google.co.ug google.co.uk google.com.uy google.co.uz google.com.vc google.co.ve google.co.vi google.com.vn google.vu google.ws google.rs google.co.za google.co.zm google.co.zw google.cat *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za *.google.co.zm *.google.co.zw *.google.cat *.intercom.io *.intercomcdn.com *.intercomcdn.eu *.intercomusercontent.com https://*.intercom-messenger.com wss://*.intercom-messenger.com *.hubapi.com js.hscta.net *.hubspot.com *.hs-banner.com *.hscollectedforms.net *.hsforms.com https://uploads.userpilot.io https://api.userpilot.io wss://api.userpilot.io https://find.userpilot.io https://find-x.userpilot.io https://find-y.userpilot.io https://find-z.userpilot.io https://find-w.userpilot.io wss://analytex.userpilot.io wss://analytex-us.userpilot.io wss://analytex-eu.userpilot.io wss://analytex-in.userpilot.io https://analytex.userpilot.io https://analytex-us.userpilot.io https://analytex-eu.userpilot.io https://analytex-in.userpilot.io https://reporting.userpilot.io wss://reporting.userpilot.io https://playground.userpilot.io https://web.cmp.usercentrics.eu https://v1.api.service.cmp.usercentrics.eu https://consent-api.service.consent.usercentrics.eu *.googlesyndication.com https://*.g2.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.googleapis.com connect-cdn.atl-paas.net www.google.com cdn.headwayapp.co cdn.jsdelivr.net gstatic.com www.gstatic.com code.jquery.com cdnjs.cloudflare.com aui-cdn.atlassian.com google-analytics.com *.google-analytics.com analytics.google.com *.analytics.google.com *.googletagmanager.com googleads.g.doubleclick.net js.stripe.com connect-js.stripe.com *.intercom.io js.intercomcdn.com *.hsadspixel.net *.hs-analytics.net js.hscta.net *.hubspot.com static.hsappstatic.net *.usemessages.com *.hs-banner.com *.hubspotusercontent00.net *.hubspotusercontent10.net *.hubspotusercontent20.net *.hubspotusercontent30.net *.hubspotusercontent40.net *.hubspot.net *.hscollectedforms.net *.hsleadflows.net *.hsforms.net *.hsforms.com *.hs-scripts.com *.hubspotfeedback.com feedback.hubapi.com https://js.userpilot.io https://deploy.userpilot.io https://web.cmp.usercentrics.eu https://v1.api.service.cmp.usercentrics.eu https://consent-api.service.consent.usercentrics.eu *.googlesyndication.com https://*.g2.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com aui-cdn.atlassian.com cdn.headwayapp.co cdnjs.cloudflare.com gstatic.com www.gstatic.com connect-cdn.atl-paas.net js.stripe.com unsafe-inline *.hubspotusercontent00.net *.hubspotusercontent10.net *.hubspotusercontent20.net *.hubspotusercontent30.net *.hubspotusercontent40.net cdn2.hubspot.net; img-src * data: blob: *.google-analytics.com *.analytics.google.com *.googletagmanager.com https://media.userpilot.io https://uploads.userpilot.io https://gifs.userpilot.io https://videos.userpilot.io https://web.cmp.usercentrics.eu https://v1.api.service.cmp.usercentrics.eu; font-src 'self' fonts.gstatic.com google.com cdnjs.cloudflare.com aui-cdn.atlassian.com *.intercomcdn.com https://fonts.googleapis.com https://fonts.gstatic.com https://fonts.userpilot.io; frame-src 'self' blob: headway-widget.net google.com www.google.com www.googletagmanager.com td.doubleclick.net js.stripe.com connect-js.stripe.com intercom-sheets.com *.hubspot.com *.hs-sites.com *.hubspot.net play.hubspotvideo.com *.hsforms.net *.hsforms.com https://web.cmp.usercentrics.eu/; media-src data: *.cloudfront.net js.intercomcdn.com https://js.userpilot.io; child-src 'self' intercom-sheets.com www.intercom-reporting.com www.youtube.com player.vimeo.com fast.wistia.net *.hsforms.com">
+    
+    
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/main.CLMIxDZS.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/app.BAh0nCdd.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/sandbox.M-iZgsB_.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/ui-kit.pFsjykPY.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/Button.CGUGrXbL.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/light.COaMl0Bs.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/Modal.CJGI1E7r.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/TariffLimitationModal.DHodvVSA.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/ErrorPage.P_MbnJ4d.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/HintText.CKvL4FKI.css">
+        
+            <link rel="stylesheet" href="/assets/client/1789145202047/css/layoutTheme.BXnJPbk8.css">
+        
+    
+    
+    <script type="text/javascript">
+        window.CENTRIFUGO_CONNECTION_URL = 'wss:///app.qase.io/centrifugo/connection/websocket'
+    </script>
+    <script type="text/javascript">
+        window.OAUTH_LOGIN_STATUS = document.cookie.includes('_oauth_login_status=1')
+    </script>
+    
+<link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/es.ChPw-XFg.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/rolldown-runtime.CF6gOSGR.js"><script src="https://js.stripe.com/basil/stripe.js"></script><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AttachmentModal.CNSY27nv.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/vendor.react.BDcRxO_q.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/sandbox.Bv2coKI7.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/vendor.mobx.Cwe31Oa1.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ui-kit.icj6eSBD.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/reporter.CSJnCP4w.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/axios.DhcTPPE-.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Button.DKmYttAn.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/light.module.D7pKih0w.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Me.se7lJWe2.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/dropzone.Bw96NB_-.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Modal.fDK1AbWt.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/assign.B9AsmHhn.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/LocalStorage.B88EAyw7.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/service.B_N12V9W.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/vendor.lodash.BG4gfo70.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/configuration.Ck3sFCg-.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Analytics.NCqqS5ER.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AttachmentList.C26d1JRv.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/loadableConfig.CBvzQM2L.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/extends.189kkm6a.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/base64.CKjo64xl.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/array.BSqQvBGG.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/string.CqfL-yR7.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useDeferredDimensions.D3jlkn6l.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/useDeferredDimensions.LOl1_Siv.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/AttachmentList.HQ9E08Jk.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/AttachmentModal.B6WhFnSb.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ApplicationsContent.CllIqHBn.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/decorate.CXyO8pJJ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/esm5.CSG3JOr0.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/react-redux.C0cCNsSa.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/redux.Cj-7yC__.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/selectors.BAbN6-Ce.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/utils.B8qPnDbJ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/models.DMeVEnEV.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/dist.Bv0_kUVo.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ErrorPage.DCMUxmtW.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/react-use-intercom.esm.CxTVAKOR.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/HintText.DycCZgEH.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/navigation.BPTJpYJl.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Configuration.NMoKHvC5.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Filters.BA_2lK87.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Milestone.DE75zMpe.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/MilestonesList.DGRawzDl.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Project.CaV0y5vF.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Requirement.A5VD7E17.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Project.BkmPQEBu.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ReviewList.Di4ybqn_.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/LoadingDataState.0ExX259R.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Plan.rrex-XKp.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/SuggestionsAction.r6cIMZ3z.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/TeamAction.C2fl5eFw.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/RequirementType.C2Jl72sT.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Case.CGjFS-yU.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CustomField.CPS654PQ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useAppDispatch.BRW2Dh8G.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/groups-permissions.D9OCnex6.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/roles-permissions.BTGW3X-a.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/team-permissions.BhulBbkk.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/webhooks-permissions.CqQsh85g.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Repository.DeRJOl5A.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/SelectCasesModal.BTOhhfD1.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/possibleConstructorReturn.Cvf7XQJO.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/objectWithoutPropertiesLoose.CNn66vEL.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/entry.main.B9U3E93V.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/TariffLimitationModal.Bboct0DA.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/locked-features.BLX7_9J4.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/layoutTheme.C62PRWOl.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/features.CB0oz2TN.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ResourcesStore.CSInpcqq.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/consts.C7HgfYL8.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/index.esm.ClJJ8SPR.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AuthorList.yaQJepXR.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/AuthorList.Cj69blkd.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ProjectFieldOptionLabel.CxQks65J.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/FieldOptionLabel.CZHA8X0O.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/FieldOptionIcon.v6D0DVrr.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/FieldOptionIcon.B7f9N16r.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/FieldOptionLabel.Bh_4aoaw.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Filters.Br3wuo0D.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/date.BRjh5w2G.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Input.Dsz72q2H.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Input.6SeiqZmT.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useDebouncedState.BT707-dT.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/usePrevious.DxRKimZr.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/DatePicker.5IgJpvPj.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/react-datepicker.min.CGjt2Ekv.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/DatePicker.xCsSx4vQ.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Hotkey.GvIkd5IZ.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Filters.C3wRAns7.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/FilterStoredValue.BnxC9xog.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/MarkdownView.Cic4cum6.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/src.DpahhShL.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/utils.B5lVmQ8-.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/src.1Yj6VX9i.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/MarkdownView.8xdvOVS7.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Automation.DpgGNzdD.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/repository-api.C9Fgetpd.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/SelectCasesModal.Cx4ihXLG.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/array-move.BU0tGOxz.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AutotestGenerationModal.B95VJvi7.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CreateAuthProfileModal.msOHkHrW.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useCreatableEnvironment.BZwxTIB7.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/url.YDagyKEa.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/MaskedCredentialField.B1lOEF9O.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/const.D1YcIM6M.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/SelectField.CZknKEzz.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/FieldErrorText.Bxsms6sP.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/FieldErrorText.DEd5IU2M.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Label.BsXMsvTt.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/CreateAuthProfileModal.CHSx7aa6.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/styles.module.DR3aIb-E.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/utils.XGtKU-R9.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/check-credits-request.DaWHpvb-.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/styles.bvDTE6Kr.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ScrollArea.Brcp8ew1.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/ScrollArea.BFz8bdgg.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/LevelDivider.BGOCJy_X.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/LevelDivider.D4Xd65F3.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/components.DsxYNxA3.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/helpers.CL0pXAYN.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CheckboxField.D9A0ukDv.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useConfirmation.Cv_6_eb-.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Tabs.DwqEEb7p.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Tabs.DcyfoBBH.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/field-entity-type.dcr8_9HF.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/AutotestGenerationModal.BRo6JJoH.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CaseView.DdGzWSAB.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/GherkinEditor.CXKVLW2Y.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/react-select.cjs.qMGuG7-T.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/objectWithoutPropertiesLoose.CDalFlgP.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/constants.tR9rQd5k.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/scrollTo.dxTZq6pS.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/GherkinEditor.BFvS4W5S.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/select.B0grCCcb.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/select.DWdax4Kd.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/SystemFieldFormItem.DaURFGPh.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Fields.CcDjGZDg.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/TextArea.D0rp5bFE.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/TextArea.B3bhFCqp.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/TeamMemberLabel.sjov8Qxg.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AuthorLabel.C4PPVdoP.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AuthorName.Cp-UVRSH.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/RadioButton.CnssBNPm.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/RadioButton.DGiFHCZC.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CoreMarkdownEditor.sFFGo1Gz.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/CoreMarkdownEditor.BuUdTDYm.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/field-input-type.CsLembBR.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Fields.CVEMvqq5.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/style.module.BsZD-Gqb.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/style.BCqTw7TB.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/FormField.BmK0H9AC.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ParallelConversionsLimitModal.BA210Vr9.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/TariffLimitationModal.DrwNjapY.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/SystemFieldFormItem.B6faBkyU.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ViewSteps.BNN3KT6W.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/StepHeader.9I0BWZtE.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/StepHeader.COzbs641.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/StepCollapseButton.DWFySL_y.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/case-step.DjOWWgwY.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/runResultStatus.DS2ApQn3.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/result-status-behaviour.CkFrHvHA.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/StepCollapseButton.DsC1eSAA.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Collapse.BdPmkEAo.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/ViewSteps.-cM_S8VI.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/SearchPagination.o_KMFgz3.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Breadcrumbs.DpDey__a.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useBreadcrumbsHook.aPPUOkPm.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Breadcrumbs.wLn9N9ca.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Table.BI0nWSnV.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Table.CeP2lkZ_.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Code.Hb0hTjpP.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Code.C6E6GuDO.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CollapseToggle.CMr-hShM.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/CollapseToggle.C3EWzdaK.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/InputField.BS8Sd_Ob.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Pagination.B00CC2ja.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/UrlConnectedParam.CP7lyZXg.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/QueryParams.KWzPjs9H.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Pagination.DrCUXNA-.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/NotionIcon.BR9RyXEo.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/NotionIcon.CzTrtzbh.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/external-app-slug.Dx6PVhXn.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/accessControl.DQWoSohJ.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/SearchPagination.AwM8c9J-.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CustomFieldsBlock.CXW0IhQU.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CustomField.Dx51XpYt.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/fields.CeHfrkDp.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/DefectStatusBadge.DI_kawfb.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/DefectStatus.Df2pq2vv.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useMappingParams.cHysFq13.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/EditSteps.LS3yUFxa.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/index.browser.CgkIpf4b.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/shared-steps.CSneGNkS.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/shared-steps.BNltgjd3.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/MenuDivider.C6V1wpun.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/MenuList.Bgg7q2Yz.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/MenuList.DK0q2sVA.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/MenuItem.B6ByrU-M.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/DnD.DtNAV5NK.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/DnD.2_FNidRv.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AttachmentModal.BLcfljUr.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/EditSteps.BW_3tSQN.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/MilestoneSelect.CiGJ6E_d.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/ProjectSelect.CJyXpluf.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/ProjectSelect.C1lTXpNg.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/RunResultStatusIcon.l1EyfqS6.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/RunResultStatusIcon.VLe3-Tpn.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/SuiteSelect.BxehdE_l.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/TagsSelect.BfUI0ZQ6.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Comments.ClaR8wja.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Loader.BV_LgATY.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Loader.DFzC6DKc.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/HumanReadableDateFromCurrent.DqvcMw7I.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/DeleteModal.D0nby_XZ.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/DeleteModal.Bs5jlm9f.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/useOnScreen.Dsb7NdSU.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/comment-api.BPG4s-mH.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Comments.CUyt3hdW.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/LimitedEntityTitle.Cy7Z0BHY.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/LimitedEntityTitle.6agcUD24.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AutotestExport.B_5GBICU.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/aiCaseAnalysis.DZ-7uqCc.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/aiCaseAnalysis.CR0GxUE7.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/BackLink.B78aS_GK.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/BackLink.DyWL1V9s.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CustomFieldDefaultValues.Ccs-Tv8o.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/LabeledMarkdownField.CaZgYgeT.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Revisions.C5DZNlSh.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/TeamMemberAvatar.D-kkfL42.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Tag.DvU9G-2Q.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Revisions.5T2pcVNO.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/integrations-permissions.DGlHeG8l.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Store.BeFffkN2.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/AppsLoader.uHvgjPQL.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/container.Iat19HSD.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Skeleton.CI_QgwCL.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Skeleton.D5idWgxE.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Button._rYSXSDJ.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Button.CkuF0uV8.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/container.Cpd5Xazo.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/CaseView.Bx06Y_8u.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CreateRunModal.BzHCIQPG.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CustomFieldsFormBlock.DBxOodap.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/CustomFieldsFormBlock.wNqnpCEU.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/MemberSelect.CtOptBYY.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/MemberSelect.DG-M0VgI.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/SortIcon.DzMHu87z.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CaseTitleCell.DTNDG3RH.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/QueryTotalInfo.pRxNWX3A.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/TextAreaField.ydRBYMoI.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/InputFile.Ds5DvuTn.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/InputFile.DmAo6WHW.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/qql-api.DP1tFeGV.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/CreateRunModal.C10Amx5I.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/SelectSuiteCaseStatistic.cFRqEPPz.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/SelectSuiteCaseStatistic.Bhu2HPOa.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/StartAiGenerationModal.7rwJYZ5v.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/StartAiGenerationModal.CJBKMzNg.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/NoEntities.Dkzl8yAT.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/EmptyListImage.DYLFq_Vg.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/EmptyListImage.BTBKWZ5r.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/NoEntities.NYS65EU7.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/getElementCssVariable.C4i4GAYo.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/Container.Cy6O8SqW.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1789145202047/js/CaseStatus.BYnzcpNr.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1789145202047/css/Repository.BnEDn_9s.css"><style type="text/css">.index-module_canvas__H2w7d {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}</style><style type="text/css">:root{--jer-select-border:#b6b6b6;--jer-select-focus:#777;--jer-select-arrow:#777;--jer-form-border:1px solid #ededf0;--jer-form-border-focus:1px solid #e2e2e2;--jer-highlight-color:#b3d8ff}.jer-visible{opacity:1}.jer-hidden{opacity:0}.jer-select select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:none;color:#000;cursor:inherit;font-family:inherit;font-size:.8em;line-height:inherit;margin:0;outline:none;padding:0 1em 0 0;z-index:1}select::-ms-expand{display:none}.jer-select{align-items:center;background-color:#fff;background-image:linear-gradient(0deg,#f9f9f9,#fff 33%);border:1px solid var(--jer-select-border);border-radius:.25em;cursor:pointer;display:grid;grid-template-areas:"select";line-height:1.1;max-width:15ch;min-width:12ch;padding:.25em .5em;position:relative}.jer-select select,.jer-select:after{grid-area:select}.jer-select:not(.jer-select--multiple):after{background-color:var(--jer-select-arrow);clip-path:polygon(100% 0,0 0,50% 100%);content:"";height:.5em;justify-self:end;width:.8em}select:focus+.focus{border:1px solid var(--jer-select-focus);border-radius:inherit;bottom:-1px;left:-1px;position:absolute;right:-1px;top:-1px}.jer-select-inner{text-overflow:ellipsis;width:100%}.jer-editor-container{border-radius:.5em;font-size:16px;line-height:1;padding:1em 1em 1em 2em;position:relative;text-align:left}.jer-editor-container textarea{border:var(--jer-form-border);border-radius:.3em;color:var(--jer-input-color);outline:none}.jer-editor-container textarea:focus{border:var(--jer-form-border-focus)}.jer-editor-container input{border:var(--jer-form-border);border-radius:.3em;font-family:inherit;outline:none}.jer-editor-container input:focus{border:var(--jer-form-border-focus)}.jer-editor-container ::selection{background-color:var(--jer-highlight-color)}.jer-collection-header-row,.jer-value-main-row{align-items:center;display:flex;gap:.3em;min-height:1.7em}.jer-collection-header-row{display:flex;flex-wrap:wrap}.jer-collapse-icon{left:-1.2em;position:absolute;top:.35em}.jer-collection-inner{position:relative}.jer-collection-text-edit{align-items:flex-start;display:flex;flex-direction:column;gap:.3em;line-height:1.1em}.jer-collection-text-area{font-family:inherit;font-size:.85em;max-height:40em;overflow:hidden;padding:.2em .5em 0;resize:both}.jer-collection-input-button-row{display:flex;font-size:150%;justify-content:flex-end;margin-top:.4em;width:100%}.jer-collection-error-row{bottom:.5em;position:absolute}.jer-error-slug{margin-left:1em}.jer-value-component{position:relative}.jer-value-main-row{display:flex;gap:0}.jer-value-and-buttons{align-items:center;display:flex;justify-content:flex-start;padding-left:.5em}.jer-value-error-row{position:absolute}.jer-value-string{line-height:1.3em;overflow-wrap:anywhere;white-space:pre-wrap;word-break:break-word}.jer-string-expansion{cursor:pointer;filter:saturate(50%);opacity:.6}.jer-show-less{font-size:80%}.jer-hyperlink{text-decoration:underline}.jer-input-text{font-family:inherit;font-size:.9em;height:1.4em;line-height:1.2em;margin:0;min-width:6em;overflow:hidden;padding:.25em .5em .2em;resize:none}.jer-input-boolean{margin-left:.3em;margin-right:.3em;transform:scale(1.5)}.jer-key-text{line-height:1.1em;white-space:pre-wrap;word-break:break-word}.jer-key-edit{font-size:inherit;font-size:.9em;padding:0 .3em}.jer-value-invalid{font-style:italic;opacity:.5}.jer-input-number{font-size:90%;min-width:3em}.jer-confirm-buttons,.jer-edit-buttons{align-items:center;cursor:pointer;display:flex;height:1em}.jer-input-buttons{gap:.4em}.jer-edit-buttons{gap:.4em;margin-left:.5em;opacity:0}.jer-confirm-buttons{gap:.2em;margin-left:.4em}.jer-edit-buttons:hover{opacity:1;position:relative}.jer-collection-header-row:hover>.jer-edit-buttons,.jer-value-and-buttons:hover>.jer-edit-buttons,.jer-value-main-row:hover>.jer-edit-buttons{opacity:1}.jer-copy-pulse{position:relative;transition:.3s}.jer-copy-pulse:hover{opacity:.85;transform:scale(1.2);transition:.3s}.jer-copy-pulse:after{border-radius:50%;box-shadow:0 0 15px 5px var(--jer-icon-copy-color);content:"";display:block;height:100%;left:0;opacity:0;position:absolute;top:0;transition:all .5s;width:100%}.jer-copy-pulse:active:after{border-radius:4em;box-shadow:0 0 0 0 var(--jer-icon-copy-color);left:0;opacity:1;position:absolute;top:0;transition:0s}.jer-copy-pulse:active{top:.07em}.jer-rotate-90{transform:rotate(-90deg)}.jer-icon:hover{opacity:.85;transform:scale(1.2);transition:.3s}.jer-empty-string{font-size:90%;font-style:italic}.jer-drag-n-drop-padding{border:1px dashed #e0e0e0;border-radius:.3em;height:.5em}.jer-clickzone{height:calc(100% - .8em);left:-1em;position:absolute;top:1.2em}</style></head>
+<body class="">
+
+
+    <script id="initialState" type="application/base64">W3sibmFtZSI6IlZpa2EgVmxhc2l1ayIsImZpcnN0TmFtZSI6IlZpa2EiLCJsYXN0TmFtZSI6IlZsYXNpdWsiLCJlbWFpbCI6InZpa3RvcmlhcG9ydG5lbmtvQGdtYWlsLmNvbSIsImF2YXRhcl91cmwiOiJodHRwczovL2QyY3h1Y3NqZDZ4dnNkLmNsb3VkZnJvbnQubmV0L3B1YmxpYy91c2VyL3RodW1iL2VlOGYwZjI2MzUwZmQ2Yjg0NGZmZTI5YWUwNmYxYzdjLmpwZyIsImxhc3RfYWN0aW9uIjoiVW5rbm93biIsImlzX2FjdGl2ZSI6dHJ1ZSwibWVtYmVyX2lkIjoxLCJhdXRob3JfaWQiOjMxNDgyNiwiaXNfb3duZXIiOnRydWUsImlzX2FkbWluIjpmYWxzZSwic2luZ2xlX3RlbmFudCI6ZmFsc2UsIm9yZ19iaWxsaW5nX2VuYWJsZWQiOmZhbHNlLCJoYXNoIjoiOTJjNDgzNGEzYTE1M2FhOTkzNTg1MWU5Y2E3ZmQyMmI4YjY2ZGVlMzYzZjY4MjY5ZDA0ODRkYzkxMDMzMzFiOCIsImhhc2hfaWQiOiI3YjMyYWY5ZjI0MDZmYTAyNzI3OTZkNzczMDM4ZDNkYTM1NjZjZWMwMzQxMThkZDY0ZjljNmQ3ZDUwYTc1N2Y5Iiwic2VudHJ5Ijp7Imhhc2giOiI2N2UxMDVlNjY1NmM5NzY5YWE3MzIwZWE5MmY3OWZjMGUyODg0ZmM3NTFkY2ZiNzkyZTYwZjUzNmQ3MTczZGQzIn0sInRlYW0iOnsiaGFzaCI6ImFiMmY1ZmFjZTk2NmMwY2I1N2Q0NTY1ZmI0ZjZkYmZjNzU3NDVmODciLCJ0aXRsZSI6IlRNUyIsInNzbyI6eyJlbmFibGVkIjpmYWxzZSwiZGlzYWJsZV9sb2dpbiI6ZmFsc2V9fSwic3RyaXBlIjp7ImlkIjpudWxsLCJwcmljZSI6ImZyZWVfdjQiLCJwbGFuX3RpdGxlIjoiRnJlZSJ9LCJpc19lbnRlcnByaXNlIjpmYWxzZSwid29ya3NwYWNlX2lkIjoyMDc5MTUsIm1yciI6bnVsbCwid29ya3NwYWNlX2F2YWlsYWJsZV90ZWFtcyI6W3siaGFzaCI6ImFiMmY1ZmFjZTk2NmMwY2I1N2Q0NTY1ZmI0ZjZkYmZjNzU3NDVmODciLCJ0aXRsZSI6IlRNUyJ9XSwiYXBwZWFyYW5jZSI6eyJ0aGVtZSI6ImxpZ2h0IiwibGF5b3V0IjoiaCIsInNpemUiOiJtIn0sInJvbGUiOiJBdXRvbWF0aW9uIEVuZ2luZWVyIiwicm9sZV9pZCI6MSwicm9sZV90aXRsZSI6Ik93bmVyIiwidHlwZSI6MCwiYWNjZXNzX3JpZ2h0cyI6eyJwcm9qZWN0IjpbImNyZWF0ZSIsInVwZGF0ZSIsImRlbGV0ZSIsImFjY2VzcyIsImltcG9ydCIsImV4cG9ydCIsImNoYW5nZV9vd25lcnNoaXAiXSwiaW50ZWdyYXRpb25zIjpbImxpc3QiLCJpbnN0YWxsIiwidW5pbnN0YWxsIiwidXBkYXRlIiwibWFuYWdlX211bHRpX3dvcmtzcGFjZSIsImFjY2Vzc19jb250cm9sIiwiYXR0YWNoIl0sImdyb3VwcyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSIsIm1lbWJlcnMiXSwicm9sZXMiOlsibGlzdCIsInNhdmUiLCJkZWxldGUiLCJtZW1iZXJzIl0sImNhc2VzIjpbInJlcG9zaXRvcnkiLCJzYXZlIiwiZGVsZXRlIiwibW92ZSIsInJvbGxiYWNrIiwibXV0ZSJdLCJzdWl0ZXMiOlsic2F2ZSIsImRlbGV0ZSIsIm1vdmUiXSwicmV2aWV3cyI6WyJsaXN0IiwiYXBwcm92ZSIsImRlbGV0ZSJdLCJtaWxlc3RvbmVzIjpbImxpc3QiLCJzYXZlIiwiZGVsZXRlIl0sInNoYXJlZF9zdGVwcyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJwbGFucyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJydW5zIjpbImxpc3QiLCJzYXZlIiwic3VibWl0X3Jlc3VsdHMiLCJhc3NpZ24iLCJkZWxldGUiLCJtYW5hZ2VfY29uZmlndXJhdGlvbnMiLCJzY2hlZHVsZV9ydW5zIl0sImRlZmVjdHMiOlsibGlzdCIsInNhdmUiLCJyZXNvbHZlIiwiZGVsZXRlIl0sInRlYW0iOlsiaW52aXRlIiwiYWN0aXZhdGUiLCJtZW1iZXJfdXBkYXRlIiwic2F2ZSIsIm1lbWJlcnNfbGlzdCIsImxvZ3NfbGlzdCJdLCJ0dW5uZWwiOlsibGlzdCIsInNhdmUiLCJkZWxldGUiXSwiY3VzdG9tX2ZpZWxkcyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJzeXN0ZW1fZmllbGRzIjpbImxpc3QiLCJzYXZlIl0sImZpZWxkcyI6WyJsaXN0Iiwic2F2ZSIsImNyZWF0ZSIsImRlbGV0ZSJdLCJ0YWdzIjpbImxpc3QiLCJzYXZlIiwiZGVsZXRlIl0sImF0dGFjaG1lbnRzIjpbImxpc3QiLCJkZWxldGUiXSwid2ViaG9va3MiOlsibGlzdCIsInNhdmUiLCJkZWxldGUiXSwiZW52aXJvbm1lbnRzIjpbImxpc3QiLCJzYXZlIiwiZGVsZXRlIl0sImJpbGxpbmciOlsibWFuYWdlIl0sInJlcXVpcmVtZW50cyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJkYXNoYm9hcmRzIjpbImxpc3QiLCJjcmVhdGUiLCJzYXZlIiwiZGVsZXRlIiwic2hhcmUiXSwic2VjdXJpdHkiOlsic3NvIl0sInFxbCI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJzaGFyZWRfcGFyYW1ldGVycyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJhaWRlbiI6WyJtYW51YWxfdGVzdGluZ19jcmVhdGUiLCJhdXRvbWF0aW9uX2NyZWF0ZSIsImF1dG9tYXRpb25fZXhlY3V0ZSIsImFkdmlzb3JfYW5hbHlzZSIsImNvZGVfZG93bmxvYWQiXX0sImZlYXR1cmVzIjp7InRtcyI6dHJ1ZSwiYXBpIjp0cnVlLCJyZWFkX29ubHkiOmZhbHNlLCJyZXF1aXJlbWVudHMiOmZhbHNlLCJjdXN0b21fZmllbGRzIjpmYWxzZSwid2ViaG9va3MiOmZhbHNlLCJyZXZpZXciOmZhbHNlLCJyYmFjIjpmYWxzZSwibG9ncyI6dHJ1ZSwic2FtbCI6ZmFsc2UsInNjaW0iOmZhbHNlLCJkYXNoYm9hcmRzIjpmYWxzZSwicXFsIjpmYWxzZSwidHJhY2VhYmlsaXR5X21hdHJpeCI6ZmFsc2UsImludGVncmF0aW9ucyI6ZmFsc2UsImFwcF9jb250cm9sIjpmYWxzZSwic2NoZWR1bGVkX3J1bnMiOmZhbHNlLCJzaGFyZWRfcGFyYW1ldGVycyI6ZmFsc2UsImdsb2JhbF9zaGFyZWRfc3RlcHMiOmZhbHNlLCJhaWRlbiI6ZmFsc2UsImFpZGVuX3BhcmFsbGVsX2NvbnZlcnNpb25zIjpmYWxzZSwibmxfdG9fcXFsIjpmYWxzZX0sIm9uYm9hcmRpbmciOnsiYWN0aXZlX2d1aWRlIjpudWxsLCJ3aWRnZXRfc3RhdGUiOiJvcGVuIiwic2tpcHBlZCI6ZmFsc2UsImRpc21pc3NlZF90b29sdGlwIjpmYWxzZSwibGFzdF9yZXN1cmZhY2VkX2RheSI6bnVsbCwidXNlcl9pZCI6Mjc3ODUzLCJ3b3Jrc3BhY2VfY3JlYXRlZF9hdCI6IjIwMjUtMDctMTdUMTg6MjI6NDgrMDA6MDAiLCJjdXJyZW50X2RheSI6NDIyLCJpc19vbmJvYXJkaW5nX2FjdGl2ZSI6ZmFsc2UsInNob3dfZ3VpZGVzX2ljb24iOmZhbHNlLCJjb250cmlidXRlZF90b19hY3RpdmVfZ3VpZGUiOmZhbHNlLCJyZXN1cmZhY2VfdG9kYXkiOmZhbHNlLCJvZmZlcmVkX2d1aWRlcyI6W3siZ3VpZGVfdHlwZSI6Im1hbnVhbCIsInN0ZXBzIjpbIlBST0pFQ1RfQ1JFQVRFIiwiQ0FTRV9DUkVBVEUiLCJSVU5fU1RBUlQiLCJERUZFQ1RfQ1JFQVRFIiwiUlVOX0NPTVBMRVRFIl19XSwiY29tcGxldGVkX3RyaWdnZXJzIjpbXSwid29ya3NwYWNlX29uYm9hcmRpbmdfZW5hYmxlZCI6ZmFsc2UsImlzX2ZpcnN0X3Byb2plY3RfY3JlYXRlZCI6dHJ1ZSwiaXNfZmlyc3RfYXBwX2luc3RhbGxlZCI6ZmFsc2UsImlzX2ZpcnN0X3VzZXJfaW52aXRlZCI6ZmFsc2UsImlzX2ZpcnN0X3J1bl9jcmVhdGVkIjpmYWxzZSwiYXJlX2Nhc2VzX2ltcG9ydGVkIjpmYWxzZX19LHsic2V0dGluZ3MiOnsic3RhdHVzIjp0cnVlLCJlbnZpcm9ubWVudHMiOltdLCJpc0FyY2hpdmVkIjpmYWxzZSwiY2FzZUZpZWxkcyI6eyJwcmUiOnRydWUsInBvc3QiOnRydWUsInRhZ3MiOnRydWUsInR5cGUiOnRydWUsImxheWVyIjp0cnVlLCJzdGVwcyI6dHJ1ZSwic3RhdHVzIjp0cnVlLCJkYXRhc2V0Ijp0cnVlLCJiZWhhdmlvciI6dHJ1ZSwiaXNNYW51YWwiOnRydWUsImlzX2ZsYWt5Ijp0cnVlLCJwcmlvcml0eSI6dHJ1ZSwic2V2ZXJpdHkiOnRydWUsIm1pbGVzdG9uZSI6dHJ1ZSwiYXV0b21hdGlvbiI6dHJ1ZSwic3RlcHNfdHlwZSI6ImNsYXNzaWMiLCJkZXNjcmlwdGlvbiI6dHJ1ZSwiaXNUb0JlQXV0b21hdGVkIjp0cnVlLCJpc19xYXNlX2F1dG9tYXRlZCI6dHJ1ZX0sInJldmlldyI6eyJlbmFibGVkIjp0cnVlLCJtYW5kYXRvcnkiOmZhbHNlLCJzZWxmIjpmYWxzZSwiYXBwcm92ZXMiOjB9LCJydW5zIjp7InJlZGlyZWN0IjoyLCJzdGVwX2ZhaWwiOnRydWUsImF1dG9fcGFzc2VkIjpmYWxzZSwiZmFzdF9wYXNzZWQiOnRydWUsImF1dG9fYXNzaWduZWUiOnRydWUsImF1dG9fY29tcGxldGUiOnRydWUsInJ1bl9jbG9zZWRfcmVzdWx0cyI6dHJ1ZSwiYXNzaWduZWVfcmVzdWx0X2xvY2siOnRydWUsImFwaV91c2VfcmVwb19jYXNlX3RpdGxlIjpmYWxzZSwiZGVmYXVsdF9hc3NpZ25fc3RyYXRlZ3kiOiJyb3VuZF9yb2JpbiIsImFwaV9hdXRvX2NyZWF0ZV90ZXN0X2Nhc2VzIjp0cnVlLCJhcGlfYXV0b191cGRhdGVfdGVzdF9jYXNlcyI6ZmFsc2UsImRlZmF1bHRfY3JlYXRlX2RlZmVjdF9jaGVja2JveCI6dHJ1ZSwiYXBpX2F1dG9fdXBkYXRlX3Rlc3RfY2FzZXNfdHlwZSI6MSwiYXBpX2F1dG9fY3JlYXRlX3Rlc3RfY2FzZXNfZmllbGRzIjpbImxheWVyIiwic2V2ZXJpdHkiLCJwcmlvcml0eSIsImRlc2NyaXB0aW9uIiwicHJlY29uZGl0aW9ucyIsInBvc3Rjb25kaXRpb25zIiwic3VpdGVfdGl0bGUiLCJzdGVwcyIsInBhcmFtcyIsImlzX211dGVkIiwiaXNfZmxha3kiLCJ0eXBlIiwiYmVoYXZpb3IiLCJ0YWdzIl0sImFwaV9hdXRvX3VwZGF0ZV90ZXN0X2Nhc2VzX2ZpZWxkcyI6WyJ0aXRsZSIsImxheWVyIiwic2V2ZXJpdHkiLCJwcmlvcml0eSIsImRlc2NyaXB0aW9uIiwicHJlY29uZGl0aW9ucyIsInBvc3Rjb25kaXRpb25zIiwic3VpdGVfdGl0bGUiLCJzdGVwcyIsInBhcmFtcyIsImlzX211dGVkIiwiaXNfZmxha3kiLCJ0eXBlIiwiYmVoYXZpb3IiLCJ0YWdzIl0sImFwaV9hdXRvX21hcmtfdGVzdF9jYXNlc19hc19hdXRvbWF0ZWQiOnRydWUsImFwaV9hdXRvX2NyZWF0ZV90ZXN0X2Nhc2VzX2Zyb21fc3RhdHVzIjoxLCJhcGlfYXV0b191cGRhdGVfdGVzdF9jYXNlc19mcm9tX3N0YXR1cyI6MX0sInJlcG9zaXRvcnkiOnsiZGVsZXRlX2NvbmZpcm1hdGlvbiI6dHJ1ZSwiYWlfcHJvamVjdF9kZXNjcmlwdGlvbiI6IiJ9LCJjYXNlVmlldyI6eyJzaG93X2xpbmtzIjp0cnVlfSwiZGljdGlvbmFyaWVzIjp7InN0YXR1cyI6W3siaWQiOjAsImRlZmF1bHQiOnRydWUsInNsdWciOiJhY3R1YWwiLCJjb2xvcl9oZXgiOiIjN0VEMzIxIiwidGl0bGUiOiJBY3R1YWwifSx7ImlkIjoxLCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6ImRyYWZ0IiwiY29sb3JfaGV4IjoiI0MyQzJDMiIsInRpdGxlIjoiRHJhZnQifSx7ImlkIjoyLCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6ImRlcHJlY2F0ZWQiLCJjb2xvcl9oZXgiOiIjRDAwMjFCIiwidGl0bGUiOiJEZXByZWNhdGVkIn1dLCJzZXZlcml0eSI6W3siaWQiOjAsImljb24iOiJtaW51cyIsImRlZmF1bHQiOmZhbHNlLCJjb2xvciI6Im5vcm1hbCIsImNvbG9yX2hleCI6IiNDMkMyQzIiLCJzbHVnIjoidW5kZWZpbmVkIiwidGl0bGUiOiJOb3Qgc2V0In0seyJpZCI6MSwiaWNvbiI6ImJhbiIsImRlZmF1bHQiOmZhbHNlLCJjb2xvciI6ImJsb2NrZXIiLCJjb2xvcl9oZXgiOiIjRDAwMjFCIiwic2x1ZyI6ImJsb2NrZXIiLCJ0aXRsZSI6IkJsb2NrZXIifSx7ImlkIjoyLCJpY29uIjoiYW5nbGUtZG91YmxlLXVwIiwiZGVmYXVsdCI6ZmFsc2UsImNvbG9yIjoiY3JpdGljYWwiLCJjb2xvcl9oZXgiOiIjZGMzNTQ1Iiwic2x1ZyI6ImNyaXRpY2FsIiwidGl0bGUiOiJDcml0aWNhbCJ9LHsiaWQiOjMsImljb24iOiJhbmdsZS11cCIsImRlZmF1bHQiOmZhbHNlLCJjb2xvciI6Im1ham9yIiwiY29sb3JfaGV4IjoiI2ZkN2UxNCIsInNsdWciOiJtYWpvciIsInRpdGxlIjoiTWFqb3IifSx7ImlkIjo0LCJpY29uIjoiZ2VuZGVybGVzcyIsImRlZmF1bHQiOnRydWUsImNvbG9yIjoibm9ybWFsIiwiY29sb3JfaGV4IjoiI2ZmYzEwNyIsInNsdWciOiJub3JtYWwiLCJ0aXRsZSI6Ik5vcm1hbCJ9LHsiaWQiOjUsImljb24iOiJhbmdsZS1kb3duIiwiZGVmYXVsdCI6ZmFsc2UsImNvbG9yIjoibWlub3IiLCJjb2xvcl9oZXgiOiIjNjBBNjFCIiwic2x1ZyI6Im1pbm9yIiwidGl0bGUiOiJNaW5vciJ9LHsiaWQiOjYsImljb24iOiJhbmdsZS1kb3VibGUtZG93biIsImRlZmF1bHQiOmZhbHNlLCJjb2xvciI6Im5vcm1hbCIsImNvbG9yX2hleCI6IiMyMGM5OTciLCJzbHVnIjoidHJpdmlhbCIsInRpdGxlIjoiVHJpdmlhbCJ9XSwicHJpb3JpdHkiOlt7ImlkIjowLCJpY29uIjoibWludXMiLCJkZWZhdWx0Ijp0cnVlLCJjb2xvciI6Im1lZGl1bSIsImNvbG9yX2hleCI6IiNDMkMyQzIiLCJzbHVnIjoidW5kZWZpbmVkIiwidGl0bGUiOiJOb3Qgc2V0In0seyJpZCI6MSwiaWNvbiI6ImFycm93LXVwIiwiZGVmYXVsdCI6ZmFsc2UsImNvbG9yIjoiaGlnaCIsImNvbG9yX2hleCI6IiNEMDAyMUIiLCJzbHVnIjoiaGlnaCIsInRpdGxlIjoiSGlnaCJ9LHsiaWQiOjIsImljb24iOiJnZW5kZXJsZXNzIiwiZGVmYXVsdCI6ZmFsc2UsImNvbG9yIjoibWVkaXVtIiwiY29sb3JfaGV4IjoiI2ZmYzEwNyIsInNsdWciOiJtZWRpdW0iLCJ0aXRsZSI6Ik1lZGl1bSJ9LHsiaWQiOjMsImljb24iOiJhcnJvdy1kb3duIiwiZGVmYXVsdCI6ZmFsc2UsImNvbG9yIjoibG93IiwiY29sb3JfaGV4IjoiIzdFRDMyMSIsInNsdWciOiJsb3ciLCJ0aXRsZSI6IkxvdyJ9XSwidHlwZSI6W3siaWQiOjEsImRlZmF1bHQiOnRydWUsInNsdWciOiJvdGhlciIsImNvbG9yX2hleCI6IiNDMkMyQzIiLCJ0aXRsZSI6Ik90aGVyIn0seyJpZCI6OCwiZGVmYXVsdCI6ZmFsc2UsInNsdWciOiJmdW5jdGlvbmFsIiwiY29sb3JfaGV4IjoiIzAwN2JmZiIsInRpdGxlIjoiRnVuY3Rpb25hbCJ9LHsiaWQiOjIsImRlZmF1bHQiOmZhbHNlLCJzbHVnIjoic21va2UiLCJjb2xvcl9oZXgiOiIjNjYxMGYyIiwidGl0bGUiOiJTbW9rZSJ9LHsiaWQiOjMsImRlZmF1bHQiOmZhbHNlLCJzbHVnIjoicmVncmVzc2lvbiIsImNvbG9yX2hleCI6IiNlODNlOGMiLCJ0aXRsZSI6IlJlZ3Jlc3Npb24ifSx7ImlkIjo0LCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6InNlY3VyaXR5IiwiY29sb3JfaGV4IjoiI2ZkN2UxNCIsInRpdGxlIjoiU2VjdXJpdHkifSx7ImlkIjo1LCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6InVzYWJpbGl0eSIsImNvbG9yX2hleCI6IiMyOGE3NDUiLCJ0aXRsZSI6IlVzYWJpbGl0eSJ9LHsiaWQiOjYsImRlZmF1bHQiOmZhbHNlLCJzbHVnIjoicGVyZm9ybWFuY2UiLCJjb2xvcl9oZXgiOiIjMjBjOTk3IiwidGl0bGUiOiJQZXJmb3JtYW5jZSJ9LHsiaWQiOjcsImRlZmF1bHQiOmZhbHNlLCJzbHVnIjoiYWNjZXB0YW5jZSIsImNvbG9yX2hleCI6IiMxN2EyYjgiLCJ0aXRsZSI6IkFjY2VwdGFuY2UifSx7ImlkIjo5LCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6ImNvbXBhdGliaWxpdHkiLCJjb2xvcl9oZXgiOiIjNmY0MmMxIiwidGl0bGUiOiJDb21wYXRpYmlsaXR5In0seyJpZCI6MTAsImRlZmF1bHQiOmZhbHNlLCJzbHVnIjoiaW50ZWdyYXRpb24iLCJjb2xvcl9oZXgiOiIjZGMzNTQ1IiwidGl0bGUiOiJJbnRlZ3JhdGlvbiJ9LHsiaWQiOjExLCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6ImV4cGxvcmF0b3J5IiwiY29sb3JfaGV4IjoiI2Y4ZjlmYSIsInRpdGxlIjoiRXhwbG9yYXRvcnkifV0sImJlaGF2aW9yIjpbeyJpZCI6MSwiZGVmYXVsdCI6dHJ1ZSwic2x1ZyI6InVuZGVmaW5lZCIsImNvbG9yX2hleCI6IiNDMkMyQzIiLCJ0aXRsZSI6Ik5vdCBzZXQifSx7ImlkIjoyLCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6InBvc2l0aXZlIiwiY29sb3JfaGV4IjoiIzdFRDMyMSIsInRpdGxlIjoiUG9zaXRpdmUifSx7ImlkIjozLCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6Im5lZ2F0aXZlIiwiY29sb3JfaGV4IjoiI0QwMDIxQiIsInRpdGxlIjoiTmVnYXRpdmUifSx7ImlkIjo0LCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6ImRlc3RydWN0aXZlIiwiY29sb3JfaGV4IjoiI2ZkN2UxNCIsInRpdGxlIjoiRGVzdHJ1Y3RpdmUifV0sImF1dG9tYXRpb25TdGF0dXMiOlt7ImlkIjowLCJkZWZhdWx0Ijp0cnVlLCJzbHVnIjoiaXMtbm90LWF1dG9tYXRlZCIsInRpdGxlIjoiTWFudWFsIiwiaWNvbiI6ImhhbmQtcGFwZXIiLCJjb2xvcl9kYXNoYm9hcmQiOiIjRDAwMjFCIn0seyJpZCI6MSwiZGVmYXVsdCI6ZmFsc2UsInNsdWciOiJ0by1iZS1hdXRvbWF0ZWQiLCJ0aXRsZSI6IlRvIGJlIGF1dG9tYXRlZCIsImljb24iOiJ1c2VyLWNvZyIsImNvbG9yX2Rhc2hib2FyZCI6IiM3RUQzMjEifSx7ImlkIjoyLCJkZWZhdWx0IjpmYWxzZSwic2x1ZyI6ImF1dG9tYXRlZCIsInRpdGxlIjoiQXV0b21hdGVkIiwiaWNvbiI6ImNvZyIsImNvbG9yIjoidmFyKC0tY2YtaWNvbi1jb2xvci04KSIsImNvbG9yX2Rhc2hib2FyZCI6InZhcigtLWNmLWljb24tY29sb3ItOCkifV0sInJlcXVpcmVtZW50U3RhdHVzIjpbeyJpZCI6MCwiaWNvbiI6bnVsbCwiZGVmYXVsdCI6dHJ1ZSwiY29sb3IiOm51bGwsImNvbG9yX2hleCI6bnVsbCwic2x1ZyI6InZhbGlkIiwidGl0bGUiOiJWYWxpZCJ9LHsiaWQiOjEsImljb24iOm51bGwsImRlZmF1bHQiOmZhbHNlLCJjb2xvciI6bnVsbCwiY29sb3JfaGV4IjpudWxsLCJzbHVnIjoiZHJhZnQiLCJ0aXRsZSI6IkRyYWZ0In0seyJpZCI6MiwiaWNvbiI6bnVsbCwiZGVmYXVsdCI6ZmFsc2UsImNvbG9yIjpudWxsLCJjb2xvcl9oZXgiOm51bGwsInNsdWciOiJyZXZpZXciLCJ0aXRsZSI6IlJldmlldyJ9LHsiaWQiOjMsImljb24iOm51bGwsImRlZmF1bHQiOmZhbHNlLCJjb2xvciI6bnVsbCwiY29sb3JfaGV4IjpudWxsLCJzbHVnIjoicmV3b3JrIiwidGl0bGUiOiJSZXdvcmsifSx7ImlkIjo0LCJpY29uIjpudWxsLCJkZWZhdWx0IjpmYWxzZSwiY29sb3IiOm51bGwsImNvbG9yX2hleCI6bnVsbCwic2x1ZyI6ImZpbmlzaCIsInRpdGxlIjoiRmluaXNoIn0seyJpZCI6NSwiaWNvbiI6bnVsbCwiZGVmYXVsdCI6ZmFsc2UsImNvbG9yIjpudWxsLCJjb2xvcl9oZXgiOm51bGwsInNsdWciOiJpbXBsZW1lbnRlZCIsInRpdGxlIjoiSW1wbGVtZW50ZWQifSx7ImlkIjo2LCJpY29uIjpudWxsLCJkZWZhdWx0IjpmYWxzZSwiY29sb3IiOm51bGwsImNvbG9yX2hleCI6bnVsbCwic2x1ZyI6Im5vdC10ZXN0YWJsZSIsInRpdGxlIjoiTm90IHRlc3RhYmxlIn0seyJpZCI6NywiaWNvbiI6bnVsbCwiZGVmYXVsdCI6ZmFsc2UsImNvbG9yIjpudWxsLCJjb2xvcl9oZXgiOm51bGwsInNsdWciOiJvYnNvbGV0ZSIsInRpdGxlIjoiT2Jzb2xldGUifV0sInJlcXVpcmVtZW50VHlwZSI6W3siaWQiOjAsImljb24iOiJib2x0IiwiZGVmYXVsdCI6dHJ1ZSwiY29sb3IiOiJlcGljIiwiY29sb3JfaGV4IjpudWxsLCJzbHVnIjoiZXBpYyIsInRpdGxlIjoiRXBpYyIsImFsbG93ZWRfY2hpbGRfdHlwZXMiOlsxLDJdfSx7ImlkIjoxLCJpY29uIjoidXNlciIsImRlZmF1bHQiOmZhbHNlLCJjb2xvciI6Im1pbm9yIiwiY29sb3JfaGV4IjpudWxsLCJzbHVnIjoidXNlci1zdG9yeSIsInRpdGxlIjoiVXNlciBzdG9yeSIsImFsbG93ZWRfY2hpbGRfdHlwZXMiOlsyXX0seyJpZCI6MiwiaWNvbiI6InN0YXIiLCJkZWZhdWx0IjpmYWxzZSwiY29sb3IiOiJmZWF0dXJlIiwiY29sb3JfaGV4IjpudWxsLCJzbHVnIjoiZmVhdHVyZSIsInRpdGxlIjoiRmVhdHVyZSIsImFsbG93ZWRfY2hpbGRfdHlwZXMiOltdfV0sImxheWVyIjpbeyJpZCI6MCwiZGVmYXVsdCI6dHJ1ZSwic2x1ZyI6InVua25vd24iLCJ0aXRsZSI6Ik5vdCBzZXQifSx7ImlkIjoxLCJkZWZhdWx0IjpmYWxzZSwiaWNvbiI6ImRlc2t0b3AiLCJzbHVnIjoiZTJlIiwidGl0bGUiOiJFMkUifSx7ImlkIjoyLCJkZWZhdWx0IjpmYWxzZSwiaWNvbiI6Im5ldHdvcmstd2lyZWQiLCJzbHVnIjoiYXBpIiwidGl0bGUiOiJBUEkifSx7ImlkIjozLCJkZWZhdWx0IjpmYWxzZSwiaWNvbiI6ImNvZ3MiLCJzbHVnIjoidW5pdCIsInRpdGxlIjoiVW5pdCJ9XSwiaXNfZmxha3kiOlt7ImlkIjowLCJkZWZhdWx0Ijp0cnVlLCJzbHVnIjoibm8iLCJ0aXRsZSI6Ik5vIiwiY29sb3JfaGV4IjoidmFyKC0tY2YtaWNvbi1jb2xvci04KSJ9LHsiaWQiOjEsImRlZmF1bHQiOmZhbHNlLCJzbHVnIjoieWVzIiwidGl0bGUiOiJZZXMiLCJjb2xvcl9oZXgiOiIjRDAwMjFCIn1dLCJyZXN1bHRfc3RhdHVzIjpbeyJpZCI6MCwidGl0bGUiOiJVbnRlc3RlZCIsInNsdWciOiJ1bnRlc3RlZCIsImljb24iOiJmYXMgZmEtc3F1YXJlLWRhc2hlZCIsImRlZmF1bHQiOnRydWUsImNvbG9yIjoiIzVBNTc2RCIsInJlYWRPbmx5Ijp0cnVlLCJiZWhhdmlvdXIiOjAsImlzQWN0aXZlIjp0cnVlLCJpc0ludGVybmFsIjpmYWxzZX0seyJpZCI6MSwidGl0bGUiOiJQYXNzZWQiLCJzbHVnIjoicGFzc2VkIiwiaWNvbiI6ImZhcyBmYS1jaGVjayIsImRlZmF1bHQiOnRydWUsImNvbG9yIjoiIzAwODc1RSIsInJlYWRPbmx5Ijp0cnVlLCJiZWhhdmlvdXIiOjEsImlzQWN0aXZlIjp0cnVlLCJpc0ludGVybmFsIjpmYWxzZX0seyJpZCI6MiwidGl0bGUiOiJGYWlsZWQiLCJzbHVnIjoiZmFpbGVkIiwiaWNvbiI6ImZhcyBmYS14bWFyayIsImNvbG9yIjoiI0RFMTg0NiIsInJlYWRPbmx5Ijp0cnVlLCJiZWhhdmlvdXIiOjIsImlzQWN0aXZlIjp0cnVlLCJpc0ludGVybmFsIjpmYWxzZX0seyJpZCI6MywidGl0bGUiOiJCbG9ja2VkIiwic2x1ZyI6ImJsb2NrZWQiLCJpY29uIjoiZmFzIGZhLWJhbiIsImNvbG9yIjoiI0QwQTYzMiIsInJlYWRPbmx5Ijp0cnVlLCJiZWhhdmlvdXIiOjIsImlzQWN0aXZlIjp0cnVlLCJpc0ludGVybmFsIjpmYWxzZX0seyJpZCI6NCwidGl0bGUiOiJSZXRlc3QiLCJzbHVnIjoicmV0ZXN0IiwiaWNvbiI6ImZhcyBmYS1hcnJvdy1yb3RhdGUtbGVmdCIsImNvbG9yIjoiIzkxOTZGMSIsInJlYWRPbmx5Ijp0cnVlLCJiZWhhdmlvdXIiOjAsImlzQWN0aXZlIjp0cnVlLCJpc0ludGVybmFsIjpmYWxzZX0seyJpZCI6NSwidGl0bGUiOiJTa2lwcGVkIiwic2x1ZyI6InNraXBwZWQiLCJpY29uIjoiZmFzIGZhLXJpZ2h0LXRvLWxpbmUiLCJjb2xvciI6IiNBM0ExQjIiLCJyZWFkT25seSI6dHJ1ZSwiYmVoYXZpb3VyIjoxLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNJbnRlcm5hbCI6ZmFsc2V9LHsiaWQiOjYsInRpdGxlIjoiRGVsZXRlZCIsInNsdWciOiJkZWxldGVkIiwiaWNvbiI6ImZhcyBmYS10cmFzaC1hbHQiLCJjb2xvciI6Im5vcm1hbCIsInJlYWRPbmx5Ijp0cnVlLCJiZWhhdmlvdXIiOjAsImlzQWN0aXZlIjp0cnVlLCJpc0ludGVybmFsIjp0cnVlfSx7ImlkIjo3LCJ0aXRsZSI6IkluIHByb2dyZXNzIiwic2x1ZyI6ImluX3Byb2dyZXNzIiwiaWNvbiI6ImZhcyBmYS1zcGlubmVyIiwiY29sb3IiOiIjMWU1NGM1IiwicmVhZE9ubHkiOnRydWUsImJlaGF2aW91ciI6MCwiaXNBY3RpdmUiOnRydWUsImlzSW50ZXJuYWwiOnRydWV9LHsiaWQiOjgsInRpdGxlIjoiSW52YWxpZCIsInNsdWciOiJpbnZhbGlkIiwiaWNvbiI6ImZhcyBmYS1oZWFydC1icm9rZW4iLCJjb2xvciI6IiM5NDI1QkQiLCJyZWFkT25seSI6dHJ1ZSwiYmVoYXZpb3VyIjoyLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNJbnRlcm5hbCI6ZmFsc2V9XX0sImlzQ3JlYXRvciI6dHJ1ZSwicHJvamVjdENvZGUiOiJBUEkiLCJ0aXRsZSI6IlRNUyIsImRlc2NyaXB0aW9uIjoidGVzdCIsImF2YXRhciI6Imh0dHBzOi8vZDJjeHVjc2pkNnh2c2QuY2xvdWRmcm9udC5uZXQvcHVibGljL3Byb2plY3QvdGh1bWIvOGI3MzA5ODkyY2VkMzViMWRlZTdkZGNlMDU0ZTMyMjIucG5nIiwib3duZXIiOnsiaW50ZXJuYWxfaWQiOjEsIm5hbWUiOm51bGwsInJvbGVfdGl0bGUiOiJBdXRvbWF0aW9uIEVuZ2luZWVyIiwidXNlciI6eyJuYW1lIjoiVmlrYSBWbGFzaXVrIiwiZmlyc3ROYW1lIjoiVmlrYSIsImxhc3ROYW1lIjoiVmxhc2l1ayIsImVtYWlsIjoidmlrdG9yaWFwb3J0bmVua29AZ21haWwuY29tIiwiYXZhdGFyX3VybCI6Imh0dHBzOi8vZDJjeHVjc2pkNnh2c2QuY2xvdWRmcm9udC5uZXQvcHVibGljL3VzZXIvdGh1bWIvZWU4ZjBmMjYzNTBmZDZiODQ0ZmZlMjlhZTA2ZjFjN2MuanBnIiwibGFzdF9hY3Rpb24iOiIzIG1pbnV0ZXMgYWdvIiwiaXNfYWN0aXZlIjp0cnVlfSwicm9sZSI6eyJpbnRlcm5hbF9pZCI6MSwidGl0bGUiOiJPd25lciIsImRlc2NyaXB0aW9uIjoiVGVhbSBvd25lciBoYXMgYWNjZXNzIHRvIGFsbCBmZWF0dXJlcyBhbmQgYXZhaWxhYmxlIHRvIG1hbmFnZSBhbGwgYXNwZWN0cyBvZiBhcHBsaWNhdGlvbi4iLCJpc19kZWZhdWx0IjpmYWxzZSwiaXNfb3duZXIiOnRydWV9LCJ0eXBlIjowLCJzdGF0dXMiOjF9fX0seyJ0aXRsZSI6IlRNUyIsImlzX2FpX2VuYWJsZWQiOnRydWUsImlzX2FpX2ZpbmVfdHVuaW5nX2VuYWJsZWQiOnRydWUsImlzX3dlZWtseV9hdXRvbWF0aW9uX3JlcG9ydF9lbmFibGVkIjp0cnVlLCJoYXNoIjoiYWIyZjVmYWNlOTY2YzBjYjU3ZDQ1NjVmYjRmNmRiZmM3NTc0NWY4NyIsImlzX3RyaWFsX2F2YWlsYWJsZSI6dHJ1ZSwidHJpYWxfZW5kc19hdCI6bnVsbCwiaXNfYmlsbGluZ19kYXRhX25lZWRlZCI6ZmFsc2UsImlzX3dlZWtseV9hdXRvbWF0aW9uX3JlcG9ydF9hdmFpbGFibGUiOmZhbHNlfV0=</script>
+
+
+    <script id="flashMessages" type="application/base64">W10=</script>
+
+
+<div id="app"><div id="layout" class="_0-PKcZ eOohX2 xhoMhl _5F5dM- _3tfhYZ TaCqCj vULLpn IlfFjk TQU6kb light" data-sentry-component="LayoutTheme" data-sentry-source-file="layoutTheme.tsx"><header class="xcQv0x" role="banner"><nav class="dKfORT" aria-label="Main navigation"><a class="b8HUG7 xmY5KU" data-sentry-element="Link" data-sentry-source-file="index.tsx" href="/projects" data-discover="true">Projects</a><a class="b8HUG7" data-sentry-element="Link" data-sentry-source-file="index.tsx" href="/workspace" data-discover="true">Workspace</a><a data-feature="false" class="b8HUG7" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" href="/report/dashboards" data-discover="true">Dashboards</a><a data-feature="false" class="b8HUG7" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" href="/report/queries-list" data-discover="true">Queries</a><a data-feature="true" class="b8HUG7" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" href="/apps" data-discover="true">Apps</a></nav><div class="B-9E2q" role="toolbar" aria-label="User actions"><button type="button" class="Kvtz2T"><svg aria-hidden="true" width="12" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" data-sentry-element="svg" data-sentry-component="Icon" data-sentry-source-file="TryTrialButton.tsx"><path d="M8.955.256c.578 0 .996.553.835 1.107l-1.618 5.67h2.577a1.055 1.055 0 0 1 .684 1.86l-7.826 6.646a.868.868 0 0 1-1.398-.901l1.619-5.67H1.21a1.02 1.02 0 0 1-.663-1.793L8.393.465a.858.858 0 0 1 .562-.21ZM7.863 2.827l-5.481 4.69H4.79c.227 0 .441.105.58.287.14.181.182.417.119.635l-1.356 4.75 5.542-4.705H7.21a.732.732 0 0 1-.58-.287.715.715 0 0 1-.119-.635l1.352-4.735Z" fill="url(#a)" data-sentry-element="path" data-sentry-source-file="TryTrialButton.tsx"></path><defs data-sentry-element="defs" data-sentry-source-file="TryTrialButton.tsx"><linearGradient id="a" x1="9.5" y1="16" x2="9.5" y2="0" gradientUnits="userSpaceOnUse" data-sentry-element="linearGradient" data-sentry-source-file="TryTrialButton.tsx"><stop stop-color="#686DE8" data-sentry-element="stop" data-sentry-source-file="TryTrialButton.tsx"></stop><stop offset="1" stop-color="#67F5D8" data-sentry-element="stop" data-sentry-source-file="TryTrialButton.tsx"></stop></linearGradient></defs></svg>Try Qase Teams for free!</button><button type="button" class="AukLXn" aria-label="Notifications" aria-pressed="false" aria-live="polite" aria-atomic="true" data-balloon-pos="down"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bell" class="svg-inline--fa fa-bell _3rGiS6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="16" width="20"><path fill="currentColor" d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 25.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416l400 0c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4l0-25.4c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm0 96c61.9 0 112 50.1 112 112l0 25.4c0 47.9 13.9 94.6 39.7 134.6L72.3 368C98.1 328 112 281.3 112 233.4l0-25.4c0-61.9 50.1-112 112-112zm64 352l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg></button><button type="button" class="AukLXn" aria-label="Chat" data-sentry-element="NavbarButton" data-sentry-source-file="index.tsx" data-balloon-pos="down"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="comment" class="svg-inline--fa fa-comment _3rGiS6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" width="20"><path fill="currentColor" d="M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9l.3-.5z"></path></svg></button><button data-sentry-element="Button" data-sentry-source-file="UserMenuView.tsx" class="BBDwiM" data-rac="" type="button" tabindex="0" aria-haspopup="true" aria-expanded="false" id="react-aria8197042745-:r5:" data-react-aria-pressable="true" aria-label="user"><img class="Ga3rGO Fj3S21" aria-label="User avatar" src="https://d2cxucsjd6xvsd.cloudfront.net/public/user/thumb/ee8f0f26350fd6b844ffe29ae06f1c7c.jpg" alt="Vika Vlasiuk" aria-hidden="true" data-sentry-component="Image" data-sentry-source-file="index.tsx"></button></div></header><div class="_1tBlvt" data-sentry-component="ApplicationWrapper" data-sentry-source-file="index.tsx"><aside class="RVMPsY" aria-label="Side menu" id="f600444e-c23c-4465-839e-924d6d05528e" data-sentry-component="SideMenu" data-sentry-source-file="SideMenu.tsx"><header class="w--bsC"><img src="https://d2cxucsjd6xvsd.cloudfront.net/public/project/thumb/8b7309892ced35b1dee7ddce054e3222.png" alt="" class="_0o9rSI" aria-hidden="true"><h2 class="K-Xswr">TMS</h2></header><nav aria-label="Side navigation" class="eZwVeb"><ul class="lhIfyz"><li class="lUmh1N _2drHIv" data-sentry-component="SideMenuSection" data-sentry-source-file="SideMenuSection.tsx"><button class="o5zOMk" tabindex="0" aria-hidden="false" aria-controls="b1ef5333-b154-4cdf-8fd2-ca5b45560018" aria-expanded="true" aria-label="Collapse Tests navigation menu">Tests<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-up" class="svg-inline--fa fa-chevron-up HmYxH1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path></svg></button><ul id="b1ef5333-b154-4cdf-8fd2-ca5b45560018" class="_1URg8v" aria-label="Tests navigation menu"><li><a data-feature="true" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" aria-current="page" class="_4heErD" href="/project/API" data-discover="true"><label class="vCpE0G" title="Repository" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="list-tree" class="svg-inline--fa fa-list-tree fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M24 48C10.7 48 0 58.7 0 72l0 48c0 13.3 10.7 24 24 24l0 112 0 128c0 30.9 25.1 56 56 56l48 0c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24l-48 0c-4.4 0-8-3.6-8-8l0-104 56 0c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24l-56 0 0-88c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24L24 48zM160 96c0 13.3 10.7 24 24 24l304 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L184 72c-13.3 0-24 10.7-24 24zM288 256c0 13.3 10.7 24 24 24l176 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-176 0c-13.3 0-24 10.7-24 24zm0 160c0 13.3 10.7 24 24 24l176 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-176 0c-13.3 0-24 10.7-24 24z"></path></svg></span><span class="z7G8c5">Repository</span></label></a></li><li><a data-feature="true" class="" href="/step/API" data-discover="true"><label class="vCpE0G" title="Shared Steps" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="split" class="svg-inline--fa fa-split fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M391 31c9.4-9.4 24.6-9.4 33.9 0l80 80c9.4 9.4 9.4 24.6 0 33.9l-80 80c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l39-39-83.5 0c-10.6 0-20.8 4.2-28.3 11.7L225.9 256l92.3 92.3c7.5 7.5 17.7 11.7 28.3 11.7l83.5 0-39-39c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l80 80c9.4 9.4 9.4 24.6 0 33.9l-80 80c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l39-39-83.5 0c-23.3 0-45.7-9.3-62.2-25.8L182.1 280 24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l158.1 0L284.3 129.8c16.5-16.5 38.9-25.8 62.2-25.8l83.5 0L391 65c-9.4-9.4-9.4-24.6 0-33.9z"></path></svg></span><span class="z7G8c5">Shared Steps</span></label></a></li><li></li><li></li><li><a data-feature="false" class="" href="/review/API" data-discover="true"><label class="vCpE0G" title="Review" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="code-pull-request" class="svg-inline--fa fa-code-pull-request fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M305.8 2.1C314.4 5.9 320 14.5 320 24l0 48 16 0c66.3 0 120 53.7 120 120l0 163.7c32.5 10.2 56 40.5 56 76.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-35.8 23.5-66.1 56-76.3L408 192c0-39.8-32.2-72-72-72l-16 0 0 48c0 9.5-5.6 18.1-14.2 21.9s-18.8 2.3-25.8-4.1l-80-72c-5.1-4.6-7.9-11-7.9-17.8s2.9-13.3 7.9-17.8l80-72c7-6.3 17.2-7.9 25.8-4.1zM112 80A32 32 0 1 0 48 80a32 32 0 1 0 64 0zm-8 76.3l0 199.3c32.5 10.2 56 40.5 56 76.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-35.8 23.5-66.1 56-76.3l0-199.3C23.5 146.1 0 115.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80c0 35.8-23.5 66.1-56 76.3zM112 432a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm320 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"></path></svg></span><span class="z7G8c5">Review</span></label></a></li><li><a data-feature="false" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" class="" href="/report/API/traceability" data-discover="true"><label class="vCpE0G" title="Traceability Matrix" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="file-chart-column" class="svg-inline--fa fa-file-chart-column fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M48 448L48 64c0-8.8 7.2-16 16-16l160 0 0 80c0 17.7 14.3 32 32 32l80 0 0 288c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16zM64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-293.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0L64 0zM216 280c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 128c0 13.3 10.7 24 24 24s24-10.7 24-24l0-128zm88 32c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 96c0 13.3 10.7 24 24 24s24-10.7 24-24l0-96zM128 344c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 64c0 13.3 10.7 24 24 24s24-10.7 24-24l0-64z"></path></svg></span><span class="z7G8c5">Traceability Matrix</span></label></a></li></ul></li><li class="lUmh1N _2drHIv" data-sentry-component="SideMenuSection" data-sentry-source-file="SideMenuSection.tsx"><button class="o5zOMk" tabindex="0" aria-hidden="false" aria-controls="f4cd711f-e021-4011-8913-a8bdff079254" aria-expanded="true" aria-label="Collapse Execution navigation menu">Execution<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-up" class="svg-inline--fa fa-chevron-up HmYxH1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path></svg></button><ul id="f4cd711f-e021-4011-8913-a8bdff079254" class="_1URg8v" aria-label="Execution navigation menu"><li><a data-feature="true" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" class="" href="/plan/API" data-discover="true"><label class="vCpE0G" title="Test Plans" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="square-list" class="svg-inline--fa fa-square-list fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M64 80c-8.8 0-16 7.2-16 16l0 320c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-320c0-8.8-7.2-16-16-16L64 80zM0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zm96 64a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm104 0c0-13.3 10.7-24 24-24l96 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-96 0c-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24l96 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-96 0c-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24l96 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-96 0c-13.3 0-24-10.7-24-24zm-72-64a32 32 0 1 1 0-64 32 32 0 1 1 0 64zM96 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path></svg></span><span class="z7G8c5">Test Plans</span></label></a></li><li><a data-feature="true" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" class="" href="/run/API" data-discover="true"><label class="vCpE0G" title="Test Runs" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="play" class="svg-inline--fa fa-play fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M48 432L336 256 48 80l0 352zM24.5 38.1C39.7 29.6 58.2 30 73 39L361 215c14.3 8.7 23 24.2 23 41s-8.7 32.2-23 41L73 473c-14.8 9.1-33.4 9.4-48.5 .9S0 449.4 0 432L0 80C0 62.6 9.4 46.6 24.5 38.1z"></path></svg></span><span class="z7G8c5">Test Runs</span></label></a></li><li><a data-feature="true" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" class="" href="/configuration/API" data-discover="true"><label class="vCpE0G" title="Configurations" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="wrench" class="svg-inline--fa fa-wrench fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M322.3 268c9.4 2.6 19.3 4 29.7 4c60.5 0 109.8-48 111.9-108l-25.3 25.3c-12 12-28.3 18.7-45.3 18.7L368 208c-35.3 0-64-28.7-64-64l0-25.4c0-17 6.7-33.3 18.7-45.3c0 0 0 0 0 0L348 48.1C288 50.1 240 99.5 240 160c0 10.3 1.4 20.3 4 29.7c4.6 16.6-.2 34.4-12.4 46.6L57.1 410.7c-5.9 5.8-9.1 13.8-9.1 22.1C48 450 62 464 79.2 464c8.3 0 16.2-3.3 22.1-9.1L275.7 280.4c12.2-12.2 30-16.9 46.6-12.4zM424.6 39.4l-67.9 67.9c-3 3-4.7 7.1-4.7 11.3l0 25.4c0 8.8 7.2 16 16 16l25.4 0c4.2 0 8.3-1.7 11.3-4.7l67.9-67.9c7.2-7.2 19.3-5.9 23.7 3.3c10.1 21 15.7 44.5 15.7 69.3c0 88.4-71.6 160-160 160c-14.7 0-28.9-2-42.3-5.7L135.2 488.8c-14.9 14.9-35 23.2-56 23.2C35.5 512 0 476.5 0 432.8c0-21 8.3-41.1 23.2-56L197.7 202.3C194 188.9 192 174.7 192 160C192 71.6 263.6 0 352 0c24.8 0 48.3 5.7 69.3 15.7c9.2 4.4 10.5 16.5 3.3 23.7zM88 408a16 16 0 1 1 0 32 16 16 0 1 1 0-32z"></path></svg></span><span class="z7G8c5">Configurations</span></label></a></li></ul></li><li class="lUmh1N _2drHIv" data-sentry-component="SideMenuSection" data-sentry-source-file="SideMenuSection.tsx"><button class="o5zOMk" tabindex="0" aria-hidden="false" aria-controls="f251bac5-0439-48f5-b06e-9fbd6203ed08" aria-expanded="true" aria-label="Collapse Environments navigation menu">Environments<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-up" class="svg-inline--fa fa-chevron-up HmYxH1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path></svg></button><ul id="f251bac5-0439-48f5-b06e-9fbd6203ed08" class="_1URg8v" aria-label="Environments navigation menu"><li><a data-feature="true" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" class="" href="/environment/API" data-discover="true"><label class="vCpE0G" title="Environments" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="cube" class="svg-inline--fa fa-cube fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M258.8 50.7c-1.8-.7-3.8-.7-5.7 0L63.6 122.6 256 198.2l192.4-75.6L258.8 50.7zM48 377.9c0 3.3 2.1 6.3 5.2 7.5L232 453.2l0-212.9L48 168.1l0 209.8zm232 75.3l178.8-67.8c3.1-1.2 5.2-4.2 5.2-7.5l0-209.8L280 240.4l0 212.9zM236.1 5.9c12.8-4.9 26.9-4.9 39.7 0l200 75.9C497.6 90 512 110.8 512 134.1l0 243.8c0 23.3-14.4 44.1-36.1 52.4l-200 75.9c-12.8 4.9-26.9 4.9-39.7 0l-200-75.9C14.4 422 0 401.2 0 377.9L0 134.1C0 110.8 14.4 90 36.1 81.7l200-75.9z"></path></svg></span><span class="z7G8c5">Environments</span></label></a></li><li></li></ul></li><li class="lUmh1N _2drHIv" data-sentry-component="SideMenuSection" data-sentry-source-file="SideMenuSection.tsx"><button class="o5zOMk" tabindex="0" aria-hidden="false" aria-controls="6dcfe478-a35c-4c45-a653-9bddae63b962" aria-expanded="true" aria-label="Collapse Issues navigation menu">Issues<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-up" class="svg-inline--fa fa-chevron-up HmYxH1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path></svg></button><ul id="6dcfe478-a35c-4c45-a653-9bddae63b962" class="_1URg8v" aria-label="Issues navigation menu"><li><a data-feature="true" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" class="" href="/defect/API" data-discover="true"><label class="vCpE0G" title="Defects" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="diagram-subtask" class="svg-inline--fa fa-diagram-subtask fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 64c0 35.3-28.7 64-64 64l-296 0 0 96c0 22.1 17.9 40 40 40l32 0 0-8c0-35.3 28.7-64 64-64l160 0c35.3 0 64 28.7 64 64l0 64c0 35.3-28.7 64-64 64l-160 0c-35.3 0-64-28.7-64-64l0-8-32 0c-48.6 0-88-39.4-88-88l0-96-40 0c-35.3 0-64-28.7-64-64L0 96zM448 336l-160 0c-8.8 0-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16l160 0c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16z"></path></svg></span><span class="z7G8c5">Defects</span></label></a></li><li><a data-feature="false" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" class="" href="/requirement/API" data-discover="true"><label class="vCpE0G" title="Requirements" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="book" class="svg-inline--fa fa-book fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 88C0 39.4 39.4 0 88 0L392 0c30.9 0 56 25.1 56 56l0 288c0 22.3-13.1 41.6-32 50.6l0 69.4 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24L80 512c-44.2 0-80-35.8-80-80c0-2.7 .1-5.4 .4-8L0 424 0 88zM80 400c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0 0-64L80 400zM48 358.7c9.8-4.3 20.6-6.7 32-6.7l312 0c4.4 0 8-3.6 8-8l0-288c0-4.4-3.6-8-8-8L88 48C65.9 48 48 65.9 48 88l0 270.7zM152 112l176 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-176 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 80l176 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-176 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z"></path></svg></span><span class="z7G8c5">Requirements</span></label></a></li><li><a data-feature="true" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" class="" href="/milestone/API" data-discover="true"><label class="vCpE0G" title="Milestones" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="mountain" class="svg-inline--fa fa-mountain fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 424.1c0 4.4-3.5 7.9-7.9 7.9L55.9 432c-4.4 0-7.9-3.5-7.9-7.9c0-1.5 .4-2.9 1.2-4.2L149.6 260l39.5 50.8c4.6 5.9 11.7 9.3 19.2 9.3s14.5-3.6 19-9.6L268 256l92 0L462.8 419.9c.8 1.3 1.2 2.7 1.2 4.2zM329.8 208L256 208c-7.6 0-14.7 3.6-19.2 9.6l-29.1 38.9-30.9-39.8L256 90.3 329.8 208zM55.9 480l400.2 0c30.9 0 55.9-25 55.9-55.9c0-10.5-3-20.8-8.6-29.7L286.8 49c-6.6-10.6-18.3-17-30.8-17s-24.1 6.4-30.8 17L8.6 394.4C3 403.3 0 413.6 0 424.1C0 455 25 480 55.9 480z"></path></svg></span><span class="z7G8c5">Milestones</span></label></a></li></ul></li><li class="ob9ha4 _2drHIv"><a data-feature="true" class="" href="/project/API/settings/general" data-discover="true"><label class="vCpE0G" title="Settings" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="gear" class="svg-inline--fa fa-gear fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0c17 0 33.6 1.7 49.8 4.8c7.9 1.5 21.8 6.1 29.4 20.1c2 3.7 3.6 7.6 4.6 11.8l9.3 38.5C350.5 81 360.3 86.7 366 85l38-11.2c4-1.2 8.1-1.8 12.2-1.9c16.1-.5 27 9.4 32.3 15.4c22.1 25.1 39.1 54.6 49.9 86.3c2.6 7.6 5.6 21.8-2.7 35.4c-2.2 3.6-4.9 7-8 10L459 246.3c-4.2 4-4.2 15.5 0 19.5l28.7 27.3c3.1 3 5.8 6.4 8 10c8.2 13.6 5.2 27.8 2.7 35.4c-10.8 31.7-27.8 61.1-49.9 86.3c-5.3 6-16.3 15.9-32.3 15.4c-4.1-.1-8.2-.8-12.2-1.9L366 427c-5.7-1.7-15.5 4-16.9 9.8l-9.3 38.5c-1 4.2-2.6 8.2-4.6 11.8c-7.7 14-21.6 18.5-29.4 20.1C289.6 510.3 273 512 256 512s-33.6-1.7-49.8-4.8c-7.9-1.5-21.8-6.1-29.4-20.1c-2-3.7-3.6-7.6-4.6-11.8l-9.3-38.5c-1.4-5.8-11.2-11.5-16.9-9.8l-38 11.2c-4 1.2-8.1 1.8-12.2 1.9c-16.1 .5-27-9.4-32.3-15.4c-22-25.1-39.1-54.6-49.9-86.3c-2.6-7.6-5.6-21.8 2.7-35.4c2.2-3.6 4.9-7 8-10L53 265.7c4.2-4 4.2-15.5 0-19.5L24.2 218.9c-3.1-3-5.8-6.4-8-10C8 195.3 11 181.1 13.6 173.6c10.8-31.7 27.8-61.1 49.9-86.3c5.3-6 16.3-15.9 32.3-15.4c4.1 .1 8.2 .8 12.2 1.9L146 85c5.7 1.7 15.5-4 16.9-9.8l9.3-38.5c1-4.2 2.6-8.2 4.6-11.8c7.7-14 21.6-18.5 29.4-20.1C222.4 1.7 239 0 256 0zM218.1 51.4l-8.5 35.1c-7.8 32.3-45.3 53.9-77.2 44.6L97.9 120.9c-16.5 19.3-29.5 41.7-38 65.7l26.2 24.9c24 22.8 24 66.2 0 89L59.9 325.4c8.5 24 21.5 46.4 38 65.7l34.6-10.2c31.8-9.4 69.4 12.3 77.2 44.6l8.5 35.1c24.6 4.5 51.3 4.5 75.9 0l8.5-35.1c7.8-32.3 45.3-53.9 77.2-44.6l34.6 10.2c16.5-19.3 29.5-41.7 38-65.7l-26.2-24.9c-24-22.8-24-66.2 0-89l26.2-24.9c-8.5-24-21.5-46.4-38-65.7l-34.6 10.2c-31.8 9.4-69.4-12.3-77.2-44.6l-8.5-35.1c-24.6-4.5-51.3-4.5-75.9 0zM208 256a48 48 0 1 0 96 0 48 48 0 1 0 -96 0zm48 96a96 96 0 1 1 0-192 96 96 0 1 1 0 192z"></path></svg></span><span class="z7G8c5">Settings</span></label></a></li></ul></nav><button class="jwatFj" aria-expanded="true" aria-controls="f600444e-c23c-4465-839e-924d6d05528e" aria-label="Collapse menu"><label class="vCpE0G" title="Collapse submenu" data-sentry-component="SideMenuSectionItem" data-sentry-source-file="SideMenuSectionItem.tsx"><span class="faS6nD"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-fw og4Vu0" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M15 239c-9.4 9.4-9.4 24.6 0 33.9L207 465c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L65.9 256 241 81c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L15 239z"></path></svg></span><span class="z7G8c5">Collapse submenu</span></label></button></aside><div id="application-content" class="_6-1aO-"><div class="ldlvaw"><div class="QWmiVD"><h1 class="ByXYSI">API repository<span class="Ah6LGQ"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><small class="ReZlln _39ZXcH UJhY3S uh1iWV"> 0 cases 0 | 1 suite (1)</small></ui-reset></span></h1><div class="ZZ3mfe"><div class="JRogHA"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb Y1JqzI ib3-rg" data-rac="" type="button" tabindex="0" data-react-aria-pressable="true" id="react-aria8197042745-:rb:"><span class="Fkj0XN"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="plus" class="svg-inline--fa fa-plus qeegmt DYtflN" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M248 72c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 160L40 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l160 0 0 160c0 13.3 10.7 24 24 24s24-10.7 24-24l0-160 160 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-160 0 0-160z"></path></svg><span class="FkBE-5">Manual test</span></span></button></ui-reset><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button id="project-actions-button" data-sentry-element="Button" data-sentry-source-file="ActionMenu.tsx" class="aMynqT -sT5pb Y1JqzI birYrY" data-rac="" type="button" tabindex="0" aria-haspopup="true" aria-expanded="false" data-react-aria-pressable="true" aria-label="Show project actions menu"><span class="Fkj0XN"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="ellipsis" class="svg-inline--fa fa-ellipsis qeegmt DYtflN" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M432 256a48 48 0 1 1 -96 0 48 48 0 1 1 96 0zm-160 0a48 48 0 1 1 -96 0 48 48 0 1 1 96 0zM64 304a48 48 0 1 1 0-96 48 48 0 1 1 0 96z"></path></svg><span class="FkBE-5"></span></span></button></ui-reset></ui-reset></div></div></div><div class="sf9ShX"><div class="_9pZirq"><div class="_0R9XZJ"><div class="Un1-h4"><div class="ZysOIq"><div class="_67kGVq"><div data-sentry-element="TextField" data-sentry-component="TextInputsWrapper" data-sentry-source-file="TextInputWrapper.tsx" class="bHWpP8 Q9N1j8" data-rac=""><div class="zcPy-h"><input aria-label="Search" type="text" placeholder="Search" tabindex="0" id="react-aria8197042745-:rh:" class="_3hYgYP" data-sentry-element="AriaInput" data-sentry-source-file="index.tsx" data-rac="" value="" title=""></div></div></div><div class="hwQ0pW"><div role="combobox" aria-multiselectable="true" class="RTqWnc _75pscc ywho8h zRCbA7" id="fdcbbab2-206f-49d3-975d-4da29ea05e2d" tabindex="-1" aria-controls="fdcbbab2-206f-49d3-975d-4da29ea05e2d-listbox" aria-expanded="false" aria-invalid="false"><div class="iCCwak SRO7w2 rtNQx-" data-display-value="true"><div class="GtMMmz EYcI20" style="display: inline-block;"><input id="select-search-fdcbbab2-206f-49d3-975d-4da29ea05e2d" readonly="" placeholder="By all fields" value="" style="box-sizing: content-box; width: 78px;"><div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 14px; font-family: Inter, &quot;Inter Fallback&quot;, Arial, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;"></div><div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 14px; font-family: Inter, &quot;Inter Fallback&quot;, Arial, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">By all fields</div></div></div><span class="e0Sx4M"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down t2pMQH" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-action="toggle"><path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path></svg></span><input class="bMN-WG" type="text" id="hidden-input-fdcbbab2-206f-49d3-975d-4da29ea05e2d" aria-hidden="true" tabindex="-1" autocomplete="off" value=""></div></div></div><div class="mE93LF"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb YGnihK SpJWiU ib3-rg" data-rac="" type="button" tabindex="0" aria-haspopup="true" aria-expanded="false" id="react-aria8197042745-:rm:" data-react-aria-pressable="true" aria-label="Add filter"><span class="Fkj0XN Mgk1mV"><span class="FkBE-5">Add filter</span></span></button></ui-reset></div></div></div></div></div><div class="N98shm"><div class="SplitPane suitecases-split-pane vertical " style="display: flex; flex: 1 1 0%; height: 100%; position: absolute; outline: none; overflow: hidden; user-select: text; flex-direction: row; left: 0px; right: 0px;"><div class="Pane vertical Pane1  " style="flex: 0 0 auto; position: relative; outline: none; width: 330px;"><div class="RmAsAu _8mL9PK"><div class="_6RKLl2"><div class="BVr3bA"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb Y1JqzI birYrY" data-rac="" type="button" tabindex="0" aria-haspopup="true" aria-expanded="false" id="react-aria8197042745-:r1j:" data-react-aria-pressable="true" aria-label="Change view type"><span class="Fkj0XN"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="folder-open" class="svg-inline--fa fa-folder-open qeegmt DYtflN" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M384 480l48 0c11.4 0 21.9-6 27.6-15.9l112-192c5.8-9.9 5.8-22.1 .1-32.1S555.5 224 544 224l-400 0c-11.4 0-21.9 6-27.6 15.9L48 357.1 48 96c0-8.8 7.2-16 16-16l117.5 0c4.2 0 8.3 1.7 11.3 4.7l26.5 26.5c21 21 49.5 32.8 79.2 32.8L416 144c8.8 0 16 7.2 16 16l0 32 48 0 0-32c0-35.3-28.7-64-64-64L298.5 96c-17 0-33.3-6.7-45.3-18.7L226.7 50.7c-12-12-28.3-18.7-45.3-18.7L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l23.7 0L384 480z"></path></svg><span class="FkBE-5"></span></span></button></ui-reset><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><h3 class="Wchwue FYIlF3 UJhY3S f-UuUF">Suites</h3></ui-reset><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb Y1JqzI SpJWiU birYrY _4cYCTB" data-rac="" type="button" tabindex="0" data-react-aria-pressable="true" aria-label="Add new suite" id="react-aria8197042745-:r1p:"><span class="Fkj0XN"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="plus" class="svg-inline--fa fa-plus qeegmt DYtflN" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M248 72c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 160L40 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l160 0 0 160c0 13.3 10.7 24 24 24s24-10.7 24-24l0-160 160 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-160 0 0-160z"></path></svg><span class="FkBE-5"></span></span></button></ui-reset></div><div class="PhvV9b"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb Y1JqzI SpJWiU birYrY _4cYCTB" data-rac="" type="button" tabindex="0" data-react-aria-pressable="true" aria-label="Collapse all suites" id="react-aria8197042745-:r1s:"><span class="Fkj0XN"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevrons-up" class="svg-inline--fa fa-chevrons-up qeegmt DYtflN" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M273 47c-9.4-9.4-24.6-9.4-33.9 0L47 239c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l175-175L431 273c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L273 47zM465 431L273 239c-9.4-9.4-24.6-9.4-33.9 0L47 431c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l175-175L431 465c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9z"></path></svg><span class="FkBE-5"></span></span></button></ui-reset><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb Y1JqzI SpJWiU birYrY _4cYCTB" data-rac="" type="button" tabindex="0" data-react-aria-pressable="true" aria-label="Expand all suites" id="react-aria8197042745-:r1v:"><span class="Fkj0XN"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevrons-down" class="svg-inline--fa fa-chevrons-down qeegmt DYtflN" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M239 465c9.4 9.4 24.6 9.4 33.9 0L465 273c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-175 175L81 239c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9L239 465zM47 81L239 273c9.4 9.4 24.6 9.4 33.9 0L465 81c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-175 175L81 47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9z"></path></svg><span class="FkBE-5"></span></span></button></ui-reset></div></div><div class="VgGFHy"><div style="overflow: visible; height: 0px; width: 0px;"><div style="position: relative; height: 771px; width: 330px; overflow: auto; will-change: transform; direction: ltr;"><div style="height: 40px; width: 100%;"><div class="-sRoEE" data-virtual-row="true" style="position: absolute; left: 0px; top: 0px; height: 40px; width: calc(100% - 4px); margin-left: 0px;"><div class="Yph0Rl Ft6VbP fBbnBT" draggable="true" data-handler-id="T0"><div class="Bc0cVF"><div class="WqmWeK"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="folder" class="svg-inline--fa fa-folder Ls80YJ" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M0 96C0 60.7 28.7 32 64 32l132.1 0c19.1 0 37.4 7.6 50.9 21.1L289.9 96 448 96c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM64 80c-8.8 0-16 7.2-16 16l0 320c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-256c0-8.8-7.2-16-16-16l-161.4 0c-10.6 0-20.8-4.2-28.3-11.7L213.1 87c-4.5-4.5-10.6-7-17-7L64 80z"></path></svg><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><span tabindex="0" id="suite-tree-1-parent-null" class="uvc1QZ FYIlF3 UJhY3S uh1iWV jtWY-I _0OMd4i">est</span></ui-reset></div><div class="AubsGY"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><span class="uvc1QZ _39ZXcH UJhY3S uh1iWV _0OMd4i">0</span></ui-reset></div></div></div></div></div></div></div></div></div></div><span role="presentation" class="Resizer vertical "></span><div class="Pane vertical Pane2  " style="flex: 1 1 0%; position: relative; outline: none;"><div class="a5SQyE" id="suitecases-container"><div class="LYLhHZ"><div class="wkofnB"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><h3 class="Wchwue FYIlF3 UJhY3S f-UuUF">All cases</h3></ui-reset></div><div style="flex: 1 1 0%;"><div style="overflow: visible; height: 0px; width: 0px;"><div style="position: relative; height: 787px; width: 1317px; overflow: auto; will-change: transform; direction: ltr;"><div style="height: 52px; width: 100%;"><div class="zlRWk1" style="position: absolute; left: 0px; top: 0px; height: 52px; width: 100%;"><div class="gI0wkk"><div class="-XMjYD fBbnBT" data-handler-id="T2"><div class="yTygvg"><div class="XajVSH"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb Y1JqzI SpJWiU birYrY _4cYCTB" data-rac="" type="button" tabindex="0" data-react-aria-pressable="true" aria-label="suite est actions" id="react-aria8197042745-:r22:"><span class="Fkj0XN"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="ellipsis-vertical" class="svg-inline--fa fa-ellipsis-vertical qeegmt DYtflN" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512"><path fill="currentColor" d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"></path></svg><span class="FkBE-5"></span></span></button></ui-reset><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><label data-sentry-element="CheckboxAria" data-sentry-source-file="index.tsx" data-react-aria-pressable="true" class="vHjCtc lFT7Ev fLbYP0" data-rac=""><span style="border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"><input aria-label="select suite est" type="checkbox" data-react-aria-pressable="true" tabindex="0" title=""></span><div class="IdEZZ3"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-sentry-element="svg" data-sentry-component="Checkmark" data-sentry-source-file="checkmark.tsx"><path class="GSS5ud" d="M16.565 5.372a.723.723 0 0 1 0 1.025l-7.987 7.99a.723.723 0 0 1-1.025 0l-4.118-4.115a.726.726 0 0 1 1.026-1.025l3.6 3.6 7.475-7.475a.723.723 0 0 1 1.026 0h.003Z" fill="currentColor" data-sentry-element="path" data-sentry-source-file="checkmark.tsx"></path><path class="zRjZw0" d="M16.292 10a.724.724 0 0 1-.726.726H4.434A.724.724 0 0 1 3.708 10c0-.402.323-.726.726-.726h11.132c.403 0 .726.324.726.726Z" fill="currentColor" data-sentry-element="path" data-sentry-source-file="checkmark.tsx"></path></svg></div></label></ui-reset></div><div class="Wb0c6f"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="folder" class="svg-inline--fa fa-folder XIDH5Q" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M0 96C0 60.7 28.7 32 64 32l132.1 0c19.1 0 37.4 7.6 50.9 21.1L289.9 96 448 96c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM64 80c-8.8 0-16 7.2-16 16l0 320c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-256c0-8.8-7.2-16-16-16l-161.4 0c-10.6 0-20.8-4.2-28.3-11.7L213.1 87c-4.5-4.5-10.6-7-17-7L64 80z"></path></svg><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><span class="uvc1QZ FYIlF3 UJhY3S uh1iWV _0OMd4i">est</span></ui-reset></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><div id="modals"><div class="aLJlC9"></div></div></div></div>
+
+
+    
+        <script type="module" src="/assets/client/1789145202047/js/rolldown-runtime.CF6gOSGR.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/vendor.react.BDcRxO_q.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/extends.189kkm6a.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/vendor.mobx.Cwe31Oa1.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/sandbox.Bv2coKI7.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/axios.DhcTPPE-.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/reporter.CSJnCP4w.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/light.module.D7pKih0w.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/Button.DKmYttAn.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/Me.se7lJWe2.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/ui-kit.icj6eSBD.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/assign.B9AsmHhn.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/vendor.lodash.BG4gfo70.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/configuration.Ck3sFCg-.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/service.B_N12V9W.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/LocalStorage.B88EAyw7.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/Analytics.NCqqS5ER.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/Modal.fDK1AbWt.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/base64.CKjo64xl.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/array.BSqQvBGG.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/string.CqfL-yR7.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/loadableConfig.CBvzQM2L.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/react-use-intercom.esm.CxTVAKOR.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/TariffLimitationModal.Bboct0DA.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/locked-features.BLX7_9J4.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/HintText.DycCZgEH.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/ErrorPage.DCMUxmtW.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/layoutTheme.C62PRWOl.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/features.CB0oz2TN.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/ResourcesStore.CSInpcqq.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/consts.C7HgfYL8.js"></script>
+    
+        <script type="module" src="/assets/client/1789145202047/js/entry.main.B9U3E93V.js"></script>
+    
+
+
+
+<iframe name="__privateStripeMetricsController7910" frameborder="0" allowtransparency="true" scrolling="no" role="presentation" allow="payment *" src="https://js.stripe.com/v3/m-outer-3437aaddcdf6922d623e172c2d6f9278.html#url=https%3A%2F%2Fapp.qase.io%2Fproject%2FAPI&amp;title=Qase&amp;referrer=&amp;muid=b26470f5-0452-493c-9762-977f8f5e7d6c995abf&amp;sid=c1ee798e-f1e1-4fb2-8a28-c85b5778a57dbb75e4&amp;version=6&amp;preview=false&amp;__shared_params__[version]=basil" aria-hidden="true" tabindex="-1" style="border-width: medium !important; border-style: none !important; border-color: currentcolor !important; border-image: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe></body></html>
