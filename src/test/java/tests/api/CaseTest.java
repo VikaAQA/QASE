@@ -10,10 +10,12 @@ import org.testng.annotations.Test;
 import tests.BaseTest;
 import utils.factories.api.CaseRequestFactory;
 
-import java.util.List;
+import java.lang.constant.Constable;
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 
 @Epic("API Tests")
 public class CaseTest extends BaseTest {
@@ -27,17 +29,19 @@ public class CaseTest extends BaseTest {
         models.create.CreateCaseRequestDto request = CaseRequestFactory.valid();
         caseAPI.assertCaseCreatedCorrectly(projectCode, request);
     }
+
     @Test(description = "Удаление тест-кейса")
-    public void shouldDeleteTestCase(){
+    public void shouldDeleteTestCase() {
         String projectCode = projectAPI.createProject();
         int createdCaseId = caseAPI.createTestCaseAndReturnId(projectCode, CaseRequestFactory.valid());
 
-        caseAPI.deleteCase(projectCode,createdCaseId);
-        GetCaseErrorResponseDto getDeletedCase =  caseAPI.getCaseExpectError(projectCode,createdCaseId);
+        caseAPI.deleteCase(projectCode, createdCaseId);
+        GetCaseErrorResponseDto getDeletedCase = caseAPI.getCaseExpectError(projectCode, createdCaseId);
         assertThat(getDeletedCase.getStatus())
-                .as("Статус ответа при получении тест-кейса должен быть false" )
+                .as("Статус ответа при получении тест-кейса должен быть false")
                 .isFalse();
     }
+
     @Test(description = "Обновление тест-кейса: PATCH, поле type")
     @Description("Проверка корректного обновления тест-кейса методом PATCH на примере поля type.")
     public void shouldUpdateTestCase() {
@@ -51,6 +55,7 @@ public class CaseTest extends BaseTest {
                 .as("Значение поля type должно обновиться")
                 .isEqualTo(SMOKE_TYPE_CASE);
     }
+
     @Test(description = "Добавление нескольких тест-кейсов и проверка их количества в проекте")
     @Description("Проверка корректного увеличения количества тест-кейсов в проекте.")
     public void shouldIncreaseTestCaseCountInProject() {
@@ -62,6 +67,7 @@ public class CaseTest extends BaseTest {
                 .as("Количество тест-кейсов в проекте должно увеличиться на добавленное значение")
                 .isEqualTo(4);
     }
+
     @Test(description = "Фильтрация тест-кейсов по типу ")
     @Description("""
             Проверка корректной фильтрации тест-кейсов:
@@ -85,6 +91,22 @@ public class CaseTest extends BaseTest {
                 .isEqualTo(8);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

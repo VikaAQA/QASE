@@ -1,11 +1,18 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.UnhandledAlertException;
+import lombok.extern.log4j.Log4j2;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selenide.$;
+
+@Log4j2
 public abstract class BasePage {
       public abstract BasePage isPageOpened();
 
@@ -66,10 +73,10 @@ public abstract class BasePage {
     @Step("Принять cookies, если баннер появился")
     public void acceptCookiesIfPresent() {
         safeExecuteJs(
-                "const b=document.querySelector('#usercentrics-cmp-ui');" +
-                        "if(!b) return;" +
-                        "const btn=b.shadowRoot?.querySelector('#accept');" +
-                        "btn?.click();"
-        );
-    }
- }
+                 "const host = document.querySelector('#usercentrics-cmp-ui');" +
+        "if (!host || !host.shadowRoot) return;" +
+        "const btn = host.shadowRoot.querySelector('#accept');" +
+        "if (btn && btn.offsetParent !== null) btn.click();"
+    );}
+}
+

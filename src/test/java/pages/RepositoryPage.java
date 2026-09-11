@@ -4,9 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-
 import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -44,7 +42,7 @@ public class RepositoryPage extends BasePage {
     }
     @Step("Проверка, что тест-кейс успешно создан")
     public RepositoryPage checkThatTestCaseIsCreated(int countCase) {
-        $(By.xpath(BLOCK_CASE)).shouldBe(visible, Duration.ofSeconds(60));
+        $(By.cssSelector(TEST_CASES_AREA_CSS)).shouldBe(visible, Duration.ofSeconds(70));
         assertEquals(getTestCasesCount(), countCase, "Тест-кейс не создан");
         return this;
     }
@@ -88,3 +86,4 @@ public class RepositoryPage extends BasePage {
         return $x(String.format(TEST_CASE_XPATH, suiteTitle, testCaseTitle)).exists();
     }
 }
+  

@@ -3,6 +3,7 @@ package utils.factories.api;
 import com.github.javafaker.Faker;
 import models.testcase.update.UpdateCaseRequestDto;
 
+import java.util.Arrays;
 import java.util.List;
 
 public final class CaseRequestFactory {
@@ -31,6 +32,7 @@ public final class CaseRequestFactory {
                 ))
                 .build();
     }
+
     public static models.create.CreateCaseRequestDto validWithType(int numType) {
         return models.create.CreateCaseRequestDto.builder()
                 .title(faker.bothify("AUTOTEST-#####"))
@@ -51,10 +53,12 @@ public final class CaseRequestFactory {
                 .build();
     }
 
-    public static UpdateCaseRequestDto updateTypeCase(int numTypeCase){
-      return  UpdateCaseRequestDto.builder()
+    public static UpdateCaseRequestDto updateTypeCase(int numTypeCase) {
+        return UpdateCaseRequestDto.builder()
                 .type(numTypeCase)
                 .build();
     }
 }
+
+
 
