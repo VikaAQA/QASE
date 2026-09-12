@@ -33,7 +33,9 @@ public class UiSteps {
     @Step("UI: Создать проект '{projectName}'")
     public UiSteps createProject(String projectName) {
            log.info("UI: создаём проект '{}'", projectName);
-            projectsPage.openCreateProjectModal()
+            projectsPage.openPage()
+                        .isPageOpened()
+                        .openCreateProjectModal()
                         .createProject(projectName);
             repositoryPage.checkCreatingProject(projectName);
             return this;
@@ -41,6 +43,9 @@ public class UiSteps {
     @Step("UI: Попытаться создать проект без названия (негативный сценарий)")
     public UiSteps createProjectWithoutTitle() {
         log.info("UI: негативный сценарий создания проекта без названия");
+        projectsPage.openPage()
+                    .isPageOpened()
+                    .openCreateProjectModal();
         modalCreateProjectPage.createFailProject();
         return this;
     }

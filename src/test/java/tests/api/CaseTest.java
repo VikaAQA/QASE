@@ -9,12 +9,7 @@ import models.testcase.get.GetCasesResponseDto;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 import utils.factories.api.CaseRequestFactory;
-
-import java.lang.constant.Constable;
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Epic("API Tests")

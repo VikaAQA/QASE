@@ -15,16 +15,12 @@ public class ProjectTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class, groups = "smoke", description = "Создание проекта и его удаление")
     @Description("Проверка позитивного сценария создания проекта")
     public void checkCreateProject() {
-        loginAndOpenProductsPage();
-
-        uiSteps.createProject(NAME_PROJECT)
+         uiSteps.createProject(NAME_PROJECT)
                 .deleteProject(NAME_PROJECT);
     }
     @Test(description = "Создание проекта без названия: проверка ошибки")
     public void checkCreateProjectWithNegative() {
-        loginAndOpenProductsPage();
-
-        uiSteps.createProjectWithoutTitle();
+         uiSteps.createProjectWithoutTitle();
 
         String validationMessage = $(PROJECT_NAME_FIELD_CSS).getAttribute(VALIDATION_MESSAGE);
         assertThat(validationMessage)

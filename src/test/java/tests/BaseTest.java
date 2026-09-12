@@ -1,8 +1,10 @@
 package tests;
 
+import adapters.AuthAPI;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import org.openqa.selenium.Cookie;
 import steps.UiSteps;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
@@ -18,17 +20,19 @@ import pages.*;
 import utils.PropertyReader;
 
 import java.io.ByteArrayInputStream;
-import static com.codeborne.selenide.Selenide.closeWebDriver;
+import java.util.Set;
 
 import adapters.CaseAPI;
 import adapters.ProjectAPI;
+
+import static com.codeborne.selenide.Selenide.*;
 
 
 @Log4j2
 @Listeners(TestListener.class)
 public class BaseTest {
-
-    protected LoginPage loginPage;
+    protected static io.restassured.http.Cookies authCookies;
+     protected LoginPage loginPage;
     protected ProjectsPage projectsPage;
     protected RepositoryPage repositoryPage;
     protected ModalCreateProjectPage modalCreateProjectPage;
@@ -43,6 +47,9 @@ public class BaseTest {
 
     @BeforeSuite(alwaysRun = true)
     public void globalSetup() {
+        log.info("Получение авторизационной сессии");
+        authCookies = new AuthAPI().login(user, password);
+
         log.info("Очистка тестовых данных перед запуском сьюта");
         new ProjectAPI().deleteAllProject();
     }
@@ -65,13 +72,14 @@ public class BaseTest {
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 15000;
         Configuration.clickViaJs = true;
-        Configuration.headless = true;
+        Configuration.headless = false;
 
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide()
                         .screenshots(true)
                         .savePageSource(true)
         );
+        setAuthCookies();
 
         loginPage = new LoginPage();
         projectsPage = new ProjectsPage();
@@ -122,6 +130,24 @@ public class BaseTest {
                     .dismiss();
         } catch (Exception ignored) {
             }
+    }
+
+    protected void setAuthCookies() {
+        open("/");
+        authCookies.asList().forEach(apiCookie -> {
+            Cookie seleniumCookie =
+                    new Cookie.Builder(
+                            apiCookie.getName(),
+                            apiCookie.getValue()
+                    )
+                            .path("/")
+                            .isSecure(apiCookie.isSecured())
+                            .build();
+
+            WebDriverRunner.getWebDriver()
+                    .manage()
+                    .addCookie(seleniumCookie);
+        });
     }
     @Step("Авторизация и открытие страницы Projects")
     protected void loginAndOpenProductsPage() {
