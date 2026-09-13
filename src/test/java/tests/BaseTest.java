@@ -20,7 +20,6 @@ import pages.*;
 import utils.PropertyReader;
 
 import java.io.ByteArrayInputStream;
-import java.util.Set;
 
 import adapters.CaseAPI;
 import adapters.ProjectAPI;
@@ -72,7 +71,7 @@ public class BaseTest {
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 15000;
         Configuration.clickViaJs = true;
-        Configuration.headless = false;
+        Configuration.headless = true;
 
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide()

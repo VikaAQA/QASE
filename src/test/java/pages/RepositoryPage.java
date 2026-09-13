@@ -19,7 +19,7 @@ public class RepositoryPage extends BasePage {
     private final SelenideElement CREATE_NEW_CASE_BTN = $(byText("Create new case"));
     private final String TEST_CASES_AREA_CSS = "[data-suite-body-id]";
     private final String TEST_CASES_LIST_CSS = TEST_CASES_AREA_CSS + "[draggable]";
-    private final String NAME_SUITE_CSS = "[title='%s']";
+    private final String NAME_SUITE_XPATH = "//*[@id='suitecases-container']//span[normalize-space()='%s']";
 
     @Step("Открытие репозитория проекта '{project}'")
     public RepositoryPage openRepository(String project) {
@@ -69,8 +69,8 @@ public class RepositoryPage extends BasePage {
     }
     @Step("Проверка, что Suite '{suiteName}' отображается на странице")
     public RepositoryPage shouldHaveSuite(String suiteName) {
-        String locator = String.format(NAME_SUITE_CSS, suiteName);
-        $(locator).shouldBe(visible, Duration.ofSeconds(30));
+        String locator = String.format(NAME_SUITE_XPATH, suiteName);
+        $x(locator).shouldBe(visible, Duration.ofSeconds(30));
         log.info("Suite '{}' успешно отображается на странице", suiteName);
         return this;
     }
