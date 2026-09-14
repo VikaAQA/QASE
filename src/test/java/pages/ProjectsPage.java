@@ -27,10 +27,18 @@ public class ProjectsPage extends BasePage {
         log.info("Открыта страница проектов по URL: {}", PROJECTS_URL);
         return this;
     }
-    @Step("Проверка, что  страница проектов открыта")
+    @Step("Проверка, что страница проектов открыта")
     public ProjectsPage isPageOpened() {
-        $x(PROJECTS_LIST_LOAD_RESULT_XPATH).shouldBe(Condition.visible,Duration.ofSeconds(120));
-        log.info("Страница проектов успешно загружена и кнопка 'Create new project' отображается");
+        try {
+            $x(PROJECTS_LIST_LOAD_RESULT_XPATH)
+                    .shouldBe(Condition.visible, Duration.ofSeconds(20));
+        } catch (AssertionError e) {
+            log.warn("Страница проектов не загрузилась, выполняем refresh");
+            refresh();
+            $x(PROJECTS_LIST_LOAD_RESULT_XPATH)
+                    .shouldBe(Condition.visible, Duration.ofSeconds(60));
+        }
+        log.info("Страница проектов успешно загружена");
         return this;
     }
     @Step("Открыть модалку создания проекта")
