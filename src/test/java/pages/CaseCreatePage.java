@@ -11,8 +11,7 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-import static data.Elements.*;
+import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
 public class CaseCreatePage extends BasePage {
@@ -26,7 +25,7 @@ public class CaseCreatePage extends BasePage {
     @Step("Проверка, что страница создания тест-кейса открыта")
     public CaseCreatePage isPageOpened() {
         BEHAVIOR_SECTION.shouldBe(visible, Duration.ofSeconds(30));
-        disableBeforeUnloadHard();
+        // disableBeforeUnloadHard();
         log.info("Страница создания тест-кейса успешно загрузилась");
         return this;
     }

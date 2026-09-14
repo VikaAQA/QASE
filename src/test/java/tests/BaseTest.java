@@ -1,15 +1,16 @@
 package tests;
 
 import adapters.AuthAPI;
+import adapters.CaseAPI;
+import adapters.ProjectAPI;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import org.openqa.selenium.Cookie;
-import steps.UiSteps;
 import io.qameta.allure.Allure;
-import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
+import io.restassured.http.Cookies;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
@@ -17,21 +18,20 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.*;
+import steps.UiSteps;
 import utils.PropertyReader;
 
 import java.io.ByteArrayInputStream;
 
-import adapters.CaseAPI;
-import adapters.ProjectAPI;
-
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 
 @Log4j2
 @Listeners(TestListener.class)
 public class BaseTest {
-    protected static io.restassured.http.Cookies authCookies;
-     protected LoginPage loginPage;
+    protected static Cookies authCookies;
+    protected LoginPage loginPage;
     protected ProjectsPage projectsPage;
     protected RepositoryPage repositoryPage;
     protected ModalCreateProjectPage modalCreateProjectPage;
@@ -48,7 +48,6 @@ public class BaseTest {
     public void globalSetup() {
         log.info("Получение авторизационной сессии");
         authCookies = new AuthAPI().login(user, password);
-
         log.info("Очистка тестовых данных перед запуском сьюта");
         new ProjectAPI().deleteAllProject();
     }
@@ -147,16 +146,6 @@ public class BaseTest {
                     .manage()
                     .addCookie(seleniumCookie);
         });
-    }
-    @Step("Авторизация и открытие страницы Projects")
-    protected void loginAndOpenProductsPage() {
-       loginPage.openPage()
-                .acceptCookiesIfPresent();
-        loginPage.isPageOpened()
-                .acceptCookiesIfPresent();
-        ProjectsPage productsPage = loginPage.login(user, password);
-        productsPage.acceptCookiesIfPresent();
-        productsPage.isPageOpened();
     }
 }
 

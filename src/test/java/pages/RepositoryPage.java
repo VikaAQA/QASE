@@ -4,11 +4,12 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
+
 import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static data.Elements.BLOCK_CASE;
 import static data.Elements.NEW_TEST_BTN;
 import static org.testng.Assert.assertEquals;
 
@@ -56,7 +57,7 @@ public class RepositoryPage extends BasePage {
     public CaseCreatePage openCasePage() {
         NEW_TEST_BTN.shouldBe(visible, Duration.ofSeconds(60)).click();
         CaseCreatePage page = page(CaseCreatePage.class);
-                  page. disableBeforeUnloadHard();;
+           //    page. disableBeforeUnloadHard();;
         return page;
     }
     @Step("Открыть страницу создания тестового набора (Suite)")
