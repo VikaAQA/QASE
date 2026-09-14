@@ -25,7 +25,6 @@ public class CaseCreatePage extends BasePage {
     @Step("Проверка, что страница создания тест-кейса открыта")
     public CaseCreatePage isPageOpened() {
         BEHAVIOR_SECTION.shouldBe(visible, Duration.ofSeconds(30));
-        // disableBeforeUnloadHard();
         log.info("Страница создания тест-кейса успешно загрузилась");
         return this;
     }
