@@ -26,6 +26,7 @@ public class RepositoryPage extends BasePage {
     public RepositoryPage openRepository(String project) {
        log.info("Открываем страницу проекта: {}", project);
       open(PROJECT_URL + "/" + project);
+      refresh();
       return this;
     }
     @Step("Проверка, что страница проекта открыта")

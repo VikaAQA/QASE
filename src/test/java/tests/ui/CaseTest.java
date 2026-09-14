@@ -1,11 +1,11 @@
 package tests.ui;
 
 import dto.QaseTestCaseDto;
-import tests.BaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 import utils.factories.ui.TestCaseFactory;
 
 @Epic("UI Tests")
