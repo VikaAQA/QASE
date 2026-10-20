@@ -3,10 +3,10 @@ package adapters;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
-import models.project.get.GetProjectErrorResponseDto;
 import models.project.create.CreateProjectRequestDto;
 import models.project.create.CreateProjectResponseDto;
 import models.project.create.CreateProjectResponseErrorDto;
+import models.project.get.GetProjectErrorResponseDto;
 import models.project.get.GetProjectResponseDto;
 import utils.factories.api.ProjectRequestFactory;
 
@@ -38,6 +38,19 @@ public class ProjectAPI extends BaseAPI {
     public String createProject() {
                 return createProjectAndReturnCode(ProjectRequestFactory.valid());
     }
+
+    @Step("Получение проекта по коду {code} (возвращает code)")
+    public String getProjectCode(String code) {
+        Response response = getProjectRaw(code);
+
+        assertThat(response.statusCode())
+                .as("Get project HTTP status, code=%s, body: %s", code, response.asString())
+                .isEqualTo(200);
+
+        GetProjectResponseDto dto = gson.fromJson(response.asString(), GetProjectResponseDto.class);
+        return dto.getResult().getCode();
+    }
+
     @Step("Создать проект и вернуть его код")
     public String createProjectAndReturnCode(CreateProjectRequestDto request) {
         Response response = createProjectRaw(request);

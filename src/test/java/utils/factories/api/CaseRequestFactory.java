@@ -3,7 +3,6 @@ package utils.factories.api;
 import com.github.javafaker.Faker;
 import models.testcase.update.UpdateCaseRequestDto;
 
-import java.util.Arrays;
 import java.util.List;
 
 public final class CaseRequestFactory {
